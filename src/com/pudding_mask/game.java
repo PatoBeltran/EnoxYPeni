@@ -7,6 +7,7 @@ package com.pudding_mask;
 /**
  *
  * @author PatoBeltran
+ *         Daniel López
  */
 public class game {
     
