@@ -238,9 +238,12 @@ public class ResourceManager {
 
         // load left-facing images
         images[0] = new Image[] {
-            loadImage("player1.png"),
-            loadImage("player2.png"),
-            loadImage("player3.png"),
+            loadImage("enox1.png"),
+            loadImage("enox2.png"),
+            loadImage("enox1.png"),
+            loadImage("peni1.png"),
+            loadImage("peni2.png"),
+            loadImage("peni1.png"),
             loadImage("fly1.png"),
             loadImage("fly2.png"),
             loadImage("fly3.png"),

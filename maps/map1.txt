@@ -2,19 +2,35 @@
 # (Lines that start with '#' are comments)
 # The tiles are:
 #   (Space) Empty tile
-#   A..Z    Tiles A through Z
-#   o       Star
-#   !       Music Note
-#   *       Goal
-#   1       Bad Guy 1 (grub)
-#   2       Bad Guy 2 (fly)
-                                                                 
-                                                           o     o
-                                                     o      o    o
-                       o o o        o o o       o     o      o 
-                      IIIIIII      IIIIIII       o     o         2
-                                                  o        2
-                                  2                 2EF
-                 EF                                 EGD
-        EF  1    CD       1           1            EGAD     *
-BBBBBBBBGHBBBBBBBGHBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGAAHBBBBBBBBBBB
+#   A Center Tile
+#   B Top Tile
+#   C Bottom Tile
+#   D Right Tile
+#   E Left Tile
+#   F Right Top Corner Tile
+#   G Left Top Corner Tile
+#   H Right Bottom Corner Tile
+#   I Left Bottom Corner Tile
+#   J All But Left Tile
+#   K All But Right Tile
+#   L Top and Bottom Tile
+#   M Right Top Dot Tile
+#   N Left Top Dot Tile
+#   O Left Bottom Dot Tile
+#   P Right Bottom Dot Tile
+#   Q Both Sides Tiles
+#   R All Sides Tiles
+                                                                                                                
+                                                                                                                
+                                                                                                                
+                                                                      GBBBBBBBBBBBBBBF                          
+                    GBBBBF                                    KLJ     EAAAAAAAAAAAAAAD                          
+                   GBBPCCH                                            EAAAAAAAAAAAAAAD                          
+BBBBF            GBQAAD                                             GBQAAAAAAAAAAAAAAD                          
+AAAAMBBBBF  GBBBBQAAAAD      GBBBBBBBBBBBBBBBBBBBBBBBBBBBLJ       GBQAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAD      ICCCRAAAAAAAAAAAAAAAAAAAPCH       GBQAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAD         ICCCCCCCCCCCCCCCCCCCH       GBQAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAMBBF                                GBQAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                           GBQAAAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF                      GBQAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
