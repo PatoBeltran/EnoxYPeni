@@ -3,9 +3,9 @@
 # The tiles are:
 #   (Space) Empty tile
 #   A Center Tile
-#   B Top Tile
-#   C Bottom Tile
-#   D Right Tile
+#   B Top Tile                            G B F   _	     _	  _	          _
+#   C Bottom Tile		                      E A D	  _| J  |_ K	_ L  | | Q |_| R
+#   D Right Tile		                      I C H
 #   E Left Tile
 #   F Right Top Corner Tile
 #   G Left Top Corner Tile
@@ -20,17 +20,19 @@
 #   P Right Bottom Dot Tile
 #   Q Both Sides Tiles
 #   R All Sides Tiles
+#   1 Chunguillo
+#   2 Bad Ass
                                                                                                                 
-                                                                                                                
-                                                                                                                
-                                                                      GBBBBBBBBBBBBBBF                          
+                                                                            2                                   
+                        1                                             GBBBBBBBBBBBBBBF                          
                     GBBBBF                                    KLJ     EAAAAAAAAAAAAAAD                          
-                   GBBPCCH                                            EAAAAAAAAAAAAAAD                          
-BBBBF            GBQAAD                                             GBQAAAAAAAAAAAAAAD                          
-AAAAMBBBBF  GBBBBQAAAAD      GBBBBBBBBBBBBBBBBBBBBBBBBBBBLJ       GBQAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAD      ICCCRAAAAAAAAAAAAAAAAAAAPCH       GBQAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAD         ICCCCCCCCCCCCCCCCCCCH       GBQAAAAAAAAAAAAAAAAAAAAD                          
+                   GNAPCCH                                            EAAAAAAAAAAAAAAD                          
+BBBBF          2 GBNAAD          2       1       2                  GBQAAAAAAAAAAAAAAD                          
+AAAAMBBBBF  GBBBBNAAAAD      KBBBBBBBBBBBBBBBBBBBBBBBBBBBLJ       GBQAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAMF      ICCCOAAAAAAAAAAAAAAAAAAAPCH       GBQAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAMF         ICCCCCCCCCCCCCCCCCCCH       GBQAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAAMBBF                                GBQAAAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                           GBQAAAAAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF                      GBQAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
+AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                           GBQAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    * 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1    GBQAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
