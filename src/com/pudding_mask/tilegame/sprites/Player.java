@@ -56,6 +56,9 @@ public class Player extends Creature {
             setVelocityY(JUMP_SPEED);
         }
     }
+    public void fire(){
+        
+    }
 
 
     public float getMaxSpeed() {

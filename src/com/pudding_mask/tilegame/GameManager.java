@@ -44,6 +44,7 @@ public class GameManager extends GameCore {
     private GameAction moveLeft;
     private GameAction moveRight;
     private GameAction jump;
+    private GameAction fire;
     private GameAction exit;
 
 
@@ -92,6 +93,7 @@ public class GameManager extends GameCore {
     private void initInput() {
         moveLeft = new GameAction("moveLeft");
         moveRight = new GameAction("moveRight");
+        fire = new GameAction("fire");
         jump = new GameAction("jump",
             GameAction.DETECT_INITAL_PRESS_ONLY);
         exit = new GameAction("exit",
@@ -103,6 +105,7 @@ public class GameManager extends GameCore {
 
         inputManager.mapToKey(moveLeft, KeyEvent.VK_LEFT);
         inputManager.mapToKey(moveRight, KeyEvent.VK_RIGHT);
+        inputManager.mapToKey(fire, KeyEvent.VK_Z);
         inputManager.mapToKey(jump, KeyEvent.VK_SPACE);
         inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);
     }
@@ -119,6 +122,10 @@ public class GameManager extends GameCore {
             float velocityX = 0;
             if (moveLeft.isPressed()) {
                 velocityX-=player.getMaxSpeed();
+            }
+            if (fire.isPressed()) {
+                map.addSprite(resourceManager.bulletSprite);
+                //create new bullet
             }
             if (moveRight.isPressed()) {
                 velocityX+=player.getMaxSpeed();
@@ -356,6 +363,8 @@ public class GameManager extends GameCore {
             boolean canKill = (oldY < creature.getY());
             checkPlayerCollision((Player)creature, canKill);
         }
+        
+        checkBulletCollision(creature);
 
     }
 
@@ -393,6 +402,13 @@ public class GameManager extends GameCore {
         }
     }
 
+    public void checkBulletCollision(Creature creature){
+        Sprite collisionSprite = getSpriteCollision(creature);
+        if(collisionSprite instanceof Bullet) {
+            creature.setState(Creature.STATE_DYING);
+            map.removeSprite(collisionSprite);
+        }
+    }
 
     /**
         Gives the player the speicifed power up and removes it
