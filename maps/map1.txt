@@ -3,7 +3,7 @@
 # The tiles are:
 #   (Space) Empty tile
 #   A Center Tile
-#   B Top Tile                            	      G B F   _	     _	  _	          _
+#   B Top Tile                            G B F   _	     _	  _	          _
 #   C Bottom Tile		                      E A D	  _| J  |_ K	_ L  | | Q |_| R
 #   D Right Tile		                      I C H
 #   E Left Tile
@@ -33,17 +33,17 @@
                     GBBBBF                                         KLJ      EAAAAAAAAAAAAAAD                          
                    GNAPCCH                                                  EAAAAAAAAAAAAAAD                          
 BBBBF          2 GBNAAD             2       1       2                     GBNAAAAAAAAAAAAAAD                          
-AAAAMBBBBF  GBBBBNAAAAD           KBBBBBBBBBBBBBBBBBBBBBBBBBBBLJ        GBNAAAAAAAAAAAAAAAAD                          
-AAAAMBBBBF  GBBBBNAAAAD            ICCCOAAAAAAAAAAAAAAAAAAAPCH          GAAAAAAAAAAAAAAAAAAD                          
+AAAAMBBBBF  GBBBBNAAAAD           KBBBBBBBBBBBBBBBBBBBBBBBBBBPJ         GBNAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAD            ICCOAAAAAAAAAAAAAAAAAAAPCH           EAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAMF              ICCCCCCCCCCCCCCCCCCCH           GBNAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAMF                                              GAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAMD                                              EAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAMF                                           GBNAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAMF                                           GAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAMD                                           EAAAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAAMBBF                                      GBNAAAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                                 GBNAAAAAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAF                                 GAAAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    * 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAD                                 EAAAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    * 
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1      2   GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
