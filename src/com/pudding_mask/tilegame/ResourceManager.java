@@ -276,7 +276,7 @@ public class ResourceManager {
         // create creature sprites
         playerSprite = new Player(playerAnim[0], playerAnim[1],
             playerAnim[2], playerAnim[3]);
-        flySprite = new Fly(flyAnim[0], flyAnim[1],
+        flySprite = new Grub(flyAnim[0], flyAnim[1],
             flyAnim[2], flyAnim[3]);
         grubSprite = new Grub(grubAnim[0], grubAnim[1],
             grubAnim[2], grubAnim[3]);
