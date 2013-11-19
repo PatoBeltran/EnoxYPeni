@@ -3,7 +3,7 @@
 # The tiles are:
 #   (Space) Empty tile
 #   A Center Tile
-#   B Top Tile                            G B F   _	     _	  _	          _
+#   B Top Tile                            	      G B F   _	     _	  _	          _
 #   C Bottom Tile		                      E A D	  _| J  |_ K	_ L  | | Q |_| R
 #   D Right Tile		                      I C H
 #   E Left Tile
@@ -32,12 +32,12 @@
                         1                                             GBBBBBBBBBBBBBBF                          
                     GBBBBF                                    KLJ     EAAAAAAAAAAAAAAD                          
                    GNAPCCH                                            EAAAAAAAAAAAAAAD                          
-BBBBF          2 GBNAAD          2       1       2                  GBQAAAAAAAAAAAAAAD                          
-AAAAMBBBBF  GBBBBNAAAAD      KBBBBBBBBBBBBBBBBBBBBBBBBBBBLJ       GBQAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAMF      ICCCOAAAAAAAAAAAAAAAAAAAPCH       GBQAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAMF         ICCCCCCCCCCCCCCCCCCCH       GBQAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAMBBF                                GBQAAAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                           GBQAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    * 
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1    GBQAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+BBBBF          2 GBNAAD          2       1       2                  GBNAAAAAAAAAAAAAAD                          
+AAAAMBBBBF  GBBBBNAAAAD      KBBBBBBBBBBBBBBBBBBBBBBBBBBBLJ       GBNAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAMF      ICCCOAAAAAAAAAAAAAAAAAAAPCH       GBNAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAMF         ICCCCCCCCCCCCCCCCCCCH       GBNAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAMBBF                                GBNAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                           GBNAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    * 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1    GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 

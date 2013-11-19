@@ -88,13 +88,14 @@ public class TileMapRenderer {
         offsetX = Math.min(offsetX, 0);
         offsetX = Math.max(offsetX, screenWidth - mapWidth);
 
+        int mapHeight = tilesToPixels(map.getHeight());
         // get the y offset to draw all sprites and tiles
         int offsetY = screenHeight/2 -
-           Math.round(player.getX()) - TILE_SIZE;
+           Math.round(player.getY()) - TILE_SIZE;
         offsetY = Math.min(offsetY, 0);
-        offsetY = Math.max(offsetY, screenHeight - map.getHeight());
+        offsetY = Math.max(offsetY, screenHeight - mapHeight);
 
-            tilesToPixels(map.getHeight());
+            
 
         // draw black background, if needed
         if (background == null ||
