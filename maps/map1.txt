@@ -22,22 +22,28 @@
 #   R All Sides Tiles
 #   1 Chunguillo
 #   2 Bad Ass
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                                                                
-                                                                            2                                   
-                        1                                             GBBBBBBBBBBBBBBF                          
-                    GBBBBF                                    KLJ     EAAAAAAAAAAAAAAD                          
-                   GNAPCCH                                            EAAAAAAAAAAAAAAD                          
-BBBBF          2 GBNAAD          2       1       2                  GBNAAAAAAAAAAAAAAD                          
-AAAAMBBBBF  GBBBBNAAAAD      KBBBBBBBBBBBBBBBBBBBBBBBBBBBLJ       GBNAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAMF      ICCCOAAAAAAAAAAAAAAAAAAAPCH       GBNAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAMF         ICCCCCCCCCCCCCCCCCCCH       GBNAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAMBBF                                GBNAAAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                           GBNAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    * 
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1    GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                  2                                   
+                        1                                                   GBBBBBBBBBBBBBBF                          
+                    GBBBBF                                         KLJ      EAAAAAAAAAAAAAAD                          
+                   GNAPCCH                                                  EAAAAAAAAAAAAAAD                          
+BBBBF          2 GBNAAD             2       1       2                     GBNAAAAAAAAAAAAAAD                          
+AAAAMBBBBF  GBBBBNAAAAD           KBBBBBBBBBBBBBBBBBBBBBBBBBBBLJ        GBNAAAAAAAAAAAAAAAAD                          
+AAAAMBBBBF  GBBBBNAAAAD            ICCCOAAAAAAAAAAAAAAAAAAAPCH          GAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAMF              ICCCCCCCCCCCCCCCCCCCH           GBNAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAMF                                              GAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAMF                                           GBNAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAMF                                           GAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAMBBF                                      GBNAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                                 GBNAAAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAF                                 GAAAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    * 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1      2   GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
