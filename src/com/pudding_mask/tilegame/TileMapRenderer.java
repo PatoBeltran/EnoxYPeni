@@ -101,7 +101,7 @@ public class TileMapRenderer {
         if (background == null ||
             screenHeight > background.getHeight(null))
         {
-            g.setColor(Color.black);
+            g.setColor(new Color(227,68,125));
             g.fillRect(0, 0, screenWidth, screenHeight);
         }
 
