@@ -247,8 +247,9 @@ public class ResourceManager {
             loadImage("fly1.png"),
             loadImage("fly2.png"),
             loadImage("fly3.png"),
-            loadImage("grub1.png"),
-            loadImage("grub2.png"),
+            loadImage("badass1.png"),
+            loadImage("badass2.png"),
+            loadImage("badass3.png"),
         };
 
         images[1] = new Image[images[0].length];
@@ -273,7 +274,7 @@ public class ResourceManager {
             chunguilloAnim[i] = createChunguilloAnim(
                 images[i][4], images[i][5], images[i][6]);
             badassAnim[i] = createBadassAnim(
-                images[i][7], images[i][8]);
+                images[i][7], images[i][8], images[i][9]);
         }
 
         // create creature sprites
@@ -315,10 +316,11 @@ public class ResourceManager {
     }
 
 
-    private Animation createBadassAnim(Image img1, Image img2) {
+    private Animation createBadassAnim(Image img1, Image img2, Image img3) {
         Animation anim = new Animation();
         anim.addFrame(img1, 250);
         anim.addFrame(img2, 250);
+        anim.addFrame(img3, 250);
         return anim;
     }
 
