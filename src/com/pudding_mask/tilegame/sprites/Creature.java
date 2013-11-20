@@ -26,12 +26,13 @@ public abstract class Creature extends Sprite {
     private int state;
     private long stateTime;
     public boolean dir = true;
+    private int hp;
 
     /**
         Creates a new Creature with the specified Animations.
     */
     public Creature(Animation left, Animation right,
-        Animation deadLeft, Animation deadRight)
+        Animation deadLeft, Animation deadRight, int hp)
     {
         super(right);
         this.left = left;
@@ -39,9 +40,12 @@ public abstract class Creature extends Sprite {
         this.deadLeft = deadLeft;
         this.deadRight = deadRight;
         state = STATE_NORMAL;
+        this.hp = hp;
     }
 
-
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
     public Object clone() {
         // use reflection to create the correct subclass
         Constructor constructor = getClass().getConstructors()[0];
@@ -58,6 +62,13 @@ public abstract class Creature extends Sprite {
             ex.printStackTrace();
             return null;
         }
+    }
+    public void decreaseLife() {
+        hp--;
+    }
+    
+    public int getLife(){
+        return hp;
     }
 
 

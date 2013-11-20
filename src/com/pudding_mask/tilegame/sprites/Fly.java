@@ -10,7 +10,7 @@ public class Fly extends Creature {
     public Fly(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
     {
-        super(left, right, deadLeft, deadRight);
+        super(left, right, deadLeft, deadRight, 1);
     }
 
 

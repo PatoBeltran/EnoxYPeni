@@ -447,7 +447,12 @@ public class GameManager extends GameCore {
             if (canKill) {
                 // kill the badguy and make player bounce
                 soundManager.play(boopSound);
-                badguy.setState(Creature.STATE_DYING);
+                if(badguy.getLife()==1){
+                    badguy.setState(Creature.STATE_DYING);
+                }
+                else {
+                    badguy.decreaseLife();
+                }
                 player.setY(badguy.getY() - player.getHeight());
                 player.jump(true);
             }

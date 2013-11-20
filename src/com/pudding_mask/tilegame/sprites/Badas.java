@@ -6,11 +6,13 @@ import com.pudding_mask.graphics.Animation;
     A Grub is a Creature that moves slowly on the ground.
 */
 public class Badas extends Creature {
+    
+    private int hp;
 
     public Badas(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
     {
-        super(left, right, deadLeft, deadRight);
+        super(left, right, deadLeft, deadRight, 2);
     }
 
 

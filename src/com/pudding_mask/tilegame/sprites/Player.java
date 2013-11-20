@@ -10,14 +10,12 @@ public class Player extends Creature {
     private static final float JUMP_SPEED = -.95f;
 
     private boolean onGround;
-    
-    private int hp;
+
 
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
     {
-        super(left, right, deadLeft, deadRight);
-        hp = 5;
+        super(left, right, deadLeft, deadRight, 5);
     }
 
 
@@ -25,16 +23,10 @@ public class Player extends Creature {
         setVelocityX(0);
     }
     
-    public void decreaseLife() {
-        hp--;
-    }
     public void restoreLife() {
-        hp = 5;
+        setHp(5);
     }
     
-    public int getLife(){
-        return hp;
-    }
 
 
     public void collideVertical() {
