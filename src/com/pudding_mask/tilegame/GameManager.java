@@ -312,12 +312,8 @@ public class GameManager extends GameCore {
     */
     public void update(long elapsedTime) {
         Creature player = (Creature)map.getPlayer();
-<<<<<<< HEAD
         Player playr = (Player)map.getPlayer();
-=======
->>>>>>> 1a776d7... add hp image
         
-
         // player is dead! start map over
         if (player.getState() == Creature.STATE_DEAD) {
             map = resourceManager.reloadMap();
@@ -477,7 +473,12 @@ public class GameManager extends GameCore {
         Sprite collisionSprite = getSpriteCollision(creature);
         if(collisionSprite != null){
             if(collisionSprite.isBullet) {
-                creature.setState(Creature.STATE_DYING);
+                 if(creature.getLife()==1){
+                    creature.setState(Creature.STATE_DYING);
+                }
+                else {
+                    creature.decreaseLife();
+                }
                 map.removeBullet(collisionSprite);
             }
         }
