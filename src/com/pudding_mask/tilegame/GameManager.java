@@ -401,8 +401,14 @@ public class GameManager extends GameCore {
                 player.jump(true);
             }
             else {
-                // player dies!
-                player.setState(Creature.STATE_DYING);
+                if(player.getLife()==1){
+                    // player dies!
+                    player.setState(Creature.STATE_DYING);
+                    player.restoreLife();
+                }
+                else { 
+                    player.decreaseLife();
+                }
             }
         }
     }
