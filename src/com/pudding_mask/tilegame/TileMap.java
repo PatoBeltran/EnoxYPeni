@@ -16,6 +16,7 @@ public class TileMap {
 
     private Image[][] tiles;
     private LinkedList sprites;
+    private LinkedList bullets;
     private Sprite player;
 
     /**
@@ -25,6 +26,7 @@ public class TileMap {
     public TileMap(int width, int height) {
         tiles = new Image[width][height];
         sprites = new LinkedList();
+        bullets = new LinkedList();
     }
 
 
@@ -91,6 +93,9 @@ public class TileMap {
     public void addSprite(Sprite sprite) {
         sprites.add(sprite);
     }
+    public void addBullet(Sprite bullet) {
+        bullets.add(bullet);
+    }
 
 
     /**
@@ -98,6 +103,9 @@ public class TileMap {
     */
     public void removeSprite(Sprite sprite) {
         sprites.remove(sprite);
+    }
+    public void removeBullet(Sprite sprite) {
+        bullets.remove(sprite);
     }
 
 
@@ -108,5 +116,7 @@ public class TileMap {
     public Iterator getSprites() {
         return sprites.iterator();
     }
-
+    public Iterator getBullets() {
+        return bullets.iterator();
+    }
 }

@@ -125,11 +125,18 @@ public class GameManager extends GameCore {
                 velocityX-=player.getMaxSpeed();
             }
             if (fire.isPressed()) {
-                Sprite sprite = (Sprite)resourceManager.bulletSprite.clone();
-                sprite.setX(player.getX());
-                sprite.setY(player.getY());
-                sprite.setVelocityX(.5f);
-                map.addSprite(sprite);
+                Sprite bullet = (Sprite)resourceManager.bullet.clone();
+                bullet.setX(player.getX()+32);
+                bullet.setY(player.getY()+32);
+                bullet.isBullet = true;
+                if(player.dir==true){
+                    bullet.setVelocityX(.7f);
+                }
+                else{
+                    bullet.setVelocityX(-.7f);
+                    bullet.setX(player.getX());
+                }
+                map.addBullet(bullet);
                 //create new bullet
             }
             if (moveRight.isPressed()) {
@@ -257,7 +264,14 @@ public class GameManager extends GameCore {
                 return otherSprite;
             }
         }
-
+        i = map.getBullets();
+        while (i.hasNext()) {
+            Sprite otherSprite = (Sprite)i.next();
+            if (isCollision(sprite, otherSprite)) {
+                // collision found, return the Sprite
+                return otherSprite;
+            }
+        }
         // no collision found
         return null;
     }
@@ -298,6 +312,11 @@ public class GameManager extends GameCore {
                 }
             }
             // normal update
+            sprite.update(elapsedTime);
+        }
+        i = map.getBullets();
+        while (i.hasNext()) {
+            Sprite sprite = (Sprite)i.next();
             sprite.update(elapsedTime);
         }
     }
@@ -368,8 +387,9 @@ public class GameManager extends GameCore {
             boolean canKill = (oldY < creature.getY());
             checkPlayerCollision((Player)creature, canKill);
         }
-        
-        checkBulletCollision(creature);
+        else if(creature.getState()== Creature.STATE_NORMAL){
+            checkBulletCollision(creature);
+        }
 
     }
 
@@ -415,9 +435,11 @@ public class GameManager extends GameCore {
 
     public void checkBulletCollision(Creature creature){
         Sprite collisionSprite = getSpriteCollision(creature);
-        if(collisionSprite instanceof Bullet) {
-            creature.setState(Creature.STATE_DYING);
-            map.removeSprite(collisionSprite);
+        if(collisionSprite != null){
+            if(collisionSprite.isBullet) {
+                creature.setState(Creature.STATE_DYING);
+                map.removeBullet(collisionSprite);
+            }
         }
     }
 

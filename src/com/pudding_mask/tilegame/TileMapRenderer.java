@@ -154,6 +154,13 @@ public class TileMapRenderer {
                 ((Creature)sprite).wakeUp();
             }
         }
+        i = map.getBullets();
+        while (i.hasNext()) {
+            Sprite sprite = (Sprite)i.next();
+            int x = Math.round(sprite.getX()) + offsetX;
+            int y = Math.round(sprite.getY()) + offsetY;
+            g.drawImage(sprite.getImage(), x, y, null);
+        }
     }
 
 }

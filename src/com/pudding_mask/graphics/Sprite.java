@@ -11,6 +11,7 @@ public class Sprite {
     // velocity (pixels per millisecond)
     private float dx;
     private float dy;
+    public boolean isBullet=false;
 
     /**
         Creates a new Sprite object with the specified Animation.

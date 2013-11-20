@@ -28,7 +28,7 @@ public class ResourceManager {
     private Sprite goalSprite;
     private Sprite badassSprite;
     private Sprite chunguilloSprite;
-    public Sprite bulletSprite;
+    public Sprite bullet;
 
     /**
         Creates a new ResourceManager with the specified
@@ -329,7 +329,7 @@ public class ResourceManager {
         anim.addFrame(loadImage("bullet2.png"), 150);
         anim.addFrame(loadImage("bullet3.png"), 150);
         anim.addFrame(loadImage("bullet2.png"), 150);
-        bulletSprite = new Bullet(anim);
+        bullet = new Bullet(anim);
         
         // create "goal" sprite
         anim = new Animation();
