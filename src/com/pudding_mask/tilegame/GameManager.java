@@ -93,7 +93,8 @@ public class GameManager extends GameCore {
     private void initInput() {
         moveLeft = new GameAction("moveLeft");
         moveRight = new GameAction("moveRight");
-        fire = new GameAction("fire");
+        fire = new GameAction("fire",
+            GameAction.DETECT_INITAL_PRESS_ONLY);
         jump = new GameAction("jump",
             GameAction.DETECT_INITAL_PRESS_ONLY);
         exit = new GameAction("exit",
@@ -124,7 +125,11 @@ public class GameManager extends GameCore {
                 velocityX-=player.getMaxSpeed();
             }
             if (fire.isPressed()) {
-                map.addSprite(resourceManager.bulletSprite);
+                Sprite sprite = (Sprite)resourceManager.bulletSprite.clone();
+                sprite.setX(player.getX());
+                sprite.setY(player.getY());
+                sprite.setVelocityX(.5f);
+                map.addSprite(sprite);
                 //create new bullet
             }
             if (moveRight.isPressed()) {

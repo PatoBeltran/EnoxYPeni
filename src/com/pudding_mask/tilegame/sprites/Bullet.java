@@ -10,7 +10,4 @@ public class Bullet extends Sprite {
     public Bullet(Animation anim){
         super(anim);
     }
-    public float getMaxSpeed() {
-        return 0.2f;
-    }
 }
