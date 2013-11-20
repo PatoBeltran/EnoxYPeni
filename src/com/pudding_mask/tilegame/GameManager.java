@@ -312,7 +312,10 @@ public class GameManager extends GameCore {
     */
     public void update(long elapsedTime) {
         Creature player = (Creature)map.getPlayer();
+<<<<<<< HEAD
         Player playr = (Player)map.getPlayer();
+=======
+>>>>>>> 1a776d7... add hp image
         
 
         // player is dead! start map over
