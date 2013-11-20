@@ -154,6 +154,35 @@ public class GameManager extends GameCore {
     public void draw(Graphics2D g) {
         renderer.draw(g, map,
             screen.getWidth(), screen.getHeight());
+        Player player = (Player)map.getPlayer();
+        //update lifes
+        Image hp;
+        switch(player.getLife()){
+            case 0:
+                hp = resourceManager.loadImage("hp0.png");
+                g.drawImage(hp, 10, 10, null);
+                break;
+            case 1:
+                hp = resourceManager.loadImage("hp1.png");
+                g.drawImage(hp, 10, 10, null);
+                break;
+            case 2:
+                hp = resourceManager.loadImage("hp2.png");
+                g.drawImage(hp, 10, 10, null);
+                break;
+            case 3:
+                hp = resourceManager.loadImage("hp3.png");
+                g.drawImage(hp, 10, 10, null);
+                break;
+            case 4:
+                hp = resourceManager.loadImage("hp4.png");
+                g.drawImage(hp, 10, 10, null);
+                break;
+            case 5:
+                hp = resourceManager.loadImage("hp5.png");
+                g.drawImage(hp, 10, 10, null);
+                break;
+        }
     }
 
 
@@ -283,11 +312,13 @@ public class GameManager extends GameCore {
     */
     public void update(long elapsedTime) {
         Creature player = (Creature)map.getPlayer();
-
+        Player playr = (Player)map.getPlayer();
+        
 
         // player is dead! start map over
         if (player.getState() == Creature.STATE_DEAD) {
             map = resourceManager.reloadMap();
+            playr.restoreLife();
             return;
         }
 
@@ -423,8 +454,9 @@ public class GameManager extends GameCore {
             else {
                 if(player.getLife()==1){
                     // player dies!
+                    player.decreaseLife();
                     player.setState(Creature.STATE_DYING);
-                    player.restoreLife();
+                    
                 }
                 else { 
                     player.decreaseLife();
