@@ -241,7 +241,8 @@ public class ResourceManager {
         images[0] = new Image[] {
             loadImage("enox1.png"),
             loadImage("enox2.png"),
-            loadImage("enox1.png"),
+            loadImage("enox3.png"),
+            loadImage("enox4.png"),
             loadImage("fly1.png"),
             loadImage("fly2.png"),
             loadImage("fly3.png"),
@@ -267,11 +268,11 @@ public class ResourceManager {
         Animation[] badassAnim = new Animation[4];
         for (int i=0; i<4; i++) {
             playerAnim[i] = createPlayerAnim(
-                images[i][0], images[i][1], images[i][2]);
+                images[i][0], images[i][1], images[i][2], images[i][3]);
             chunguilloAnim[i] = createChunguilloAnim(
-                images[i][3], images[i][4], images[i][5]);
+                images[i][4], images[i][5], images[i][6]);
             badassAnim[i] = createBadassAnim(
-                images[i][6], images[i][7]);
+                images[i][7], images[i][8]);
         }
 
         // create creature sprites
@@ -285,7 +286,7 @@ public class ResourceManager {
 
 
     private Animation createPlayerAnim(Image player1,
-        Image player2, Image player3)
+        Image player2, Image player3, Image player4)
     {
         Animation anim = new Animation();
         anim.addFrame(player1, 250);
@@ -293,6 +294,9 @@ public class ResourceManager {
         anim.addFrame(player1, 150);
         anim.addFrame(player2, 150);
         anim.addFrame(player3, 200);
+        anim.addFrame(player4, 150);
+        anim.addFrame(player3, 150);
+        anim.addFrame(player4, 200);
         anim.addFrame(player2, 150);
         return anim;
     }
