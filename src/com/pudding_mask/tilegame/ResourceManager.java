@@ -30,6 +30,7 @@ public class ResourceManager {
     private Sprite chunguilloSprite;
     public Sprite bullet;
     public Sprite bulletB;
+    public Animation[] peniAnim = new Animation[4];
 
     /**
         Creates a new ResourceManager with the specified
@@ -244,11 +245,30 @@ public class ResourceManager {
             loadImage("enox2.png"),
             loadImage("enox3.png"),
             loadImage("enox4.png"),
-            loadImage("fly1.png"),
-            loadImage("fly2.png"),
-            loadImage("fly3.png"),
-            loadImage("grub1.png"),
-            loadImage("grub2.png"),
+            loadImage("enox5.png"),
+            loadImage("enox6.png"),
+            loadImage("enox7.png"),
+            loadImage("enox8.png"),
+            loadImage("peni1.png"),
+            loadImage("peni2.png"),
+            loadImage("peni3.png"),
+            loadImage("peni4.png"),
+            loadImage("peni5.png"),
+            loadImage("peni6.png"),
+            loadImage("peni7.png"),
+            loadImage("peni8.png"),
+            loadImage("badass1.png"),
+            loadImage("badass2.png"),
+            loadImage("badass3.png"),
+            loadImage("badass4.png"),
+            loadImage("chunguillo1.png"),
+            loadImage("chunguillo2.png"),
+            loadImage("chunguillo3.png"),
+            loadImage("chunguillo4.png"),
+            loadImage("chunguillo5.png"),
+            loadImage("chunguillo6.png"),
+            loadImage("chunguillo7.png"),
+            loadImage("chunguillo8.png")
         };
 
         images[1] = new Image[images[0].length];
@@ -268,12 +288,15 @@ public class ResourceManager {
         Animation[] chunguilloAnim = new Animation[4];
         Animation[] badassAnim = new Animation[4];
         for (int i=0; i<4; i++) {
-            playerAnim[i] = createPlayerAnim(
-                images[i][0], images[i][1], images[i][2], images[i][3]);
-            chunguilloAnim[i] = createChunguilloAnim(
-                images[i][4], images[i][5], images[i][6]);
-            badassAnim[i] = createBadassAnim(
-                images[i][7], images[i][8]);
+            playerAnim[i] = createAnim(
+                images[i], 0, 7);
+            peniAnim[i] = createAnim(
+                images[i], 8, 15);
+            chunguilloAnim[i] = createAnim(
+                images[i], 20, 27);
+            badassAnim[i] = createAnim(
+                images[i], 16 ,19);
+            
         }
 
         // create creature sprites
@@ -286,39 +309,12 @@ public class ResourceManager {
     }
 
 
-    private Animation createPlayerAnim(Image player1,
-        Image player2, Image player3, Image player4)
+    private Animation createAnim(Image player[], int m, int n)
     {
         Animation anim = new Animation();
-        anim.addFrame(player1, 250);
-        anim.addFrame(player2, 150);
-        anim.addFrame(player1, 150);
-        anim.addFrame(player2, 150);
-        anim.addFrame(player3, 200);
-        anim.addFrame(player4, 150);
-        anim.addFrame(player3, 150);
-        anim.addFrame(player4, 200);
-        anim.addFrame(player2, 150);
-        return anim;
-    }
+        for(int i = m; i<=n; i++)
+            anim.addFrame(player[i], 150);
 
-
-    private Animation createChunguilloAnim(Image img1, Image img2,
-        Image img3)
-    {
-        Animation anim = new Animation();
-        anim.addFrame(img1, 50);
-        anim.addFrame(img2, 50);
-        anim.addFrame(img3, 50);
-        anim.addFrame(img2, 50);
-        return anim;
-    }
-
-
-    private Animation createBadassAnim(Image img1, Image img2) {
-        Animation anim = new Animation();
-        anim.addFrame(img1, 250);
-        anim.addFrame(img2, 250);
         return anim;
     }
 

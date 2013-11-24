@@ -19,6 +19,9 @@ public class Sprite {
     public Sprite(Animation anim) {
         this.anim = anim;
     }
+    public void changeSprite(Animation anim){
+        this.anim = anim;
+    }
 
     /**
         Updates this Sprite's Animation and its position based

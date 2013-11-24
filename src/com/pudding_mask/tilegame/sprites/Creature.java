@@ -42,6 +42,14 @@ public abstract class Creature extends Sprite {
         state = STATE_NORMAL;
         this.hp = hp;
     }
+    public void changeAnimation(Animation left, Animation right,
+        Animation deadLeft, Animation deadRight){
+        changeSprite(right);
+        this.left = left;
+        this.right = right;
+        this.deadLeft = deadLeft;
+        this.deadRight = deadRight;
+    }
 
     public void setHp(int hp) {
         this.hp = hp;
