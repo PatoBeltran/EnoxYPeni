@@ -48,6 +48,7 @@ public class GameManager extends GameCore {
     private GameAction fire;
     private GameAction exit;
     private GameAction click;
+    private GameAction pause;
 
 
     public void init() {
@@ -103,6 +104,8 @@ public class GameManager extends GameCore {
             GameAction.DETECT_INITAL_PRESS_ONLY);
         jump = new GameAction("jump",
             GameAction.DETECT_INITAL_PRESS_ONLY);
+        pause = new GameAction("pause",
+            GameAction.DETECT_INITAL_PRESS_ONLY);
         exit = new GameAction("exit",
             GameAction.DETECT_INITAL_PRESS_ONLY);
         click = new GameAction("click");
@@ -116,6 +119,7 @@ public class GameManager extends GameCore {
         inputManager.mapToKey(fire, KeyEvent.VK_Z);
         inputManager.mapToKey(jump, KeyEvent.VK_SPACE);
         inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);
+        inputManager.mapToKey(pause, KeyEvent.VK_P);
         inputManager.mapToMouse(click, inputManager.MOUSE_BUTTON_1);
     }
 
@@ -124,95 +128,107 @@ public class GameManager extends GameCore {
         if (exit.isPressed()) {
             stop();
         }
-        if (menu.isInMainMenu()){
-            if(click.isPressed() && inputManager.getMouseX()>= 300 && inputManager.getMouseX()<= 720){
-                if(inputManager.getMouseY()>=180 && inputManager.getMouseY() <= 245){
-                    menu.goToCharChoose();
-                }
-                if(inputManager.getMouseY()>=310 && inputManager.getMouseY() <= 375){
-                    menu.goToInstructions();
-                }
-                if(inputManager.getMouseY()>=450 && inputManager.getMouseY() <= 515){
-                    menu.goToHighscores();
-                }
-                if(inputManager.getMouseY()>=605 && inputManager.getMouseY() <= 670){
-                    menu.goToConfiguration();
-                }
-            }
-        }
-        else if(menu.isChoosingChar()){
-            if(click.isPressed()){
-                if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
-                    && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
-                    menu.goToMainMenu();
-                }
-                if(inputManager.getMouseX()>= 625 && inputManager.getMouseX()<= 837
-                    && inputManager.getMouseY()>=212 && inputManager.getMouseY() <= 517){
-                    Player player = (Player)map.getPlayer();
-                    player.changeAnimation(resourceManager.peniAnim[0],
-                            resourceManager.peniAnim[1], resourceManager.peniAnim[2], 
-                            resourceManager.peniAnim[3]);
-                    menu.goToGame();
-                }
-                if(inputManager.getMouseX()>= 102 && inputManager.getMouseX()<= 394
-                    && inputManager.getMouseY()>=212 && inputManager.getMouseY() <= 517){
-                    menu.goToGame();
-                }
-            }   
-        }
-        else if(menu.isConfiguring()){
-            if(click.isPressed()){
-                if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
-                    && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
-                    menu.goToMainMenu();
-                }
-            }
-        }
-        else if(menu.isInHighscores()){
-            if(click.isPressed()){
-                if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
-                    && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
-                    menu.goToMainMenu();
-                }
-            }
-        }
-        else if(menu.isLearning()){
-            if(click.isPressed()){
-                if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
-                    && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
-                    menu.goToMainMenu();
-                }
-            }   
-        }
-        else {
-            Player player = (Player)map.getPlayer();
-            if (player.isAlive()) {
-                float velocityX = 0;
-                if (moveLeft.isPressed()) {
-                    velocityX-=player.getMaxSpeed();
-                }
-                if (fire.isPressed()) {
-                    Sprite bullet = (Sprite)resourceManager.bullet.clone();
-                    bullet.setX(player.getX()+32);
-                    bullet.setY(player.getY()+32);
-                    bullet.isBullet = true;
-                    if(player.dir==true){
-                        bullet.setVelocityX(.7f);
+        if(!menu.isPlaying()){
+            pause.reset();
+            if (menu.isInMainMenu()){
+                if(click.isPressed() && inputManager.getMouseX()>= 300 && inputManager.getMouseX()<= 720){
+                    if(inputManager.getMouseY()>=180 && inputManager.getMouseY() <= 245){
+                        menu.goToCharChoose();
                     }
-                    else{
-                        bullet.setVelocityX(-.7f);
-                        bullet.setX(player.getX());
+                    if(inputManager.getMouseY()>=310 && inputManager.getMouseY() <= 375){
+                        menu.goToInstructions();
                     }
-                    map.addBullet(bullet);
-                    //create new bullet
+                    if(inputManager.getMouseY()>=450 && inputManager.getMouseY() <= 515){
+                        menu.goToHighscores();
+                    }
+                    if(inputManager.getMouseY()>=605 && inputManager.getMouseY() <= 670){
+                        menu.goToConfiguration();
+                    }
                 }
-                if (moveRight.isPressed()) {
-                    velocityX+=player.getMaxSpeed();
+            }
+            else if(menu.isChoosingChar()){
+                if(click.isPressed()){
+                    if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
+                        && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
+                        menu.goToMainMenu();
+                    }
+                    if(inputManager.getMouseX()>= 625 && inputManager.getMouseX()<= 837
+                        && inputManager.getMouseY()>=212 && inputManager.getMouseY() <= 517){
+                        Player player = (Player)map.getPlayer();
+                        player.changeAnimation(resourceManager.peniAnim[0],
+                                resourceManager.peniAnim[1], resourceManager.peniAnim[2], 
+                                resourceManager.peniAnim[3]);
+                        menu.goToGame();
+                    }
+                    if(inputManager.getMouseX()>= 102 && inputManager.getMouseX()<= 394
+                        && inputManager.getMouseY()>=212 && inputManager.getMouseY() <= 517){
+                        menu.goToGame();
+                    }
+                }   
+            }
+            else if(menu.isConfiguring()){
+                if(click.isPressed()){
+                    if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
+                        && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
+                        menu.goToMainMenu();
+                    }
                 }
-                if (jump.isPressed()) {
-                    player.jump(false);
+            }
+            else if(menu.isInHighscores()){
+                if(click.isPressed()){
+                    if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
+                        && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
+                        menu.goToMainMenu();
+                    }
                 }
-                player.setVelocityX(velocityX);
+            }
+            else if(menu.isLearning()){
+                if(click.isPressed()){
+                    if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
+                        && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
+                        menu.goToMainMenu();
+                    }
+                }   
+            }
+        }
+        else if(menu.isPlaying()) {
+            if(pause.isPressed()){
+                if(menu.isPaused()){
+                    fire.reset();
+                    moveLeft.reset();
+                    moveRight.reset();
+                    jump.reset();
+                }
+                menu.changePauseStatus();
+            }
+            if(!menu.isPaused()){
+                Player player = (Player)map.getPlayer();
+                if (player.isAlive()) {
+                    float velocityX = 0;
+                    if (moveLeft.isPressed()) {
+                        velocityX-=player.getMaxSpeed();
+                    }
+                    if (fire.isPressed()) {
+                        Sprite bullet = (Sprite)resourceManager.bullet.clone();
+                        bullet.setX(player.getX()+32);
+                        bullet.setY(player.getY()+32);
+                        bullet.isBullet = true;
+                        if(player.dir){
+                            bullet.setVelocityX(.7f);
+                        }
+                        else{
+                            bullet.setVelocityX(-.7f);
+                        }
+                        map.addBullet(bullet);
+                    }
+                    if (moveRight.isPressed()) {
+                        velocityX+=player.getMaxSpeed();
+                    }
+                    if (jump.isPressed()) {
+                        player.jump(false);
+                    }
+                    player.setVelocityX(velocityX);
+                }
             }
         }
     }
@@ -220,8 +236,6 @@ public class GameManager extends GameCore {
 
     public void draw(Graphics2D g)
     {
-        menu.draw(g, map,
-            screen.getWidth(), screen.getHeight());
         if(!menu.isPlaying()){
             inputManager.setCursor(Cursor.getDefaultCursor());
         }
@@ -259,6 +273,8 @@ public class GameManager extends GameCore {
                     break;
             }
         }
+        menu.draw(g, map,
+            screen.getWidth(), screen.getHeight());
     }
 
 
@@ -390,7 +406,7 @@ public class GameManager extends GameCore {
         // get keyboard/mouse input
         checkInput(elapsedTime);
 
-        if(menu.isPlaying()){
+        if(menu.isPlaying() && !menu.isPaused()){
             Creature player = (Creature)map.getPlayer();
             Player playr = (Player)map.getPlayer();
 

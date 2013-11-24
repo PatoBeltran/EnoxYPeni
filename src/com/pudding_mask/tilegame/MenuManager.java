@@ -6,7 +6,6 @@
 
 package com.pudding_mask.tilegame;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -22,9 +21,13 @@ public class MenuManager {
     private boolean charchoose;
     private boolean play;
     private boolean highscores;
+    private boolean pause;
     
     public boolean isPlaying(){
         return play;
+    }
+    public boolean isPaused(){
+        return pause;
     }
     public boolean isInHighscores(){
         return highscores;
@@ -41,6 +44,15 @@ public class MenuManager {
     public boolean isInMainMenu(){
         return main;
     }
+    public void changePauseStatus(){
+        main = false;
+        configuration = false;
+        highscores = false;
+        instructions = false;
+        charchoose = false;
+        play = true;
+        pause = !pause;
+    }
     public void goToCharChoose(){
         main = false;
         configuration = false;
@@ -48,6 +60,7 @@ public class MenuManager {
         instructions = false;
         charchoose = true;
         play = false;
+        pause = false;
     }
     public void goToMainMenu(){
         main = true;
@@ -56,6 +69,7 @@ public class MenuManager {
         instructions = false;
         charchoose = false;
         play = false;
+        pause = false;
     }
     public void goToConfiguration(){
         main = false;
@@ -64,6 +78,7 @@ public class MenuManager {
         instructions = false;
         charchoose = false;
         play = false;
+        pause = false;
     }
     public void goToInstructions(){
         main = false;
@@ -72,6 +87,7 @@ public class MenuManager {
         instructions = true;
         charchoose = false;
         play = false;
+        pause = false;
     }
     public void goToGame(){
         main = false;
@@ -80,6 +96,7 @@ public class MenuManager {
         instructions = false;
         charchoose = false;
         play = true;
+        pause = false;
     }
     public void goToHighscores(){
         main = false;
@@ -88,6 +105,7 @@ public class MenuManager {
         instructions = false;
         charchoose = false;
         play = false;
+        pause = false;
     }
     public void draw(Graphics2D g, TileMap map,
         int screenWidth, int screenHeight)
@@ -97,17 +115,20 @@ public class MenuManager {
         if(main){
             filename += "menu.png";
         }
-        if(highscores){
+        else if(highscores){
             filename += "highscores.png";
         }
-        if(configuration){
+        else if(configuration){
             filename += "configurar.png";
         }
-        if(instructions){
+        else if(instructions){
             filename += "instrucciones.png";
         }
-        if(charchoose){
+        else if(charchoose){
             filename += "elegir.png";
+        }
+        else if(pause){
+            filename += "pause.png";
         }
         
         Image background = new ImageIcon(filename).getImage();
@@ -121,5 +142,6 @@ public class MenuManager {
         instructions = false;
         charchoose = false;
         play = false;
+        pause = false;
     }
 }
