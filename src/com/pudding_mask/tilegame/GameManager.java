@@ -42,6 +42,7 @@ public class GameManager extends GameCore {
     private InputManager inputManager;
     private TileMapRenderer renderer;
     private MenuManager menu;
+    private TimeManager clock;
 
     private GameAction moveLeft;
     private GameAction moveRight;
@@ -161,10 +162,14 @@ public class GameManager extends GameCore {
                                 resourceManager.peniAnim[3]);
                         resourceManager.isPeni = true;
                         menu.goToGame();
+                        //start time manager
+                        clock = new TimeManager();
                     }
                     if(inputManager.getMouseX()>= 102 && inputManager.getMouseX()<= 394
                         && inputManager.getMouseY()>=212 && inputManager.getMouseY() <= 517){
                         menu.goToGame();
+                        //start time manager
+                        clock = new TimeManager();
                     }
                 }   
             }
@@ -202,6 +207,7 @@ public class GameManager extends GameCore {
                     jump.reset();
                 }
                 menu.changePauseStatus();
+                clock.pause();
             }
             if(!menu.isPaused()){
                 Player player = (Player)map.getPlayer();
@@ -249,6 +255,12 @@ public class GameManager extends GameCore {
             Player player = (Player)map.getPlayer();
             g.drawString("LVL: " +Integer.toString(player.getLevel()), 30, 50);
             g.drawString("EXP: " +Integer.toString(player.getExp()), 30, 70);
+            if(!clock.paused){
+                g.drawString("TIME: " +Long.toString(clock.getGamingTime()/1000), 30, 90);
+            }
+            else{
+                g.drawString("TIME: " +Long.toString(clock.getStartPauseTime()/1000), 30, 90);
+            }
             //update lifes
             Image hp;
             switch(player.getLife()){
@@ -431,6 +443,8 @@ public class GameManager extends GameCore {
                 playr.restoreLife();
                 return;
             }
+            
+            //create random monsters depending on gaming time and player level
 
             // update player
             updateCreature(player, elapsedTime);
