@@ -8,15 +8,45 @@ import com.pudding_mask.graphics.Animation;
 public class Player extends Creature {
 
     private static final float JUMP_SPEED = -.95f;
+    
+    public boolean isPeni;
 
     private boolean onGround;
+    
+    private int level;
+    private int experience;
 
 
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight)
     {
         super(left, right, deadLeft, deadRight, 5);
+        level = 1;
+        isPeni = false;
     }
+    
+    public int getLevel(){
+        return level;
+    }
+    private void levelUp(){
+        level++;
+    }
+    
+    public int getExp(){
+        return experience;
+    }
+    public void earnExp(int exp){
+        experience += exp;
+        if(experience>=(level*2)+5){
+            int aux = experience/((level*2)+5);
+            for(int i = 0;i<aux;i++){
+                levelUp();
+            }
+            experience = 0;
+        }
+    }
+    
+    
 
 
     public void collideHorizontal() {

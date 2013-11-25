@@ -158,6 +158,7 @@ public class GameManager extends GameCore {
                         player.changeAnimation(resourceManager.peniAnim[0],
                                 resourceManager.peniAnim[1], resourceManager.peniAnim[2], 
                                 resourceManager.peniAnim[3]);
+                        resourceManager.isPeni = true;
                         menu.goToGame();
                     }
                     if(inputManager.getMouseX()>= 102 && inputManager.getMouseX()<= 394
@@ -244,6 +245,8 @@ public class GameManager extends GameCore {
             renderer.draw(g, map,
                 screen.getWidth(), screen.getHeight());
             Player player = (Player)map.getPlayer();
+            g.drawString("LVL: " +Integer.toString(player.getLevel()), 30, 50);
+            g.drawString("EXP: " +Integer.toString(player.getExp()), 30, 70);
             //update lifes
             Image hp;
             switch(player.getLife()){
@@ -541,6 +544,7 @@ public class GameManager extends GameCore {
                 // kill the badguy and make player bounce
                 soundManager.play(boopSound);
                 if(badguy.getLife()==1){
+                    player.earnExp(badguy.exp);
                     badguy.setState(Creature.STATE_DYING);
                 }
                 else {
@@ -552,7 +556,7 @@ public class GameManager extends GameCore {
             else {
                 if(player.getLife()==1){
                     // player dies!
-                    player.decreaseLife();
+                    player.decreaseLife(player.getLevel());
                     player.setState(Creature.STATE_DYING);
                     
                 }
@@ -565,13 +569,13 @@ public class GameManager extends GameCore {
 
     public void checkBulletCollision(Creature creature){
         Sprite collisionSprite = getSpriteCollision(creature);
+        Player player = (Player)map.getPlayer();
         if(collisionSprite != null){
             if(collisionSprite.isBullet) {
-                 if(creature.getLife()==1){
+                creature.decreaseLife(player.getLevel());
+                 if(creature.getLife()<=0){
+                    player.earnExp(creature.exp);
                     creature.setState(Creature.STATE_DYING);
-                }
-                else {
-                    creature.decreaseLife();
                 }
                 map.removeBullet(collisionSprite);
             }

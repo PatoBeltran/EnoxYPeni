@@ -27,6 +27,7 @@ public abstract class Creature extends Sprite {
     private long stateTime;
     public boolean dir = true;
     private int hp;
+    public int exp;
 
     /**
         Creates a new Creature with the specified Animations.
@@ -73,6 +74,9 @@ public abstract class Creature extends Sprite {
     }
     public void decreaseLife() {
         hp--;
+    }
+    public void decreaseLife(int playerLevel) {
+        hp-=playerLevel;
     }
     
     public int getLife(){

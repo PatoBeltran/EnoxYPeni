@@ -23,6 +23,7 @@ public class ResourceManager {
 
     // host sprites used for cloning
     private Sprite playerSprite;
+    private Sprite peniSprite;
     private Sprite musicSprite;
     private Sprite coinSprite;
     private Sprite goalSprite;
@@ -31,6 +32,7 @@ public class ResourceManager {
     public Sprite bullet;
     public Sprite bulletB;
     public Animation[] peniAnim = new Animation[4];
+    public boolean isPeni;
 
     /**
         Creates a new ResourceManager with the specified
@@ -180,7 +182,13 @@ public class ResourceManager {
         }
 
         // add the player to the map
-        Sprite player = (Sprite)playerSprite.clone();
+        Sprite player;
+        if(isPeni){
+            player = (Sprite)peniSprite.clone();
+        }
+        else {
+             player = (Sprite)playerSprite.clone();
+        }
         player.setX(TileMapRenderer.tilesToPixels(3));
         player.setY(0);
         newMap.setPlayer(player);
@@ -302,6 +310,8 @@ public class ResourceManager {
         // create creature sprites
         playerSprite = new Player(playerAnim[0], playerAnim[1],
             playerAnim[2], playerAnim[3]);
+        peniSprite = new Player(peniAnim[0], peniAnim[1],
+            peniAnim[2], peniAnim[3]);
         chunguilloSprite = new Chunquillo(chunguilloAnim[0], chunguilloAnim[1],
             chunguilloAnim[2], chunguilloAnim[3]);
         badassSprite = new Badas(badassAnim[0], badassAnim[1],

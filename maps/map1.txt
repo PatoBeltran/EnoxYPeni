@@ -20,6 +20,7 @@
 #   P Right Bottom Dot Tile
 #   Q Both Sides Tiles
 #   R All Sides Tiles
+#   S Trap
 #   1 Chunguillo
 #   2 Bad Ass
                                                                                                                       
@@ -40,8 +41,8 @@ AAAAAAAAAD  EAAAAAAAAAAD                                              EAAAAAAAAA
 AAAAAAAAAD  EAAAAAAAAAAMF                                           GBNAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAAD                                           EAAAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAAMBBF                                      GBNAAAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                                 GBNAAAAAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAD                                 EAAAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    * 
+AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                                 GBNAAAAAAAAAAAAAAAAAAAAAAAAD                        GS
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAD                                 EAAAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1    E*
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1      2   GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
