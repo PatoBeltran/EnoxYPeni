@@ -27,8 +27,9 @@ public class ResourceManager {
     private Sprite musicSprite;
     private Sprite coinSprite;
     private Sprite goalSprite;
-    private Sprite badassSprite;
-    private Sprite chunguilloSprite;
+    private Sprite bossSprite;
+    public Sprite badassSprite;
+    public Sprite chunguilloSprite;
     public Sprite bullet;
     public Sprite bulletB;
     public Animation[] peniAnim = new Animation[4];
@@ -178,6 +179,12 @@ public class ResourceManager {
                 else if (ch == '2') {
                     addSprite(newMap, badassSprite, x, y);
                 }
+                else if (ch == '3') {
+                    Sprite boss = (Sprite)bossSprite.clone();
+                    boss.setX(TileMapRenderer.tilesToPixels(x));
+                    boss.setY(y);
+                    newMap.addBoss(boss);
+                }
             }
         }
 
@@ -192,7 +199,7 @@ public class ResourceManager {
         player.setX(TileMapRenderer.tilesToPixels(3));
         player.setY(0);
         newMap.setPlayer(player);
-
+        
         return newMap;
     }
 
@@ -276,7 +283,9 @@ public class ResourceManager {
             loadImage("chunguillo5.png"),
             loadImage("chunguillo6.png"),
             loadImage("chunguillo7.png"),
-            loadImage("chunguillo8.png")
+            loadImage("chunguillo8.png"),
+            loadImage("Boss 1 Anim 1.png"),
+            loadImage("Boss 1 Anim 2.png")
         };
 
         images[1] = new Image[images[0].length];
@@ -295,6 +304,7 @@ public class ResourceManager {
         Animation[] playerAnim = new Animation[4];
         Animation[] chunguilloAnim = new Animation[4];
         Animation[] badassAnim = new Animation[4];
+        Animation[] bossAnim = new Animation[4];
         for (int i=0; i<4; i++) {
             playerAnim[i] = createAnim(
                 images[i], 0, 7);
@@ -304,6 +314,8 @@ public class ResourceManager {
                 images[i], 20, 27);
             badassAnim[i] = createAnim(
                 images[i], 16 ,19);
+            bossAnim[i] = createAnim(
+                images[i], 28 ,29);
             
         }
 
@@ -316,6 +328,8 @@ public class ResourceManager {
             chunguilloAnim[2], chunguilloAnim[3]);
         badassSprite = new Badas(badassAnim[0], badassAnim[1],
             badassAnim[2], badassAnim[3]);
+        bossSprite = new Boss(bossAnim[0], bossAnim[1],
+            bossAnim[2], bossAnim[3]);
     }
 
 

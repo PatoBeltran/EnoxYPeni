@@ -6,12 +6,13 @@ public class Sprite {
 
     protected Animation anim;
     // position (pixels)
-    private float x;
-    private float y;
+    public float x;
+    public float y;
     // velocity (pixels per millisecond)
-    private float dx;
-    private float dy;
+    public float dx;
+    public float dy;
     public boolean isBullet=false;
+    public boolean isEnBul=false;
 
     /**
         Creates a new Sprite object with the specified Animation.

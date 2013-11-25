@@ -17,6 +17,8 @@ public class TileMap {
     private Image[][] tiles;
     private LinkedList sprites;
     private LinkedList bullets;
+    private LinkedList enemyBullets;
+    private Sprite boss;
     private Sprite player;
 
     /**
@@ -27,6 +29,7 @@ public class TileMap {
         tiles = new Image[width][height];
         sprites = new LinkedList();
         bullets = new LinkedList();
+        enemyBullets = new LinkedList();
     }
 
 
@@ -77,7 +80,9 @@ public class TileMap {
     public Sprite getPlayer() {
         return player;
     }
-
+    public Sprite getBoss() {
+        return boss;
+    }
 
     /**
         Sets the player Sprite.
@@ -96,6 +101,12 @@ public class TileMap {
     public void addBullet(Sprite bullet) {
         bullets.add(bullet);
     }
+    public void addEnBullet(Sprite bullet) {
+        enemyBullets.add(bullet);
+    }
+    public void addBoss(Sprite boss) {
+        this.boss=boss;
+    }
 
 
     /**
@@ -107,7 +118,12 @@ public class TileMap {
     public void removeBullet(Sprite sprite) {
         bullets.remove(sprite);
     }
-
+    public void removeEnBullet(Sprite sprite) {
+        enemyBullets.remove(sprite);
+    }
+    public void removeBoss(Sprite sprite) {
+        this.boss=null;
+    }
 
     /**
         Gets an Iterator of all the Sprites in this map,
@@ -118,5 +134,8 @@ public class TileMap {
     }
     public Iterator getBullets() {
         return bullets.iterator();
+    }
+    public Iterator getEnBul(){
+        return enemyBullets.iterator();
     }
 }

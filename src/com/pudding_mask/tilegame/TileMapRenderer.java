@@ -79,6 +79,7 @@ public class TileMapRenderer {
         int screenWidth, int screenHeight)
     {
         Sprite player = map.getPlayer();
+        Sprite boss = map.getBoss();
         int mapWidth = tilesToPixels(map.getWidth());
 
         // get the scrolling position of the map
@@ -138,7 +139,10 @@ public class TileMapRenderer {
             Math.round(player.getX()) + offsetX,
             Math.round(player.getY()) + offsetY,
             null);
-
+        g.drawImage(boss.getImage(),
+            Math.round(boss.getX()) + offsetX,
+            Math.round(boss.getY()) + offsetY,
+            null);
         // draw sprites
         Iterator i = map.getSprites();
         while (i.hasNext()) {
@@ -155,6 +159,13 @@ public class TileMapRenderer {
             }
         }
         i = map.getBullets();
+        while (i.hasNext()) {
+            Sprite sprite = (Sprite)i.next();
+            int x = Math.round(sprite.getX()) + offsetX;
+            int y = Math.round(sprite.getY()) + offsetY;
+            g.drawImage(sprite.getImage(), x, y, null);
+        }
+        i = map.getEnBul();
         while (i.hasNext()) {
             Sprite sprite = (Sprite)i.next();
             int x = Math.round(sprite.getX()) + offsetX;

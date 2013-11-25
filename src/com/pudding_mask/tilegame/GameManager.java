@@ -3,6 +3,7 @@ package com.pudding_mask.tilegame;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
+import java.math.*;
 
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
@@ -211,13 +212,14 @@ public class GameManager extends GameCore {
                     }
                     if (fire.isPressed()) {
                         Sprite bullet = (Sprite)resourceManager.bullet.clone();
-                        bullet.setX(player.getX()+32);
+                        bullet.setX(player.getX()+50);
                         bullet.setY(player.getY()+32);
                         bullet.isBullet = true;
                         if(player.dir){
                             bullet.setVelocityX(.7f);
                         }
                         else{
+                            bullet.setX(player.getX()+5);
                             bullet.setVelocityX(-.7f);
                         }
                         map.addBullet(bullet);
@@ -396,6 +398,15 @@ public class GameManager extends GameCore {
                 return otherSprite;
             }
         }
+        
+        i = map.getEnBul();
+        while (i.hasNext()) {
+            Sprite otherSprite = (Sprite)i.next();
+            if (isCollision(sprite, otherSprite)) {
+                // collision found, return the Sprite
+                return otherSprite;
+            }
+        }
         // no collision found
         return null;
     }
@@ -412,6 +423,7 @@ public class GameManager extends GameCore {
         if(menu.isPlaying() && !menu.isPaused()){
             Creature player = (Creature)map.getPlayer();
             Player playr = (Player)map.getPlayer();
+            Creature boss = (Creature)map.getBoss();
 
             // player is dead! start map over
             if (player.getState() == Creature.STATE_DEAD) {
@@ -423,7 +435,7 @@ public class GameManager extends GameCore {
             // update player
             updateCreature(player, elapsedTime);
             player.update(elapsedTime);
-
+            updateCreature(boss, elapsedTime);
             // update other sprites
             Iterator i = map.getSprites();
             while (i.hasNext()) {
@@ -441,6 +453,11 @@ public class GameManager extends GameCore {
                 sprite.update(elapsedTime);
             }
             i = map.getBullets();
+            while (i.hasNext()) {
+                Sprite sprite = (Sprite)i.next();
+                sprite.update(elapsedTime);
+            }
+            i = map.getEnBul();
             while (i.hasNext()) {
                 Sprite sprite = (Sprite)i.next();
                 sprite.update(elapsedTime);
@@ -517,7 +534,48 @@ public class GameManager extends GameCore {
         else if(creature.getState()== Creature.STATE_NORMAL){
             checkBulletCollision(creature);
         }
-
+        if (creature instanceof Creature){
+            if(creature.chung){
+                if(((Chunquillo)creature).timer>500){
+                    Sprite bullet = (Sprite)resourceManager.bullet.clone();
+                    bullet.setX(creature.getX()+64);
+                    bullet.setY(creature.getY()+16);
+                    bullet.isEnBul = true;
+                    if(creature.dir){
+                        bullet.setVelocityX(.3f);
+                    }
+                    else{
+                        bullet.setX(creature.getX()-5);
+                        bullet.setVelocityX(-.3f);
+                    }
+                    map.addEnBullet(bullet);
+                    ((Chunquillo)creature).timer =((Chunquillo)creature).timer%500;
+                    int rand = (int)(2000*Math.random());
+                    ((Chunquillo)creature).timer-=rand;
+                }
+                else{
+                    ((Chunquillo)creature).timer += elapsedTime;
+                }
+            }
+            if(creature.isBoss){
+                if(((Boss)creature).timer>2000){
+                    Sprite enemy = (Sprite)resourceManager.chunguilloSprite.clone();
+                    enemy.setX(creature.getX()+100);
+                    enemy.setY(creature.getY());
+                    map.addSprite(enemy);
+                    enemy = (Sprite)resourceManager.badassSprite.clone();
+                    enemy.setX(creature.getX()-100);
+                    enemy.setY(creature.getY());
+                    map.addSprite(enemy);
+                    ((Boss)creature).timer =((Boss)creature).timer%200;
+                    int rand = (int)(2000*Math.random());
+                    ((Boss)creature).timer-=rand;
+                }
+                else{
+                    ((Boss)creature).timer += elapsedTime;
+                }
+            }
+        }
     }
 
 
@@ -537,6 +595,19 @@ public class GameManager extends GameCore {
         Sprite collisionSprite = getSpriteCollision(player);
         if (collisionSprite instanceof PowerUp) {
             acquirePowerUp((PowerUp)collisionSprite);
+        }
+        else if(collisionSprite == null){}
+        else if (collisionSprite.isEnBul) {
+            map.removeEnBullet(collisionSprite);
+            if(player.getLife()==1){
+                    // player dies!
+                    player.decreaseLife(player.getLevel());
+                    player.setState(Creature.STATE_DYING);
+                    
+                }
+                else { 
+                    player.decreaseLife();
+                }
         }
         else if (collisionSprite instanceof Creature) {
             Creature badguy = (Creature)collisionSprite;

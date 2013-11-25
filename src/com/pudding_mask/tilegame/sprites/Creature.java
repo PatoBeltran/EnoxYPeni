@@ -28,6 +28,8 @@ public abstract class Creature extends Sprite {
     public boolean dir = true;
     private int hp;
     public int exp;
+    public boolean chung=false;
+    public boolean isBoss=false;
 
     /**
         Creates a new Creature with the specified Animations.
