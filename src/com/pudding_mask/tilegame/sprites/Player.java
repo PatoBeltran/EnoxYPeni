@@ -8,6 +8,8 @@ import com.pudding_mask.graphics.Animation;
 public class Player extends Creature {
 
     private static final float JUMP_SPEED = -.95f;
+    public static final int POWER_ANIMATION = 800;
+    public static final int LEVEL_ANIMATION = 2300;
     
     public boolean isPeni;
 
@@ -15,6 +17,14 @@ public class Player extends Creature {
     
     private int level;
     private int experience;
+    private float max_speed;
+    public boolean powerUp = false;
+    public long powerUpTime = 0;
+    
+    public boolean levelUp = false;
+    public long levelUpTime = 0;
+    
+    
 
 
     public Player(Animation left, Animation right,
@@ -26,6 +36,7 @@ public class Player extends Creature {
         level = 1;
         isPeni = false;
         setDieTime(1100);
+        max_speed = 0.5f;
     }
     
     public int getLevel(){
@@ -33,8 +44,9 @@ public class Player extends Creature {
     }
     private void levelUp(){
         level++;
+        levelUp = true;
+        levelUpTime = 0;
     }
-    
     public int getExp(){
         return experience;
     }
@@ -61,7 +73,10 @@ public class Player extends Creature {
     }
     
 
-
+    public void gotPowerUp(){
+        powerUp = true;
+        powerUpTime = 0;
+    }
     public void collideVertical() {
         // check if collided with ground
         if (getVelocityY() > 0) {
@@ -102,9 +117,11 @@ public class Player extends Creature {
         }
     }
 
-
+    public void moreSpeed(){
+        max_speed += 0.2f;
+    }
     public float getMaxSpeed() {
-        return 0.5f;
+        return max_speed;
     }
 
 }

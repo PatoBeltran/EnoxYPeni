@@ -44,6 +44,8 @@ public class GameManager extends GameCore {
     private InputManager inputManager;
     private TileMapRenderer renderer;
     private MenuManager menu;
+    
+    private Animation anim;
 
     private GameAction moveLeft;
     private GameAction moveRight;
@@ -248,8 +250,8 @@ public class GameManager extends GameCore {
             renderer.draw(g, map,
                 screen.getWidth(), screen.getHeight());
             Player player = (Player)map.getPlayer();
-            g.drawString("LVL: " +Integer.toString(player.getLevel()), 30, 50);
-            g.drawString("EXP: " +Integer.toString(player.getExp()), 30, 70);
+            
+           
             //update lifes
             Image hp;
             switch(player.getLife()){
@@ -418,6 +420,7 @@ public class GameManager extends GameCore {
         in the current map.
     */
     public void update(long elapsedTime) {
+        Animation newAnim = anim;
         // get keyboard/mouse input
         checkInput(elapsedTime);
 
@@ -432,6 +435,32 @@ public class GameManager extends GameCore {
                 playr.restoreLife();
                 return;
             }
+            
+            if(playr.levelUp){
+                newAnim = resourceManager.lvlUpAnim;
+            }
+            else if(playr.powerUp){
+                newAnim = resourceManager.adquireAnim;
+            }
+            
+            if (anim != newAnim) {
+                anim = newAnim;
+                anim.start();
+            }
+            else if(anim != null) {
+                anim.update(elapsedTime);
+            }
+           
+            playr.powerUpTime += elapsedTime;
+            playr.levelUpTime += elapsedTime;
+            if(playr.powerUp && playr.powerUpTime >= playr.POWER_ANIMATION){
+                playr.powerUp = false;
+            }
+            if(playr.levelUp && playr.levelUpTime >= playr.LEVEL_ANIMATION){
+                playr.levelUp = false;
+            }
+            
+            
 
             // update player
             updateCreature(player, elapsedTime);
@@ -714,15 +743,17 @@ public class GameManager extends GameCore {
     public void acquirePowerUp(PowerUp powerUp) {
         // remove it from the map
         map.removeSprite(powerUp);
-
-        if (powerUp instanceof PowerUp.Star) {
-            // do something here, like give the player points
+        Player player = (Player)map.getPlayer();
+        if (powerUp instanceof PowerUp.Heal) {
+            player.gotPowerUp();
+            player.restoreLife();
             soundManager.play(prizeSound);
         }
-        else if (powerUp instanceof PowerUp.Music) {
+        else if (powerUp instanceof PowerUp.Power) {
             // change the music
+            player.gotPowerUp();
+            player.moreSpeed();
             soundManager.play(prizeSound);
-            toggleDrumPlayback();
         }
         else if (powerUp instanceof PowerUp.Goal) {
             // advance to next map
@@ -732,7 +763,6 @@ public class GameManager extends GameCore {
         }
          else if (powerUp instanceof PowerUp.KillerTile) {
             // kill player
-            Player player = (Player)map.getPlayer();
             player.decreaseLife(player.getLife());
             player.setState(player.STATE_DYING);
         }

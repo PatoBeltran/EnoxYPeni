@@ -24,8 +24,8 @@ public class ResourceManager {
     // host sprites used for cloning
     private Sprite playerSprite;
     private Sprite peniSprite;
-    private Sprite musicSprite;
-    private Sprite coinSprite;
+    private Sprite powerSprite;
+    private Sprite healSprite;
     private Sprite goalSprite;
     private Sprite bossSprite;
     public Sprite badassSprite;
@@ -34,6 +34,8 @@ public class ResourceManager {
     public Sprite bulletB;
     public Sprite killerTile;
     public Animation[] peniAnim = new Animation[8];
+    public static Animation lvlUpAnim;
+    public static Animation adquireAnim;
     public boolean isPeni;
 
     /**
@@ -166,10 +168,10 @@ public class ResourceManager {
 
                 // check if the char represents a sprite
                 else if (ch == 'o') {
-                    addSprite(newMap, coinSprite, x, y);
+                    addSprite(newMap, healSprite, x, y);
                 }
                 else if (ch == '!') {
-                    addSprite(newMap, musicSprite, x, y);
+                    addSprite(newMap, powerSprite, x, y);
                 }
                 else if (ch == '*') {
                     addSprite(newMap, goalSprite, x, y);
@@ -454,29 +456,35 @@ public class ResourceManager {
         // create killer Tile sprite
         killerTile = new PowerUp.KillerTile(emptyAnimation());
         
-        // create "goal" sprite
-        anim = new Animation();
-        anim.addFrame(loadImage("heart1.png"), 150);
-        anim.addFrame(loadImage("heart2.png"), 150);
-        anim.addFrame(loadImage("heart3.png"), 150);
-        anim.addFrame(loadImage("heart2.png"), 150);
-        goalSprite = new PowerUp.Goal(anim);
+        goalSprite = new PowerUp.Goal(emptyAnimation());
 
-        // create "star" sprite
+        // create "Heal" sprite
         anim = new Animation();
-        anim.addFrame(loadImage("star1.png"), 100);
-        anim.addFrame(loadImage("star2.png"), 100);
-        anim.addFrame(loadImage("star3.png"), 100);
-        anim.addFrame(loadImage("star4.png"), 100);
-        coinSprite = new PowerUp.Star(anim);
+        for(int i = 1; i<=8; i++){
+            anim.addFrame(loadImage("pu_HP" + i +".png"), 100);
+        }
+        healSprite = new PowerUp.Heal(anim);
 
         // create "music" sprite
         anim = new Animation();
-        anim.addFrame(loadImage("music1.png"), 150);
-        anim.addFrame(loadImage("music2.png"), 150);
-        anim.addFrame(loadImage("music3.png"), 150);
-        anim.addFrame(loadImage("music2.png"), 150);
-        musicSprite = new PowerUp.Music(anim);
+        for(int i = 1; i<=8; i++){
+            anim.addFrame(loadImage("pu_MP" + i +".png"), 100);
+        }
+        powerSprite = new PowerUp.Power(anim);
+        
+        // You adquire a poweup
+        anim = new Animation();
+        for(int i = 1; i<=8; i++){
+            anim.addFrame(loadImage("powerup" + i +".png"), 100);
+        }
+        adquireAnim = anim;
+        
+        // You just leveled up
+        anim = new Animation();
+        for(int i = 1; i<=14; i++){
+            anim.addFrame(loadImage("lvlup" + i +".png"), 100);
+        }
+        lvlUpAnim = anim;
     }
 
 }
