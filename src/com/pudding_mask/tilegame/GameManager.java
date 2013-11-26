@@ -390,6 +390,10 @@ public class GameManager extends GameCore {
                 g.drawString(Integer.toString(highscores[i]),420, 220+(i*55)- ((i-1)*4));
             }
         }
+        else if(menu.isChoosingChar()){
+          g.drawImage(loadImage("images/choosing_enox.png"),195,335, null);
+          g.drawImage(loadImage("images/choosing_peni.png"),590,335, null);
+        }
     }
 
 
