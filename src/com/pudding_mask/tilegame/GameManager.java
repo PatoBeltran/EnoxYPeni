@@ -378,7 +378,6 @@ public class GameManager extends GameCore {
                 }
             }
         }
-
         // no collision found
         return null;
     }
@@ -512,6 +511,7 @@ public class GameManager extends GameCore {
             if(boss!=null){
                 if (boss.getState() == Creature.STATE_DEAD) {
                     map.removeBoss(boss);
+                    map.removeTrap();
                 }
                 else {
                     updateCreature(boss, elapsedTime);

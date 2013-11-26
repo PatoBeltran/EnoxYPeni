@@ -28,6 +28,8 @@ public class ResourceManager {
     private Sprite healSprite;
     private Sprite goalSprite;
     private Sprite bossSprite;
+    public static int trap_x;
+    public static int trap_y;
     public Sprite badassSprite;
     public Sprite chunguilloSprite;
     public Sprite bullet;
@@ -162,10 +164,14 @@ public class ResourceManager {
 
                 // check if the char represents tile A, B, C etc.
                 int tile = ch - 'A';
-                if (tile >= 0 && tile < tiles.size()) {
+                if (tile >= 0 && tile < tiles.size()-1) {
                     newMap.setTile(x, y, (Image)tiles.get(tile));
                 }
-
+                if (ch== 'S'){
+                    trap_x = x;
+                    trap_y = y;
+                    newMap.setTile(x, y, (Image)tiles.get(tile));
+                }
                 // check if the char represents a sprite
                 else if (ch == 'o') {
                     addSprite(newMap, healSprite, x, y);
@@ -433,6 +439,14 @@ public class ResourceManager {
         Animation anim = new Animation();
         for(int i = m; i<=n; i++)
             anim.addFrame(player[i], 150);
+
+        return anim;
+    }
+    
+    private Animation createAnim(Image player)
+    {
+        Animation anim = new Animation();
+        anim.addFrame(player, 150);
 
         return anim;
     }

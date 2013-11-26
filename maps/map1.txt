@@ -32,10 +32,10 @@
                                                                                                                       
                                                                                                                       
                                                                                                                       
-                                                                                  2                                   
+                                                                                  2       o                           
                         1                                                   GBBBBBBBBBBBBBBF                          
                     GBBBBF                                         KLJ      EAAAAAAAAAAAAAAD                          
-                 o GNAPCCH                                                  EAAAAAAAAAAAAAAD                          
+                   GNAPCCH                                                  EAAAAAAAAAAAAAAD                          
 BBBBF   !      2 GBNAAD             2       1       2                     GBNAAAAAAAAAAAAAAD                          
 AAAAMBBBBF  GBBBBNAAAAD           KBBBBBBBBBBBBBBBBBBBBBBBBBBLJ         GBNAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAD            ICCOAAAAAAAAAAAAAAAAAAAPCH           EAAAAAAAAAAAAAAAAAAD                          
@@ -45,7 +45,7 @@ AAAAAAAAAD  EAAAAAAAAAAMF                                           GBNAAAAAAAAA
 AAAAAAAAAD  EAAAAAAAAAAAD                                           EAAAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAAMBBF                                      GBNAAAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                                 GBNAAAAAAAAAAAAAAAAAAAAAAAAD                        GS
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAD                                 EAAAAAAAAAAAAAAAAAAAAAAAAAAD       1  2   2    1  3 E*
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAD                                 EAAAAAAAAAAAAAAAAAAAAAAAAAAD                      3 Q*
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1      2   GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
