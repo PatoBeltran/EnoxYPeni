@@ -22,6 +22,8 @@ public class MenuManager {
     private boolean play;
     private boolean highscores;
     private boolean pause;
+    public boolean classicControl;
+    public boolean sound;
     
     public boolean isPlaying(){
         return play;
@@ -133,6 +135,16 @@ public class MenuManager {
         
         Image background = new ImageIcon(filename).getImage();
         g.drawImage(background, 0, 0, null);
+        if(!classicControl && configuration){
+            g.drawImage(new ImageIcon("images/configurar_wasd.png").getImage(), 0,0,null);
+        }
+        if(!sound && configuration){
+            g.drawImage(new ImageIcon("images/configurar_no.png").getImage(), 0,0,null);
+        }
+         if(!classicControl && instructions){
+            g.drawImage(new ImageIcon("images/instrucciones_wasd.png").getImage(), 0,0,null);
+        }
+        
     }
     
     public MenuManager(){
@@ -143,5 +155,7 @@ public class MenuManager {
         charchoose = false;
         play = false;
         pause = false;
+        sound = true;
+        classicControl = true;
     }
 }
