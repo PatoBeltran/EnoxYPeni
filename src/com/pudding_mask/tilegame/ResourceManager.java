@@ -284,10 +284,6 @@ public class ResourceManager {
             loadImage("chunguillo2.png"),
             loadImage("chunguillo3.png"),
             loadImage("chunguillo4.png"),
-            loadImage("chunguillo5.png"),
-            loadImage("chunguillo6.png"),
-            loadImage("chunguillo7.png"),
-            loadImage("chunguillo8.png"),
             loadImage("Boss 1 Anim 1.png"),
             loadImage("Boss 1 Anim 2.png")
         };
@@ -315,11 +311,11 @@ public class ResourceManager {
             peniAnim[i] = createAnim(
                 images[i], 8, 15);
             chunguilloAnim[i] = createAnim(
-                images[i], 20, 27);
+                images[i], 20, 23);
             badassAnim[i] = createAnim(
                 images[i], 16 ,19);
             bossAnim[i] = createAnim(
-                images[i], 28 ,29);
+                images[i], 24 ,25);
             
         }
 

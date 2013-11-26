@@ -702,8 +702,8 @@ public class GameManager extends GameCore {
          else if (powerUp instanceof PowerUp.KillerTile) {
             // kill player
             Player player = (Player)map.getPlayer();
+            player.decreaseLife(player.getLife());
             player.setState(player.STATE_DYING);
-             
         }
     }
 
