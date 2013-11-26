@@ -84,7 +84,7 @@ public class TileMapRenderer {
                 this.background = loadImage("background2.png");
                 break;
             case 3:
-                this.background = loadImage("background3.png");
+                this.background = loadImage("background2.png");
                 break;
             default:
                 this.background = loadImage("background2.png");

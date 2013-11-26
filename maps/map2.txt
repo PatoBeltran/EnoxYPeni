@@ -3,9 +3,9 @@
 # The tiles are:
 #   (Space) Empty tile
 #   A Center Tile
-#   B Top Tile                            G B F   _	     _	  _	          _
-#   C Bottom Tile		                      E A D	  _| J  |_ K	_ L  | | Q |_| R
-#   D Right Tile		                      I C H
+#   B Top Tile                            		G B F     _	 _	_	          _
+#   C Bottom Tile		                      	E A D	  _| J  |_ K	_ L  | | Q |_| R
+#   D Right Tile		                      	I C H
 #   E Left Tile
 #   F Right Top Corner Tile
 #   G Left Top Corner Tile
@@ -32,17 +32,17 @@
                                                                                                    
                                                                                                    
 BF          o                                                                       o            GB
-AD         KLLLLLJ              KLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLF                               EA
-AD                                           I                   EBBBBBBBBBBBBBBF                EA
-AD                KLLLJ                      I                   CAAAAAAAAAAAAAAD                EA
-AD                                           I             2 o   CAAAAAAAAAAAAAAMF     KLF       EA
-AD                        2                               KLLLJ  CAAAAAAAAAAAAAAAMD      Q       EA
-AD          2           IIIII                                    CAAAAAAAAAAAAAAAAMF   KLLLLLJ   EA
-AD         KLJ                          1    1  1                CAAAAAAAAAAAAAAAAAD             EA
-AD                   2        1      KLLLLLLLLLLLJ               CAAAAAAAAAAAAAAAAAMF          GSOA
-AD      1       GBBBBBBBBBBBBBBBF             !             2    CAAAAAAAAAAAAAAAAAAD       3  Q EA
-AMBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAMBBBBBBBBBB  BBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAMHBBBBBBBBBF EA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA  AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD*EA
+AD         KLLLLLJ              KLLLLLLLLLLLLBLLLLLLLLLLLLLLLLLLLF                               EA
+AD                                           Q                   EBBBBBBBBBBBBBBF                EA
+AD                KLLLLJ                     Q                   EAAAAAAAAAAAAAAD      KLF       EA
+AD                                          KH             2 o   EAAAAAAAAAAAAAAMF       Q       EA
+AD                        2                               KLLLJ  EAAAAAAAAAAAAAAAMF    KLCLLLJ   EA
+AD          2           KLLLJ                                    EAAAAAAAAAAAAAAAAMF             EA
+AD         KLJ                          1    1  1                EAAAAAAAAAAAAAAAAAD             EA
+AD                   2        1      KLLLLLLLLLLLJ               EAAAAAAAAAAAAAAAAAMF          GSEA
+AD      1       GBBBBBBBBBBBBBBBF             !             2    EAAAAAAAAAAAAAAAAAAD       3  Q EA
+AMBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAMBBBBBBBBBF  GBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAMBBBBBBBBBBD EA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTTEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD*EA

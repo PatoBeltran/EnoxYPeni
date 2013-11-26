@@ -101,6 +101,7 @@ public class GameManager extends GameCore {
 
         // load first map
         map = resourceManager.loadNextMap();
+                resourceManager.loadBoss(1, map);
 
         // load sounds
         soundManager = new SoundManager(PLAYBACK_FORMAT);
@@ -223,6 +224,7 @@ public class GameManager extends GameCore {
             if (menu.isInMainMenu()){
                 if(click.isPressed() && inputManager.getMouseX()>= 126 && inputManager.getMouseX()<= 895){
                     if(inputManager.getMouseY()>=306 && inputManager.getMouseY() <= 360){
+                        click.reset();
                         menu.goToCharChoose();
                     }
                     if(inputManager.getMouseY()>=400 && inputManager.getMouseY() <= 454){
@@ -544,6 +546,7 @@ public class GameManager extends GameCore {
                 boolean high = tryhigh(score);
                 score=0;
                 map = resourceManager.reloadMap();
+                resourceManager.loadBoss(resourceManager.currentMap, map);
                 playr.restoreLife();
                 return;
             }
@@ -904,6 +907,9 @@ public class GameManager extends GameCore {
             soundManager.play(prizeSound,
                 new EchoFilter(2000, .7f), false);
             map = resourceManager.loadNextMap();
+            renderer.setBackground(
+            resourceManager.currentMap);
+            resourceManager.loadBoss(resourceManager.currentMap, map);
         }
          else if (powerUp instanceof PowerUp.KillerTile) {
             // kill player

@@ -28,6 +28,8 @@ public class ResourceManager {
     private Sprite healSprite;
     private Sprite goalSprite;
     private Sprite bossSprite;
+    private Sprite boss1Sprite;
+    private Sprite boss2Sprite;
     public Sprite boss3Sprite;
     public Sprite darkPeniSprite;
     public Sprite darkEnoxSprite;
@@ -42,6 +44,8 @@ public class ResourceManager {
     public static Animation lvlUpAnim;
     public static Animation adquireAnim;
     public boolean isPeni;
+    private int bx;
+    private int by;
 
     /**
         Creates a new ResourceManager with the specified
@@ -192,10 +196,12 @@ public class ResourceManager {
                     addSprite(newMap, badassSprite, x, y);
                 }
                 else if (ch == '3') {
-                    Sprite boss = (Sprite)bossSprite.clone();
-                    boss.setX(TileMapRenderer.tilesToPixels(x));
-                    boss.setY(y);
-                    newMap.addBoss(boss);
+                    //Sprite boss = (Sprite)bossSprite.clone();
+                    bx = TileMapRenderer.tilesToPixels(x);
+                    by = TileMapRenderer.tilesToPixels(y);
+                    //boss.setX(TileMapRenderer.tilesToPixels(x));
+                    //boss.setY(y);
+                    //newMap.addBoss(boss);
                 }
                 else if (ch == 'T'){
                     addSprite(newMap, killerTile, x, y);
@@ -498,9 +504,7 @@ public class ResourceManager {
                                  emptyAnimation());
         
         //load each boss for a map
-        switch(currentMap){
-            case 1:
-                bossSprite = new Boss(boss1Anim[0], boss1Anim[1],
+                boss1Sprite = new Boss(boss1Anim[0], boss1Anim[1],
                               boss1Anim[2], boss1Anim[3],
                               emptyAnimation(), 
                               emptyAnimation(), 
@@ -508,9 +512,8 @@ public class ResourceManager {
                               emptyAnimation(),
                               emptyAnimation(), 
                               emptyAnimation());
-                break;
-            case 2: 
-                bossSprite = new Boss(boss2Anim[0], boss2Anim[1],
+
+                boss2Sprite = new Boss(boss2Anim[0], boss2Anim[1],
                               boss2Anim[2], boss2Anim[3],
                               emptyAnimation(), 
                               emptyAnimation(), 
@@ -518,24 +521,29 @@ public class ResourceManager {
                               emptyAnimation(),
                               emptyAnimation(), 
                               emptyAnimation());
+
+
+   }
+
+    public void loadBoss(int x, TileMap newMap){
+        switch(x){
+            case 1:
+                bossSprite = boss1Sprite;
+                break;
+            case 2: 
+                bossSprite = boss2Sprite;
                 break;
             case 3:
                 bossSprite = boss3Sprite;
                 break;
             default:
-                bossSprite = new Boss(boss1Anim[0], boss1Anim[1],
-                              boss1Anim[2], boss1Anim[3],
-                              emptyAnimation(), 
-                              emptyAnimation(), 
-                              emptyAnimation(), 
-                              emptyAnimation(),
-                              emptyAnimation(), 
-                              emptyAnimation());
-                break;
+                bossSprite = boss1Sprite;
         
         }
-   }
-
+        bossSprite.setX(bx);
+                    bossSprite.setY(by);
+                    newMap.addBoss(bossSprite);
+    }
 
     private Animation createAnim(Image player[], int m, int n)
     {
