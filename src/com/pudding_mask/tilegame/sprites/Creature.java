@@ -35,6 +35,7 @@ public abstract class Creature extends Sprite {
     private long stateTime;
     private long fireTime = 0;
     public boolean dir = true;
+    public int delay=0;
     private int hp;
     public int exp;
     public boolean chung=false;
@@ -159,8 +160,9 @@ public abstract class Creature extends Sprite {
         return state;
     }
     public void fire(){
-       fireTime = 0; 
+       fireTime = 0;
        shooting = true;
+       delay=0;
     }
 
     /**
@@ -285,7 +287,7 @@ public abstract class Creature extends Sprite {
             case CHUNGUILLO:
                 fireTime += elapsedTime;
                  if(fireTime >= FIRE_TIME){
-                     shooting = false;
+                     //shooting = false;
                  }                  
                 break;
         }

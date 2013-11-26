@@ -33,12 +33,15 @@ public class GameManager extends GameCore {
     public static final float GRAVITY = 0.002f;
     
     private int spawnTimer = 0;
+    private boolean classicControl = true;
+    private int score = 0;
+    private int highscores[] = new int[8];
 
     private Point pointCache = new Point();
     private TileMap map;
     private MidiPlayer midiPlayer;
     private SoundManager soundManager;
-    private ResourceManager resourceManager;
+    public ResourceManager resourceManager;
     private Sound prizeSound;
     private Sound boopSound;
     private InputManager inputManager;
@@ -54,7 +57,6 @@ public class GameManager extends GameCore {
     private GameAction exit;
     private GameAction click;
     private GameAction pause;
-
 
     public void init() {
         super.init();
@@ -128,9 +130,40 @@ public class GameManager extends GameCore {
         inputManager.mapToMouse(click, inputManager.MOUSE_BUTTON_1);
     }
 
+    private void switchControls(){
+        if(classicControl){
+            inputManager.clearMap(moveLeft);
+            inputManager.clearMap(moveRight);
+            inputManager.clearMap(fire);
+            inputManager.mapToKey(moveLeft, KeyEvent.VK_A);
+            inputManager.mapToKey(moveRight, KeyEvent.VK_D);
+            inputManager.mapToKey(fire, KeyEvent.VK_SHIFT);
+            inputManager.mapToKey(jump, KeyEvent.VK_W);
+        }
+        else{
+            inputManager.clearMap(moveLeft);
+            inputManager.clearMap(moveRight);
+            inputManager.clearMap(fire);
+            inputManager.clearMap(jump);
+            inputManager.mapToKey(moveLeft, KeyEvent.VK_LEFT);
+            inputManager.mapToKey(moveRight, KeyEvent.VK_RIGHT);
+            inputManager.mapToKey(fire, KeyEvent.VK_Z);
+            inputManager.mapToKey(jump, KeyEvent.VK_SPACE);
+        }
+        classicControl = !classicControl;
+    }
+    
+    void loadScores(){
+        
+    }
+
+    void saveScores(){
+        
+    }
 
     private void checkInput(long elapsedTime) {
         if (exit.isPressed()) {
+            saveScores();
             stop();
         }
         if(!menu.isPlaying()){
@@ -176,6 +209,12 @@ public class GameManager extends GameCore {
                     if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
                         && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
                         menu.goToMainMenu();
+                    }
+                }
+                if(click.isPressed()){
+                    if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 980
+                        && inputManager.getMouseY()<=672 && inputManager.getMouseY() >= 607){
+                        switchControls();
                     }
                 }
             }
@@ -431,6 +470,8 @@ public class GameManager extends GameCore {
 
             // player is dead! start map over
             if (player.getState() == Creature.STATE_DEAD) {
+                boolean high = tryhigh(score);
+                score=0;
                 map = resourceManager.reloadMap();
                 playr.restoreLife();
                 return;
@@ -520,6 +561,20 @@ public class GameManager extends GameCore {
                 }
             }
         }
+    }
+    
+    boolean tryhigh(int sc){
+        boolean r=false;
+        for(int i=0; i<8; i++){
+            if(sc>highscores[i]){
+                for(int j=7; j>i; j--){
+                    highscores[j]=highscores[j-1];
+                }
+                highscores[i]=sc;
+                return true;
+            }
+        }
+        return false;
     }
 
     private void demEnemies(long elapsedTime){
@@ -618,26 +673,33 @@ public class GameManager extends GameCore {
         }
         if (creature instanceof Creature){
             if(creature.chung&&creature.awake){
-                if(((Chunquillo)creature).timer>500){
-                    Sprite bullet = (Sprite)resourceManager.bulletB.clone();
-                    bullet.setX(creature.getX()+64);
-                    bullet.setY(creature.getY()+16);
-                    bullet.isEnBul = true;
-                    ((Creature)creature).fire();
-                    if(creature.dir){
-                        bullet.setVelocityX(.3f);
+                if( (((Chunquillo)creature).timer>500) && !(((Chunquillo)creature).shooting) ){
+                    ((Chunquillo)creature).fire();
+                }
+                else{                    
+                    if(((Chunquillo)creature).delay>450 && ((Chunquillo)creature).timer>500){
+                        Sprite bullet = (Sprite)resourceManager.bulletB.clone();
+                        bullet.setX(creature.getX()+64);
+                        bullet.setY(creature.getY()+16);
+                        bullet.isEnBul = true;
+                        if(creature.dir){
+                            bullet.setVelocityX(.3f);
+                        }
+                        else{
+                            bullet.setX(creature.getX());
+                            bullet.setVelocityX(-.3f);
+                        }
+                        map.addEnBullet(bullet);
+                        ((Chunquillo)creature).delay %= 450;
+                        ((Chunquillo)creature).timer =((Chunquillo)creature).timer%500;
+                        int rand = (int)(2000*Math.random());
+                        ((Chunquillo)creature).timer-=rand;
+                        ((Chunquillo)creature).shooting=false;
                     }
                     else{
-                        bullet.setX(creature.getX()-5);
-                        bullet.setVelocityX(-.3f);
+                        ((Chunquillo)creature).delay += elapsedTime;
+                        ((Chunquillo)creature).timer += elapsedTime;
                     }
-                    map.addEnBullet(bullet);
-                    ((Chunquillo)creature).timer =((Chunquillo)creature).timer%500;
-                    int rand = (int)(2000*Math.random());
-                    ((Chunquillo)creature).timer-=rand;
-                }
-                else{
-                    ((Chunquillo)creature).timer += elapsedTime;
                 }
             }
             if(creature.isBoss){
@@ -700,6 +762,7 @@ public class GameManager extends GameCore {
                 if(badguy.getLife()<=3*player.getLevel()){
                     player.earnExp(badguy.exp);
                     badguy.setState(Creature.STATE_DYING);
+                    score+=badguy.exp;
                 }
                 else {
                     badguy.decreaseLife(3*player.getLevel());
@@ -730,6 +793,7 @@ public class GameManager extends GameCore {
                  if(creature.getLife()<=0){
                     player.earnExp(creature.exp);
                     creature.setState(Creature.STATE_DYING);
+                    score+=creature.exp;
                 }
                 map.removeBullet(collisionSprite);
             }
