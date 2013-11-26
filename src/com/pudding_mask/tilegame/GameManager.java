@@ -14,6 +14,15 @@ import com.pudding_mask.sound.*;
 import com.pudding_mask.input.*;
 import com.pudding_mask.test.GameCore;
 import com.pudding_mask.tilegame.sprites.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
     GameManager manages all parts of the game.
@@ -36,7 +45,7 @@ public class GameManager extends GameCore {
     private boolean classicControl;
     private int score = 0;
     private int highscores[] = new int[8];
-
+    private String saveFile = "highscores.txt";
     private Point pointCache = new Point();
     private TileMap map;
     private MidiPlayer midiPlayer;
@@ -62,7 +71,15 @@ public class GameManager extends GameCore {
 
     public void init() {
         super.init();
-
+        for(int i = 0; i<8; i++){
+            highscores[i] = 0;
+        }
+        try {
+            loadScores();
+        } catch (IOException ex) {
+            //do nothing
+        }
+        
         sound = true;
         classicControl = true;
         
@@ -163,18 +180,38 @@ public class GameManager extends GameCore {
         classicControl = !classicControl;
         menu.classicControl = classicControl;
     }
-    
-    void loadScores(){
+    void loadScores() throws IOException{
+        BufferedReader fileIn;
+        try {
+            fileIn = new BufferedReader(new FileReader(saveFile));
+            
+            for(int i = 0; i<8;i++){
+                highscores[i] = Integer.valueOf(fileIn.readLine());
+            }
+        
+            fileIn.close();
+        } 
+        catch (FileNotFoundException e) {
+            //do nothing
+        }
         
     }
 
-    void saveScores(){
-        
+    void saveScores() throws IOException{
+        PrintWriter fileOut = new PrintWriter(new FileWriter(saveFile));
+        for(int i = 0; i<8;i++){
+            fileOut.println(highscores[i]);
+        }
+        fileOut.close();
     }
 
-    private void checkInput(long elapsedTime) {
+    private void checkInput(long elapsedTime){
         if (exit.isPressed()) {
-            saveScores();
+            try {
+                saveScores();
+            } catch (IOException ex) {
+                //cry
+            }
             stop();
         }
         if(!menu.isPlaying()){
@@ -338,6 +375,11 @@ public class GameManager extends GameCore {
         }
         menu.draw(g, map,
             screen.getWidth(), screen.getHeight());
+        if(menu.isInHighscores()){
+            for(int i = 0; i<8; i++){
+                g.drawString(Integer.toString(highscores[i]),420, 200+(i*50));
+            }
+        }
     }
 
 
@@ -699,11 +741,11 @@ public class GameManager extends GameCore {
                         bullet.setY(creature.getY()+16);
                         bullet.isEnBul = true;
                         if(creature.dir){
-                            bullet.setVelocityX(.3f);
+                            bullet.setVelocityX(.5f);
                         }
                         else{
                             bullet.setX(creature.getX());
-                            bullet.setVelocityX(-.3f);
+                            bullet.setVelocityX(-.5f);
                         }
                         map.addEnBullet(bullet);
                         ((Chunquillo)creature).delay %= 450;
@@ -820,6 +862,7 @@ public class GameManager extends GameCore {
         Gives the player the speicifed power up and removes it
         from the map.
     */
+     
     public void acquirePowerUp(PowerUp powerUp) {
         // remove it from the map
         map.removeSprite(powerUp);

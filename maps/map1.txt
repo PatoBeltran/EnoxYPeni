@@ -26,29 +26,30 @@
 #   2 Bad Ass
 #   3 Boss
 #   ! Speed Power Up
-#   o Health Power Up                                                                                                                      
+#   o Health Power Up
+#   * Pass to next Level                                                                                                                   
                                                                                                                       
                                                                                                                       
                                                                                                                       
                                                                                                                       
                                                                                                                       
                                                                                   2       o                           
-                        1                                                   GBBBBBBBBBBBBBBF                          
+                        1                                           2       GBBBBBBBBBBBBBBF                          
                     GBBBBF                                         KLJ      EAAAAAAAAAAAAAAD                          
                    GNAPCCH                                                  EAAAAAAAAAAAAAAD                          
-BBBBF   !      2 GBNAAD             2       1       2                     GBNAAAAAAAAAAAAAAD                          
+BBBBF   !        GBNAAD             2       1       2                     GBNAAAAAAAAAAAAAAD                          
 AAAAMBBBBF  GBBBBNAAAAD           KBBBBBBBBBBBBBBBBBBBBBBBBBBLJ         GBNAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAD            ICCOAAAAAAAAAAAAAAAAAAAPCH           EAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAMF              ICCCCCCCCCCCCCCCCCCCH           GBNAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAD                                              EAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAMF                                           GBNAAAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAAAD                                           EAAAAAAAAAAAAAAAAAAAAAAD                          
-AAAAAAAAAD  EAAAAAAAAAAAMBBF                                      GBNAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAMBBF                                      GBNAAAAAAAAAAAAAAAAAAAAAAD                         o
 AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                                 GBNAAAAAAAAAAAAAAAAAAAAAAAAD                        GS
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAD                                 EAAAAAAAAAAAAAAAAAAAAAAAAAAD                      3 Q*
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1      2   GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBB
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAADTTEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAD                                 EAAAAAAAAAAAAAAAAAAAAAAAAAAD                      3 Q 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1      2   GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBD 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD 
+AAAAAAAAADTTEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD*
