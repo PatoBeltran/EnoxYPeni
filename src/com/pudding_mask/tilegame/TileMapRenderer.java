@@ -144,6 +144,15 @@ public class TileMapRenderer {
                 Math.round(boss.getX()) + offsetX,
                 Math.round(boss.getY()) + offsetY,
                 null);
+            int x = Math.round(boss.getX()) + offsetX;
+            int y = Math.round(boss.getY()) + offsetY;
+            g.drawImage(boss.getImage(), x, y, null);
+
+            // wake up the creature when it's on screen
+            if (x >= 0 && x < screenWidth)
+            {
+                ((Creature)boss).wakeUp();
+            }
         }
         // draw sprites
         Iterator i = map.getSprites();

@@ -558,9 +558,9 @@ public class GameManager extends GameCore {
             checkBulletCollision(creature);
         }
         if (creature instanceof Creature){
-            if(creature.chung){
+            if(creature.chung&&creature.awake){
                 if(((Chunquillo)creature).timer>500){
-                    Sprite bullet = (Sprite)resourceManager.bullet.clone();
+                    Sprite bullet = (Sprite)resourceManager.bulletB.clone();
                     bullet.setX(creature.getX()+64);
                     bullet.setY(creature.getY()+16);
                     bullet.isEnBul = true;
@@ -581,7 +581,7 @@ public class GameManager extends GameCore {
                 }
             }
             if(creature.isBoss){
-                if(((Boss)creature).timer>2000){
+                if((((Boss)creature).timer>2000)&&creature.awake) {
                     Sprite enemy = (Sprite)resourceManager.chunguilloSprite.clone();
                     enemy.setX(creature.getX()+100);
                     enemy.setY(creature.getY());
@@ -624,7 +624,7 @@ public class GameManager extends GameCore {
             map.removeEnBullet(collisionSprite);
             if(player.getLife()==1){
                     // player dies!
-                    player.decreaseLife(player.getLevel());
+                    player.decreaseLife();
                     player.setState(Creature.STATE_DYING);
                     
                 }
@@ -637,12 +637,12 @@ public class GameManager extends GameCore {
             if (canKill) {
                 // kill the badguy and make player bounce
                 soundManager.play(boopSound);
-                if(badguy.getLife()==1){
+                if(badguy.getLife()<=3*player.getLevel()){
                     player.earnExp(badguy.exp);
                     badguy.setState(Creature.STATE_DYING);
                 }
                 else {
-                    badguy.decreaseLife();
+                    badguy.decreaseLife(3*player.getLevel());
                 }
                 player.setY(badguy.getY() - player.getHeight());
                 player.jump(true);
@@ -650,7 +650,7 @@ public class GameManager extends GameCore {
             else {
                 if(player.getLife()==1){
                     // player dies!
-                    player.decreaseLife(player.getLevel());
+                    player.decreaseLife();
                     player.setState(Creature.STATE_DYING);
                     
                 }

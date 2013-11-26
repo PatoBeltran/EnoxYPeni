@@ -30,6 +30,7 @@ public abstract class Creature extends Sprite {
     public int exp;
     public boolean chung=false;
     public boolean isBoss=false;
+    public boolean awake = false;
 
     /**
         Creates a new Creature with the specified Animations.
@@ -99,8 +100,9 @@ public abstract class Creature extends Sprite {
         on screen. Normally, the creature starts moving left.
     */
     public void wakeUp() {
-        if (getState() == STATE_NORMAL && getVelocityX() == 0) {
+        if (getState() == STATE_NORMAL && !awake) {
             setVelocityX(-getMaxSpeed());
+            awake = true;
         }
     }
 
