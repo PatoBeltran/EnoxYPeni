@@ -6,6 +6,7 @@ import java.util.Iterator;
 import com.pudding_mask.graphics.Sprite;
 import com.pudding_mask.tilegame.sprites.Creature;
 import com.pudding_mask.tilegame.sprites.Player;
+import javax.swing.ImageIcon;
 
 /**
     The TileMapRenderer class draws a TileMap on the screen.
@@ -70,6 +71,29 @@ public class TileMapRenderer {
     */
     public void setBackground(Image background) {
         this.background = background;
+    }
+    public void setBackground(int currentMap) {
+        switch(currentMap){
+            case 0:
+                this.background = loadImage("background.png");
+                break;
+            case 1:
+                this.background = loadImage("background.png");
+                break;
+            case 2:
+                this.background = loadImage("background2.png");
+                break;
+            case 3:
+                this.background = loadImage("background2.png");
+                break;
+            default:
+                this.background = loadImage("background2.png");
+                break;
+        }
+    }
+     public Image loadImage(String name) {
+        String filename = "images/" + name;
+        return new ImageIcon(filename).getImage();
     }
 
 

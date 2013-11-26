@@ -18,7 +18,7 @@ import com.pudding_mask.tilegame.sprites.*;
 public class ResourceManager {
 
     private ArrayList tiles;
-    private int currentMap;
+    public int currentMap;
     private GraphicsConfiguration gc;
 
     // host sprites used for cloning
