@@ -27,7 +27,8 @@
 #   3 Boss
 #   ! Speed Power Up
 #   o Health Power Up
-#   * Pass to next Level                                                                                                                   
+#   * Pass to next Level
+                                                                                                                     
                                                                                                                       
                                                                                                                       
                                                                                                                       
