@@ -22,8 +22,5 @@ public class Chunquillo extends Creature {
     public float getMaxSpeed() {
         return 0.05f;
     }
-    public void fire(){
-        
-    }
 }
 

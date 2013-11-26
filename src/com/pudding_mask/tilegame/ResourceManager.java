@@ -273,10 +273,15 @@ public class ResourceManager {
             loadImage("enox_still2.png"),
             loadImage("enox_still3.png"),
             loadImage("enox_still4.png"),
-            loadImage("enox_dead1.png"), //13
+            loadImage("enox_dead1.png"),//13
+            loadImage("enox_dead1.png"),
+            loadImage("enox_dead2.png"),
             loadImage("enox_dead2.png"),
             loadImage("enox_dead3.png"),
-            loadImage("peni1.png"), //16
+            loadImage("enox_dead3.png"),
+            loadImage("enox_dead3.png"),
+            loadImage("enox_dead3.png"),
+            loadImage("peni1.png"), //21
             loadImage("peni2.png"),
             loadImage("peni3.png"),
             loadImage("peni4.png"),
@@ -284,36 +289,51 @@ public class ResourceManager {
             loadImage("peni6.png"),
             loadImage("peni7.png"),
             loadImage("peni8.png"),
-            loadImage("peni_jump1.png"), //24
-            loadImage("peni_still1.png"), //25
+            loadImage("peni_jump1.png"), //29
+            loadImage("peni_still1.png"), //30
             loadImage("peni_still2.png"),
             loadImage("peni_still3.png"),
             loadImage("peni_still4.png"),
-            loadImage("peni_dead1.png"), //29
+            loadImage("peni_dead1.png"), //34
+            loadImage("peni_dead1.png"),
+            loadImage("peni_dead2.png"),
             loadImage("peni_dead2.png"),
             loadImage("peni_dead3.png"),
-            loadImage("badass1.png"), //32
+            loadImage("peni_dead3.png"),
+            loadImage("peni_dead3.png"),
+            loadImage("peni_dead3.png"),
+            loadImage("badass1.png"), //42
             loadImage("badass2.png"),
             loadImage("badass3.png"),
             loadImage("badass4.png"),
-            loadImage("badass-dead1.png"), //36
+            loadImage("badass-dead1.png"), //46
             loadImage("badass-dead2.png"),
             loadImage("badass-dead3.png"),
             loadImage("badass-dead4.png"),
             loadImage("badass-dead5.png"),
             loadImage("badass-dead6.png"),
-            loadImage("chunguillo1.png"), //42
+            loadImage("chunguillo1.png"), //52
             loadImage("chunguillo2.png"),
             loadImage("chunguillo3.png"),
             loadImage("chunguillo4.png"),
-            loadImage("chunguillo_dead1.png"), //46
+            loadImage("chunguillo_dead1.png"), //56
             loadImage("chunguillo_dead2.png"),
             loadImage("chunguillo_dead3.png"),
             loadImage("chunguillo_dead4.png"),
-            loadImage("lvl1_boss1.png"), //50
+            loadImage("chunguillo_fire1.png"), //60
+            loadImage("chunguillo_fire2.png"),
+            loadImage("chunguillo_fire3.png"),
+            loadImage("chunguillo_fire4.png"),
+            loadImage("lvl1_boss1.png"), //64
             loadImage("lvl1_boss2.png"),
             loadImage("lvl1_boss3.png"),
-            loadImage("lvl1_boss4.png")
+            loadImage("lvl1_boss4.png"),
+            loadImage("lvl1_boss_dead1.png"), //68
+            loadImage("lvl1_boss_dead2.png"),
+            loadImage("lvl1_boss_dead3.png"),
+            loadImage("lvl1_boss_dead4.png"),
+            loadImage("lvl1_boss_dead5.png"),
+            loadImage("lvl1_boss_dead6.png"),
         };
 
         images[1] = new Image[images[0].length];
@@ -334,37 +354,37 @@ public class ResourceManager {
         playerAnim[1] = createAnim(images[1], 0, 7); //Walking Left
         playerAnim[6] = createAnim(images[0], 8, 8); //Jump Right
         playerAnim[7] = createAnim(images[1], 8, 8); //Jump left
-        playerAnim[2] = createAnim(images[0], 13,15); //Dead Right
-        playerAnim[3] = createAnim(images[1], 13,15); //Dead Left
+        playerAnim[2] = createAnim(images[0], 13,20); //Dead Right
+        playerAnim[3] = createAnim(images[1], 13,20); //Dead Left
         playerAnim[4] = createAnim(images[0], 9, 12); //Still Right
         playerAnim[5] = createAnim(images[1], 9, 12); //Still Left
         
-        peniAnim[0] = createAnim(images[0], 16, 23); //Walking Right
-        peniAnim[1] = createAnim(images[1], 16, 23); //Walking Left
-        peniAnim[6] = createAnim(images[0], 24, 24); //Jump Right
-        peniAnim[7] = createAnim(images[1], 24, 24); //Jump left
-        peniAnim[2] = createAnim(images[0], 29,31); //Dead Right
-        peniAnim[3] = createAnim(images[1], 29 ,31); //Dead Left
-        peniAnim[4] = createAnim(images[0], 25, 28); //Still Right
-        peniAnim[5] = createAnim(images[1], 25, 28); //Still Left
+        peniAnim[0] = createAnim(images[0], 21, 28); //Walking Right
+        peniAnim[1] = createAnim(images[1], 21, 28); //Walking Left
+        peniAnim[6] = createAnim(images[0], 29, 29); //Jump Right
+        peniAnim[7] = createAnim(images[1], 29, 29); //Jump left
+        peniAnim[2] = createAnim(images[0], 34,41); //Dead Right
+        peniAnim[3] = createAnim(images[1], 34 ,41); //Dead Left
+        peniAnim[4] = createAnim(images[0], 30, 33); //Still Right
+        peniAnim[5] = createAnim(images[1], 30, 33); //Still Left
         
         //Creature Animations
-        chunguilloAnim[0] = createAnim(images[0], 42, 45); //Walking Right
-        chunguilloAnim[1] = createAnim(images[1], 42, 45); //Walking Left
-        chunguilloAnim[2] = createAnim(images[0], 46, 49); //Dead Right
-        chunguilloAnim[3] = createAnim(images[1], 46, 49); //Dead Left
-        chunguilloAnim[4] = createAnim(images[0], 42, 45); //Fire Right
-        chunguilloAnim[5] = createAnim(images[1], 42, 45); //Fire Left
+        chunguilloAnim[0] = createAnim(images[0], 52, 55); //Walking Right
+        chunguilloAnim[1] = createAnim(images[1], 52, 55); //Walking Left
+        chunguilloAnim[2] = createAnim(images[0], 56, 59); //Dead Right
+        chunguilloAnim[3] = createAnim(images[1], 56, 59); //Dead Left
+        chunguilloAnim[4] = createAnim(images[0], 60, 63); //Fire Right
+        chunguilloAnim[5] = createAnim(images[1], 60, 63); //Fire Left
         
-        badassAnim[0] = createAnim(images[0], 32, 35); //Walking Right
-        badassAnim[1] = createAnim(images[1], 32, 35); //Walking Left
-        badassAnim[2] = createAnim(images[0], 36, 41); //Dead Right
-        badassAnim[3] = createAnim(images[1], 36, 41); //Dead Left
+        badassAnim[0] = createAnim(images[0], 42, 45); //Walking Right
+        badassAnim[1] = createAnim(images[1], 42, 45); //Walking Left
+        badassAnim[2] = createAnim(images[0], 46, 51); //Dead Right
+        badassAnim[3] = createAnim(images[1], 46, 51); //Dead Left
         
-        boss1Anim[0] = createAnim(images[0], 50, 53); //Walking Right
-        boss1Anim[1] = createAnim(images[1], 50, 53); //Walking Left
-        boss1Anim[2] = createAnim(images[0], 50, 53); //Dead Right
-        boss1Anim[3] = createAnim(images[1], 50, 53); //Dead Left
+        boss1Anim[0] = createAnim(images[0], 64, 67); //Walking Right
+        boss1Anim[1] = createAnim(images[1], 64, 67); //Walking Left
+        boss1Anim[2] = createAnim(images[0], 68, 73); //Dead Right
+        boss1Anim[3] = createAnim(images[1], 68, 73); //Dead Left
         
         // create creature sprites
         playerSprite = new Player(playerAnim[0], playerAnim[1], playerAnim[2], playerAnim[3], 

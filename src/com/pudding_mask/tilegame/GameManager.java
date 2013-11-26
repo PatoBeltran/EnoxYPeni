@@ -31,6 +31,8 @@ public class GameManager extends GameCore {
     private static final int DRUM_TRACK = 1;
 
     public static final float GRAVITY = 0.002f;
+    
+    private int spawnTimer = 0;
 
     private Point pointCache = new Point();
     private TileMap map;
@@ -434,6 +436,9 @@ public class GameManager extends GameCore {
             // update player
             updateCreature(player, elapsedTime);
             player.update(elapsedTime);
+            
+            demEnemies(elapsedTime);
+            
             if(boss!=null){
                 if (boss.getState() == Creature.STATE_DEAD) {
                     map.removeBoss(boss);
@@ -488,6 +493,32 @@ public class GameManager extends GameCore {
         }
     }
 
+    private void demEnemies(long elapsedTime){
+        int rand;
+        spawnTimer+=elapsedTime;
+        Player player = (Player)map.getPlayer();
+        if(spawnTimer>40000/((player.getLevel()*9)-5)){
+            rand = (int)(2*Math.random());
+            Sprite enemy;
+            if(rand==1){
+                enemy = (Sprite)resourceManager.chunguilloSprite.clone();
+                rand = (int)(800*Math.random());
+                enemy.setX(player.getX()-400+rand);
+                enemy.setY(-100);
+                map.addSprite(enemy);
+            }
+            else{
+                enemy = (Sprite)resourceManager.badassSprite.clone();
+                rand = (int)(800*Math.random());
+                enemy.setX(player.getX()-400+rand);
+                enemy.setY(-100);
+                map.addSprite(enemy);
+            }
+            spawnTimer = spawnTimer%(40000/((player.getLevel()*9)-5));
+            rand = (int)(2000*Math.random());
+            spawnTimer-=rand;
+        }
+    }
     /**
         Updates the creature, applying gravity for creatures that
         aren't flying, and checks collisions.
@@ -563,7 +594,7 @@ public class GameManager extends GameCore {
                     bullet.setX(creature.getX()+64);
                     bullet.setY(creature.getY()+16);
                     bullet.isEnBul = true;
-                    creature.fire();
+                    ((Creature)creature).fire();
                     if(creature.dir){
                         bullet.setVelocityX(.3f);
                     }
