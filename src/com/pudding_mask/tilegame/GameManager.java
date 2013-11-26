@@ -377,7 +377,7 @@ public class GameManager extends GameCore {
             screen.getWidth(), screen.getHeight());
         if(menu.isInHighscores()){
             for(int i = 0; i<8; i++){
-                g.drawString(Integer.toString(highscores[i]),420, 200+(i*50));
+                g.drawString(Integer.toString(highscores[i]),420, 220+(i*55)- ((i-1)*4));
             }
         }
     }
