@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import com.pudding_mask.graphics.Sprite;
 import com.pudding_mask.tilegame.sprites.Creature;
+import com.pudding_mask.tilegame.sprites.Player;
 
 /**
     The TileMapRenderer class draws a TileMap on the screen.
@@ -139,6 +140,19 @@ public class TileMapRenderer {
             Math.round(player.getX()) + offsetX,
             Math.round(player.getY()) + offsetY,
             null);
+
+        if(((Player)player).powerUp){
+                 g.drawImage(ResourceManager.adquireAnim.getImage(),
+            Math.round(player.getX()) + offsetX,
+            Math.round(player.getY()) + offsetY,
+            null);
+            }
+        if(((Player)player).levelUp){
+                 g.drawImage(ResourceManager.lvlUpAnim.getImage(),
+            Math.round(player.getX()) + offsetX - 16,
+            Math.round(player.getY()) + offsetY - 24,
+            null);
+            }
         if(boss!=null){
             g.drawImage(boss.getImage(),
                 Math.round(boss.getX()) + offsetX,

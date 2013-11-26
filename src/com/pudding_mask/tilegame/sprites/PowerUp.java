@@ -28,14 +28,6 @@ public abstract class PowerUp extends Sprite {
     }
 
 
-    /**
-        A Star PowerUp. Gives the player points.
-    */
-    public static class Star extends PowerUp {
-        public Star(Animation anim) {
-            super(anim);
-        }
-    }
     
     // Killer tile kills player
     public static class KillerTile extends PowerUp {
@@ -48,8 +40,13 @@ public abstract class PowerUp extends Sprite {
     /**
         A Music PowerUp. Changes the game music.
     */
-    public static class Music extends PowerUp {
-        public Music(Animation anim) {
+    public static class Heal extends PowerUp {
+        public Heal(Animation anim) {
+            super(anim);
+        }
+    }
+    public static class Power extends PowerUp {
+        public Power(Animation anim) {
             super(anim);
         }
     }

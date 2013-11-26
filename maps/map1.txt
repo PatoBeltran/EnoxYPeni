@@ -21,9 +21,12 @@
 #   Q Both Sides Tiles
 #   R All Sides Tiles
 #   S Trap
+#   T Player Dies
 #   1 Chunguillo
 #   2 Bad Ass
-                                                                                                                      
+#   3 Boss
+#   ! Speed Power Up
+#   o Health Power Up                                                                                                                      
                                                                                                                       
                                                                                                                       
                                                                                                                       
@@ -32,8 +35,8 @@
                                                                                   2                                   
                         1                                                   GBBBBBBBBBBBBBBF                          
                     GBBBBF                                         KLJ      EAAAAAAAAAAAAAAD                          
-                   GNAPCCH                                                  EAAAAAAAAAAAAAAD                          
-BBBBF          2 GBNAAD             2       1       2                     GBNAAAAAAAAAAAAAAD                          
+                 o GNAPCCH                                                  EAAAAAAAAAAAAAAD                          
+BBBBF   !      2 GBNAAD             2       1       2                     GBNAAAAAAAAAAAAAAD                          
 AAAAMBBBBF  GBBBBNAAAAD           KBBBBBBBBBBBBBBBBBBBBBBBBBBLJ         GBNAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAD            ICCOAAAAAAAAAAAAAAAAAAAPCH           EAAAAAAAAAAAAAAAAAAD                          
 AAAAAAAAAD  EAAAAAAAAAMF              ICCCCCCCCCCCCCCCCCCCH           GBNAAAAAAAAAAAAAAAAAAD                          
