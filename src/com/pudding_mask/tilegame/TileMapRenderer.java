@@ -139,10 +139,12 @@ public class TileMapRenderer {
             Math.round(player.getX()) + offsetX,
             Math.round(player.getY()) + offsetY,
             null);
-        g.drawImage(boss.getImage(),
-            Math.round(boss.getX()) + offsetX,
-            Math.round(boss.getY()) + offsetY,
-            null);
+        if(boss!=null){
+            g.drawImage(boss.getImage(),
+                Math.round(boss.getX()) + offsetX,
+                Math.round(boss.getY()) + offsetY,
+                null);
+        }
         // draw sprites
         Iterator i = map.getSprites();
         while (i.hasNext()) {

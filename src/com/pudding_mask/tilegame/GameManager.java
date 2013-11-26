@@ -435,7 +435,15 @@ public class GameManager extends GameCore {
             // update player
             updateCreature(player, elapsedTime);
             player.update(elapsedTime);
-            updateCreature(boss, elapsedTime);
+            if(boss!=null){
+                if (boss.getState() == Creature.STATE_DEAD) {
+                    map.removeBoss(boss);
+                }
+                else {
+                    updateCreature(boss, elapsedTime);
+                }
+            boss.update(elapsedTime);
+            }
             // update other sprites
             Iterator i = map.getSprites();
             while (i.hasNext()) {
@@ -456,15 +464,30 @@ public class GameManager extends GameCore {
             while (i.hasNext()) {
                 Sprite sprite = (Sprite)i.next();
                 sprite.update(elapsedTime);
+                Point tile =
+                getTileCollision(sprite, sprite.x, sprite.y);
+                if (tile != null) {
+                    if (sprite.isBullet){
+                        i.remove();
+                        map.removeBullet(sprite);
+                    }           
+                }
             }
             i = map.getEnBul();
             while (i.hasNext()) {
                 Sprite sprite = (Sprite)i.next();
                 sprite.update(elapsedTime);
+                Point tile =
+                getTileCollision(sprite, sprite.x, sprite.y);
+                if (tile != null) {
+                    if (sprite.isEnBul){
+                        i.remove();
+                        map.removeEnBullet(sprite);
+                    }           
+                }
             }
         }
     }
-
 
     /**
         Updates the creature, applying gravity for creatures that
