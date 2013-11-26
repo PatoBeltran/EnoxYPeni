@@ -12,8 +12,14 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Usuario
+ * @author PatoBeltran
  */
+
+/*
+ * Manages time in the game, from the begining and it doesnt take in account
+ * time spent in the pause menu.
+ * 
+ * */
 public class MenuManager {
     private boolean main;
     private boolean configuration;
@@ -25,6 +31,7 @@ public class MenuManager {
     public boolean classicControl;
     public boolean sound;
     
+    //gets and sets
     public boolean isPlaying(){
         return play;
     }
@@ -109,6 +116,7 @@ public class MenuManager {
         play = false;
         pause = false;
     }
+    //checks which to draw, loads it and draws it
     public void draw(Graphics2D g, TileMap map,
         int screenWidth, int screenHeight)
     {
@@ -147,6 +155,7 @@ public class MenuManager {
         
     }
     
+    //init
     public MenuManager(){
         main = true;
         highscores = false;

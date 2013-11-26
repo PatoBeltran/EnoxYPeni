@@ -3,7 +3,7 @@ package com.pudding_mask.tilegame.sprites;
 import com.pudding_mask.graphics.Animation;
 
 /**
-    A Grub is a Creature that moves slowly on the ground.
+    A Chunquillo is a Creature that moves slowly on the ground and shoots.
 */
 public class Chunquillo extends Creature {
     public int timer = 0;   

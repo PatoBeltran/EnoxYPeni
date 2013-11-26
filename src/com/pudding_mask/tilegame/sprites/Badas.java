@@ -3,7 +3,7 @@ package com.pudding_mask.tilegame.sprites;
 import com.pudding_mask.graphics.Animation;
 
 /**
-    A Grub is a Creature that moves slowly on the ground.
+    A Badass is a Creature that moves fastly on the ground.
 */
 public class Badas extends Creature {
     public Badas(Animation left, Animation right,

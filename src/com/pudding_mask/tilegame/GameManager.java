@@ -80,6 +80,7 @@ public class GameManager extends GameCore {
             //do nothing
         }
         
+        //init default configurations
         sound = true;
         classicControl = true;
         
@@ -124,6 +125,7 @@ public class GameManager extends GameCore {
         midiPlayer.close();
         soundManager.close();
     }
+    //set sound on or off
     public void toggleSound(){
         sound = !sound;
         soundManager.setPaused(sound);
@@ -156,7 +158,7 @@ public class GameManager extends GameCore {
         inputManager.mapToKey(pause, KeyEvent.VK_P);
         inputManager.mapToMouse(click, inputManager.MOUSE_BUTTON_1);
     }
-
+    //set the default controls to wasd or viceversa
     private void switchControls(){
         if(classicControl){
             inputManager.clearMap(moveLeft);
@@ -180,6 +182,7 @@ public class GameManager extends GameCore {
         classicControl = !classicControl;
         menu.classicControl = classicControl;
     }
+    //loads score from the txt file
     void loadScores() throws IOException{
         BufferedReader fileIn;
         try {
@@ -196,7 +199,7 @@ public class GameManager extends GameCore {
         }
         
     }
-
+    //Saves best 8 scores in a txt file
     void saveScores() throws IOException{
         PrintWriter fileOut = new PrintWriter(new FileWriter(saveFile));
         for(int i = 0; i<8;i++){
@@ -214,6 +217,7 @@ public class GameManager extends GameCore {
             }
             stop();
         }
+        //update menus and check for input in them (buttons clicked)
         if(!menu.isPlaying()){
             pause.reset();
             if (menu.isInMainMenu()){
@@ -336,10 +340,12 @@ public class GameManager extends GameCore {
     public void draw(Graphics2D g)
     {
         if(!menu.isPlaying()){
+          //set cursos so it can be seen
             inputManager.setCursor(Cursor.getDefaultCursor());
             
         }
         else if(menu.isPlaying()){
+            //set cursor to invisible
             inputManager.setCursor(inputManager.INVISIBLE_CURSOR);
             renderer.draw(g, map,
                 screen.getWidth(), screen.getHeight());
@@ -375,8 +381,10 @@ public class GameManager extends GameCore {
                     break;
             }
         }
+        //prints menus
         menu.draw(g, map,
             screen.getWidth(), screen.getHeight());
+        //prints highscores
         if(menu.isInHighscores()){
             for(int i = 0; i<8; i++){
                 g.drawString(Integer.toString(highscores[i]),420, 220+(i*55)- ((i-1)*4));
@@ -550,7 +558,8 @@ public class GameManager extends GameCore {
             else if(anim != null) {
                 anim.update(elapsedTime);
             }
-           
+            
+            //Check power up and level up animations and update them
             playr.powerUpTime += elapsedTime;
             playr.levelUpTime += elapsedTime;
             if(playr.powerUp && playr.powerUpTime >= playr.POWER_ANIMATION){
@@ -566,8 +575,10 @@ public class GameManager extends GameCore {
             updateCreature(player, elapsedTime);
             player.update(elapsedTime);
             
+            //get random enemies appearing
             demEnemies(elapsedTime);
             
+            //if boss is dead remove it, else update him
             if(boss!=null){
                 if (boss.getState() == Creature.STATE_DEAD) {
                     map.removeBoss(boss);
@@ -578,6 +589,7 @@ public class GameManager extends GameCore {
                 }
             boss.update(elapsedTime);
             }
+
             // update other sprites
             Iterator i = map.getSprites();
             while (i.hasNext()) {
@@ -594,6 +606,7 @@ public class GameManager extends GameCore {
                 // normal update
                 sprite.update(elapsedTime);
             }
+            //check for bullets
             i = map.getBullets();
             while (i.hasNext()) {
                 Sprite sprite = (Sprite)i.next();
@@ -622,7 +635,7 @@ public class GameManager extends GameCore {
             }
         }
     }
-    
+    //updates highscores
     boolean tryhigh(int sc){
         boolean r=false;
         for(int i=0; i<8; i++){
@@ -637,6 +650,7 @@ public class GameManager extends GameCore {
         return false;
     }
 
+    //get random enemies on the screen depending time
     private void demEnemies(long elapsedTime){
         int rand;
         spawnTimer+=elapsedTime;
@@ -844,6 +858,7 @@ public class GameManager extends GameCore {
         }
     }
 
+    //checks bullet collision with creature
     public void checkBulletCollision(Creature creature){
         Sprite collisionSprite = getSpriteCollision(creature);
         Player player = (Player)map.getPlayer();

@@ -8,6 +8,9 @@ package com.pudding_mask.tilegame.sprites;
  *
  * @author Javier
  */
+/*
+ * Bullet fired from a player
+ * */
 public class EnemyBullet {
     
 }

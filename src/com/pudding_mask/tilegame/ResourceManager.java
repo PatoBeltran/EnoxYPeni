@@ -497,6 +497,7 @@ public class ResourceManager {
                                  emptyAnimation(), 
                                  emptyAnimation());
         
+        //load each boss for a map
         switch(currentMap){
             case 1:
                 bossSprite = new Boss(boss1Anim[0], boss1Anim[1],
