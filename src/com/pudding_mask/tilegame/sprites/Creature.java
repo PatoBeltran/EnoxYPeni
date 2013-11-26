@@ -14,7 +14,7 @@ public abstract class Creature extends Sprite {
         Amount of time to go from STATE_DYING to STATE_DEAD.
     */
     private int DIE_TIME = 1000;
-    private static int FIRE_TIME = 600;
+    private static final int  FIRE_TIME = 600;
 
     public static final int STATE_NORMAL = 0;
     public static final int STATE_DYING = 1;
@@ -160,6 +160,7 @@ public abstract class Creature extends Sprite {
     }
     public void fire(){
        fireTime = 0; 
+       shooting = true;
     }
 
     /**
@@ -250,6 +251,12 @@ public abstract class Creature extends Sprite {
         else if (state == STATE_DYING && (newAnim == right || newAnim == rightStill)) {
             newAnim = deadRight;
         }
+        if(shooting && newAnim == left){
+            newAnim = leftFire;
+        }
+        else if(shooting && newAnim == right){
+            newAnim = rightFire;
+        }
         switch(whoAmI){
             case PLAYER:
                 if(!stepping && newAnim == left){
@@ -276,13 +283,10 @@ public abstract class Creature extends Sprite {
                 }
                 break;
             case CHUNGUILLO:
-                if(shooting && newAnim == left && fireTime >= FIRE_TIME){
-                    newAnim = leftFire;
-                }
-                else if(shooting && newAnim == right && fireTime >= FIRE_TIME){
-                    newAnim = rightFire;
-                }
-                        
+                fireTime += elapsedTime;
+                 if(fireTime >= FIRE_TIME){
+                     shooting = false;
+                 }                  
                 break;
         }
 

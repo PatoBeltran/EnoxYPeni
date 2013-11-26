@@ -563,7 +563,7 @@ public class GameManager extends GameCore {
                     bullet.setX(creature.getX()+64);
                     bullet.setY(creature.getY()+16);
                     bullet.isEnBul = true;
-                    creature.fire();
+                    ((Creature)creature).fire();
                     if(creature.dir){
                         bullet.setVelocityX(.3f);
                     }
