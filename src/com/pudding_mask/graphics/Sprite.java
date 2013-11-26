@@ -13,7 +13,7 @@ public class Sprite {
     public float dy;
     public boolean isBullet=false;
     public boolean isEnBul=false;
-
+   
     /**
         Creates a new Sprite object with the specified Animation.
     */

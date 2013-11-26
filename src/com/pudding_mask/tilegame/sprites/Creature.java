@@ -13,7 +13,8 @@ public abstract class Creature extends Sprite {
     /**
         Amount of time to go from STATE_DYING to STATE_DEAD.
     */
-    private static final int DIE_TIME = 1000;
+    private static int DIE_TIME = 1000;
+    private static int FIRE_TIME = 600;
 
     public static final int STATE_NORMAL = 0;
     public static final int STATE_DYING = 1;
@@ -23,35 +24,71 @@ public abstract class Creature extends Sprite {
     private Animation right;
     private Animation deadLeft;
     private Animation deadRight;
+    private Animation leftJump;
+    private Animation rightJump;
+    private Animation leftStill;
+    private Animation rightStill;
+    private Animation leftFire;
+    private Animation rightFire;
+    
     private int state;
     private long stateTime;
+    private long fireTime = 0;
     public boolean dir = true;
     private int hp;
     public int exp;
     public boolean chung=false;
     public boolean isBoss=false;
+    public boolean stepping =true;
+    public boolean shooting = false;
 
+    public int whoAmI;
+    
+    public static final int PLAYER = 1;
+    public static final int CHUNGUILLO = 2;
+    public static final int BADASS = 3;
+    public static final int BOSS = 4;
     /**
         Creates a new Creature with the specified Animations.
     */
-    public Creature(Animation left, Animation right,
-        Animation deadLeft, Animation deadRight, int hp)
+    public Creature(int whoami, Animation left, Animation right,
+        Animation deadLeft, Animation deadRight, Animation leftJump,
+         Animation rightJump,  Animation leftStill,  Animation rightStill,
+          Animation leftFire,  Animation rightFire, int hp)
     {
         super(right);
+        whoAmI = whoami;
         this.left = left;
         this.right = right;
         this.deadLeft = deadLeft;
         this.deadRight = deadRight;
+        this.leftJump = leftJump;
+        this.rightJump = rightJump;
+        this.leftStill = leftStill;
+        this.rightStill = rightStill;
+        this.leftFire = leftFire;
+        this.rightFire = rightFire;
         state = STATE_NORMAL;
         this.hp = hp;
     }
+    public void setDieTime(int dieTime){
+        DIE_TIME = dieTime;
+    }
     public void changeAnimation(Animation left, Animation right,
-        Animation deadLeft, Animation deadRight){
+        Animation deadLeft, Animation deadRight, Animation leftJump,
+         Animation rightJump,  Animation leftStill,  Animation rightStill,
+          Animation leftFire,  Animation rightFire){
         changeSprite(right);
         this.left = left;
         this.right = right;
         this.deadLeft = deadLeft;
         this.deadRight = deadRight;
+        this.leftJump = leftJump;
+        this.rightJump = rightJump;
+        this.leftStill = leftStill;
+        this.rightStill = rightStill;
+        this.leftFire = leftFire;
+        this.rightFire = rightFire;
     }
 
     public void setHp(int hp) {
@@ -65,7 +102,13 @@ public abstract class Creature extends Sprite {
                 (Animation)left.clone(),
                 (Animation)right.clone(),
                 (Animation)deadLeft.clone(),
-                (Animation)deadRight.clone()
+                (Animation)deadRight.clone(),
+                (Animation)leftJump.clone(),
+                (Animation)rightJump.clone(),
+                (Animation)leftStill.clone(),
+                (Animation)rightStill.clone(),
+                (Animation)leftFire.clone(),
+                (Animation)rightFire.clone()
             });
         }
         catch (Exception ex) {
@@ -112,7 +155,9 @@ public abstract class Creature extends Sprite {
     public int getState() {
         return state;
     }
-
+    public void fire(){
+       fireTime = 0; 
+    }
 
     /**
         Sets the state of this Creature to STATE_NORMAL,
@@ -162,8 +207,26 @@ public abstract class Creature extends Sprite {
     public void collideVertical() {
         setVelocityY(0);
     }
-
-
+    public void hasJump(){
+          if(anim == rightStill){
+            anim = rightJump;
+            anim.start();
+        }
+        else if (anim == leftStill){
+            anim = leftJump;
+            anim.start();
+        }
+    }
+    public void hasStep(){
+        if(anim == rightJump){
+            anim = rightStill;
+            anim.start();
+        }
+        else if (anim == leftJump){
+            anim = leftStill;
+            anim.start();
+        }
+    }
     /**
         Updates the animaton for this creature.
     */
@@ -183,6 +246,41 @@ public abstract class Creature extends Sprite {
         }
         else if (state == STATE_DYING && newAnim == right) {
             newAnim = deadRight;
+        }
+        switch(whoAmI){
+            case PLAYER:
+                if(!stepping && newAnim == left){
+                    newAnim = leftJump;
+                }
+                else if (!stepping && newAnim == right){
+                    newAnim = rightJump;
+                }
+                if (getVelocityX()==0 && newAnim == left){
+                    if(stepping){
+                        newAnim = leftStill;
+                    }
+                    else {
+                        newAnim = leftJump;
+                    }
+                }
+                else if(getVelocityX()==0 && newAnim == right){
+                    if(stepping){
+                        newAnim = rightStill;
+                    }
+                    else {
+                        newAnim = rightJump;
+                    }
+                }
+                break;
+            case CHUNGUILLO:
+                if(shooting && newAnim == left && fireTime >= FIRE_TIME){
+                    newAnim = leftFire;
+                }
+                else if(shooting && newAnim == right && fireTime >= FIRE_TIME){
+                    newAnim = rightFire;
+                }
+                        
+                break;
         }
 
         // update the Animation

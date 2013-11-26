@@ -156,9 +156,8 @@ public class GameManager extends GameCore {
                     if(inputManager.getMouseX()>= 625 && inputManager.getMouseX()<= 837
                         && inputManager.getMouseY()>=212 && inputManager.getMouseY() <= 517){
                         Player player = (Player)map.getPlayer();
-                        player.changeAnimation(resourceManager.peniAnim[0],
-                                resourceManager.peniAnim[1], resourceManager.peniAnim[2], 
-                                resourceManager.peniAnim[3]);
+                        player.changeAnimation(resourceManager.peniAnim[0], resourceManager.peniAnim[1], resourceManager.peniAnim[2], resourceManager.peniAnim[3], 
+                                  resourceManager.peniAnim[6], resourceManager.peniAnim[7],resourceManager.peniAnim[4],resourceManager.peniAnim[5], resourceManager.emptyAnimation(), resourceManager.emptyAnimation());
                         resourceManager.isPeni = true;
                         menu.goToGame();
                     }
@@ -564,6 +563,7 @@ public class GameManager extends GameCore {
                     bullet.setX(creature.getX()+64);
                     bullet.setY(creature.getY()+16);
                     bullet.isEnBul = true;
+                    creature.fire();
                     if(creature.dir){
                         bullet.setVelocityX(.3f);
                     }

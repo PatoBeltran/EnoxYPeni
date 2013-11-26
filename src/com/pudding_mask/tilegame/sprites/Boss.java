@@ -9,11 +9,15 @@ public class Boss extends Creature {
     public int timer = 0;
 
     public Boss(Animation left, Animation right,
-        Animation deadLeft, Animation deadRight)
+        Animation deadLeft, Animation deadRight, Animation leftJump,
+         Animation rightJump,  Animation leftStill,  Animation rightStill,
+          Animation leftFire,  Animation rightFire)
     {
-        super(left, right, deadLeft, deadRight, 24);
+        super(BOSS, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, 24);
+
         exp = 5;
         isBoss = true;
+        setDieTime(600);
     }
 
     public float getMaxSpeed() {

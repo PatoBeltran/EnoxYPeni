@@ -18,11 +18,14 @@ public class Player extends Creature {
 
 
     public Player(Animation left, Animation right,
-        Animation deadLeft, Animation deadRight)
+        Animation deadLeft, Animation deadRight, Animation leftJump,
+         Animation rightJump,  Animation leftStill,  Animation rightStill,
+          Animation leftFire,  Animation rightFire)
     {
-        super(left, right, deadLeft, deadRight, 5);
+        super(PLAYER, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, 5);
         level = 1;
         isPeni = false;
+        setDieTime(300);
     }
     
     public int getLevel(){
@@ -63,6 +66,8 @@ public class Player extends Creature {
         // check if collided with ground
         if (getVelocityY() > 0) {
             onGround = true;
+            stepping = true;
+            hasStep();
         }
         setVelocityY(0);
     }
@@ -72,6 +77,8 @@ public class Player extends Creature {
         // check if falling
         if (Math.round(y) > Math.round(getY())) {
             onGround = false;
+            stepping = false;
+            hasJump();
         }
         super.setY(y);
     }
@@ -89,11 +96,10 @@ public class Player extends Creature {
     public void jump(boolean forceJump) {
         if (onGround || forceJump) {
             onGround = false;
+            stepping = false;
+            hasJump();
             setVelocityY(JUMP_SPEED);
         }
-    }
-    public void fire(){
-        
     }
 
 
