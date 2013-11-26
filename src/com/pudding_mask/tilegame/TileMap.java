@@ -65,12 +65,14 @@ public class TileMap {
         }
     }
 
-
     /**
         Sets the tile at the specified location.
     */
     public void setTile(int x, int y, Image tile) {
         tiles[x][y] = tile;
+    }
+     public void removeTrap() {
+        tiles[ResourceManager.trap_x][ResourceManager.trap_y] = null;
     }
 
 
