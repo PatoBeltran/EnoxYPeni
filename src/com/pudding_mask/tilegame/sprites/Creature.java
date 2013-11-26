@@ -13,7 +13,7 @@ public abstract class Creature extends Sprite {
     /**
         Amount of time to go from STATE_DYING to STATE_DEAD.
     */
-    private static int DIE_TIME = 1000;
+    private int DIE_TIME = 1000;
     private static int FIRE_TIME = 600;
 
     public static final int STATE_NORMAL = 0;
@@ -244,10 +244,10 @@ public abstract class Creature extends Sprite {
             newAnim = right;
             dir = true;
         }
-        if (state == STATE_DYING && newAnim == left) {
+        if (state == STATE_DYING && (newAnim == left || newAnim == leftStill)) {
             newAnim = deadLeft;
         }
-        else if (state == STATE_DYING && newAnim == right) {
+        else if (state == STATE_DYING && (newAnim == right || newAnim == rightStill)) {
             newAnim = deadRight;
         }
         switch(whoAmI){

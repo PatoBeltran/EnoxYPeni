@@ -25,7 +25,7 @@ public class Player extends Creature {
         super(PLAYER, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, 5);
         level = 1;
         isPeni = false;
-        setDieTime(300);
+        setDieTime(1100);
     }
     
     public int getLevel(){
