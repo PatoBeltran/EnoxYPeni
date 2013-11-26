@@ -32,6 +32,7 @@ public class ResourceManager {
     public Sprite chunguilloSprite;
     public Sprite bullet;
     public Sprite bulletB;
+    public Sprite killerTile;
     public Animation[] peniAnim = new Animation[4];
     public boolean isPeni;
 
@@ -184,6 +185,9 @@ public class ResourceManager {
                     boss.setX(TileMapRenderer.tilesToPixels(x));
                     boss.setY(y);
                     newMap.addBoss(boss);
+                }
+                else if (ch == 'T'){
+                    addSprite(newMap, killerTile, x, y);
                 }
             }
         }
@@ -353,6 +357,11 @@ public class ResourceManager {
         anim = new Animation();
         anim.addFrame(loadImage("bulletb.png"), 150);
         bulletB = new Bullet(anim);
+        
+        // create killer Tile sprite
+        anim = new Animation();
+        anim.addFrame(loadImage(""), 150);
+        killerTile = new PowerUp.KillerTile(anim);
         
         // create "goal" sprite
         anim = new Animation();

@@ -36,6 +36,13 @@ public abstract class PowerUp extends Sprite {
             super(anim);
         }
     }
+    
+    // Killer tile kills player
+    public static class KillerTile extends PowerUp {
+        public KillerTile(Animation anim) {
+            super(anim);
+        }
+    }
 
 
     /**

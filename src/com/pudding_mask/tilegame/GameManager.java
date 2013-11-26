@@ -699,6 +699,12 @@ public class GameManager extends GameCore {
                 new EchoFilter(2000, .7f), false);
             map = resourceManager.loadNextMap();
         }
+         else if (powerUp instanceof PowerUp.KillerTile) {
+            // kill player
+            Player player = (Player)map.getPlayer();
+            player.setState(player.STATE_DYING);
+             
+        }
     }
 
 }
