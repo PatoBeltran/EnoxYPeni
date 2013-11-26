@@ -1,0 +1,55 @@
+# Map file for tile-based game
+# (Lines that start with '#' are comments)
+# The tiles are:
+#   (Space) Empty tile
+#   A Center Tile
+#   B Top Tile                            G B F   _	     _	  _	          _
+#   C Bottom Tile		                      E A D	  _| J  |_ K	_ L  | | Q |_| R
+#   D Right Tile		                      I C H
+#   E Left Tile
+#   F Right Top Corner Tile
+#   G Left Top Corner Tile
+#   H Right Bottom Corner Tile
+#   I Left Bottom Corner Tile
+#   J All But Left Tile
+#   K All But Right Tile
+#   L Top and Bottom Tile
+#   M Right Top Dot Tile
+#   N Left Top Dot Tile
+#   O Left Bottom Dot Tile
+#   P Right Bottom Dot Tile
+#   Q Both Sides Tiles
+#   R All Sides Tiles
+#   S Trap
+#   T Player Dies
+#   1 Chunguillo
+#   2 Bad Ass
+#   3 Boss
+#   ! Speed Power Up
+#   o Health Power Up
+#   * Pass to next Level                                                                                                                   
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                                                      
+                                                                                  2       o                           
+                        1                                           2       GBBBBBBBBBBBBBBF                          
+                    GBBBBF                                         KLJ      EAAAAAAAAAAAAAAD                          
+                   GNAPCCH                                                  EAAAAAAAAAAAAAAD                          
+BBBBF   !        GBNAAD             2       1       2                     GBNAAAAAAAAAAAAAAD                          
+AAAAMBBBBF  GBBBBNAAAAD           KBBBBBBBBBBBBBBBBBBBBBBBBBBLJ         GBNAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAD            ICCOAAAAAAAAAAAAAAAAAAAPCH           EAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAMF              ICCCCCCCCCCCCCCCCCCCH           GBNAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAD                                              EAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAMF                                           GBNAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAD                                           EAAAAAAAAAAAAAAAAAAAAAAD                          
+AAAAAAAAAD  EAAAAAAAAAAAMBBF                                      GBNAAAAAAAAAAAAAAAAAAAAAAD                         o
+AAAAAAAAAD  EAAAAAAAAAAAAAAMBBF                                 GBNAAAAAAAAAAAAAAAAAAAAAAAAD                        GS
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAD                                 EAAAAAAAAAAAAAAAAAAAAAAAAAAD                      3 Q 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAMBBF    2       1    1      2   GBNAAAAAAAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBD 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAMBBBBBBBBBBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD 
+AAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD 
+AAAAAAAAADTTEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD*

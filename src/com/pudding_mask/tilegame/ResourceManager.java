@@ -28,6 +28,9 @@ public class ResourceManager {
     private Sprite healSprite;
     private Sprite goalSprite;
     private Sprite bossSprite;
+    public Sprite boss3Sprite;
+    public Sprite darkPeniSprite;
+    public Sprite darkEnoxSprite;
     public static int trap_x;
     public static int trap_y;
     public Sprite badassSprite;
@@ -342,6 +345,40 @@ public class ResourceManager {
             loadImage("lvl1_boss_dead4.png"),
             loadImage("lvl1_boss_dead5.png"),
             loadImage("lvl1_boss_dead6.png"),
+            loadImage("lvl2_boss1.png"), //74
+            loadImage("lvl2_boss2.png"),
+            loadImage("lvl2_boss3.png"),
+            loadImage("lvl2_boss4.png"),
+            loadImage("lvl2_boss_dead1.png"), //78
+            loadImage("lvl2_boss_dead2.png"),
+            loadImage("lvl2_boss_dead3.png"),
+            loadImage("lvl2_boss_dead4.png"),
+            loadImage("lvl2_boss_dead5.png"),
+            loadImage("lvl2_boss_dead6.png"),
+            loadImage("darkenox1.png"), //84
+            loadImage("darkenox2.png"),
+            loadImage("darkenox3.png"),
+            loadImage("darkenox4.png"),
+            loadImage("darkenox5.png"),
+            loadImage("darkenox6.png"),
+            loadImage("darkenox7.png"),
+            loadImage("darkenox8.png"), 
+            loadImage("darkenox_jump1.png"), //92
+            loadImage("darkenox_still1.png"), //93
+            loadImage("darkenox_still2.png"),
+            loadImage("darkenox_dead1.png"),//95
+            loadImage("darkpeni1.png"), //96
+            loadImage("darkpeni2.png"),
+            loadImage("darkpeni3.png"),
+            loadImage("darkpeni4.png"),
+            loadImage("darkpeni5.png"),
+            loadImage("darkpeni6.png"),
+            loadImage("darkpeni7.png"),
+            loadImage("darkpeni8.png"), 
+            loadImage("darkpeni_jump1.png"), //104
+            loadImage("darkpeni_still1.png"), //105
+            loadImage("darkpeni_still2.png"),
+            loadImage("darkpeni_dead1.png")//107
         };
 
         images[1] = new Image[images[0].length];
@@ -356,6 +393,9 @@ public class ResourceManager {
         Animation[] chunguilloAnim = new Animation[6];
         Animation[] badassAnim = new Animation[4];
         Animation[] boss1Anim = new Animation[4];
+        Animation[] boss2Anim = new Animation[4];
+        Animation[] darkEnoxAnim = new Animation[8];
+        Animation[] darkPeniAnim = new Animation[8];
         
         //Player Animations
         playerAnim[0] = createAnim(images[0], 0, 7); //Walking Right
@@ -394,6 +434,30 @@ public class ResourceManager {
         boss1Anim[2] = createAnim(images[0], 68, 73); //Dead Right
         boss1Anim[3] = createAnim(images[1], 68, 73); //Dead Left
         
+        boss2Anim[0] = createAnim(images[0], 74, 77); //Walking Right
+        boss2Anim[1] = createAnim(images[1], 74, 77); //Walking Left
+        boss2Anim[2] = createAnim(images[0], 78, 83); //Dead Right
+        boss2Anim[3] = createAnim(images[1], 78, 83); //Dead Left
+        
+        darkEnoxAnim[0] = createAnim(images[0], 84, 91); //Walking Right
+        darkEnoxAnim[1] = createAnim(images[1], 84, 91); //Walking Left
+        darkEnoxAnim[6] = createAnim(images[0], 92, 92); //Jump Right
+        darkEnoxAnim[7] = createAnim(images[1], 92, 92); //Jump left
+        darkEnoxAnim[2] = createAnim(images[0], 95,95); //Dead Right
+        darkEnoxAnim[3] = createAnim(images[1], 95,95); //Dead Left
+        darkEnoxAnim[4] = createAnim(images[0], 93, 94); //Still Right
+        darkEnoxAnim[5] = createAnim(images[1], 93, 94); //Still Left
+        
+        darkPeniAnim[0] = createAnim(images[0], 96, 103); //Walking Right
+        darkPeniAnim[1] = createAnim(images[1], 96, 103); //Walking Left
+        darkPeniAnim[6] = createAnim(images[0], 104, 104); //Jump Right
+        darkPeniAnim[7] = createAnim(images[1], 104, 104); //Jump left
+        darkPeniAnim[2] = createAnim(images[0], 107,107); //Dead Right
+        darkPeniAnim[3] = createAnim(images[1], 107,107); //Dead Left
+        darkPeniAnim[4] = createAnim(images[0], 105, 106); //Still Right
+        darkPeniAnim[5] = createAnim(images[1], 105, 106); //Still Left
+        
+        
         // create creature sprites
         playerSprite = new Player(playerAnim[0], playerAnim[1], playerAnim[2], playerAnim[3], 
                                   playerAnim[6], playerAnim[7],playerAnim[4],playerAnim[5], 
@@ -403,6 +467,16 @@ public class ResourceManager {
                                 peniAnim[6], peniAnim[7],peniAnim[4],peniAnim[5], 
                                 emptyAnimation(), emptyAnimation());
         
+        darkPeniSprite = new Boss(darkPeniAnim[0], darkPeniAnim[1], darkPeniAnim[2], darkPeniAnim[3], 
+                                darkPeniAnim[6], darkPeniAnim[7], darkPeniAnim[4], darkPeniAnim[5], 
+                                emptyAnimation(), emptyAnimation());
+        
+        darkEnoxSprite = new Boss(darkEnoxAnim[0], darkEnoxAnim[1],
+                              darkEnoxAnim[2], darkEnoxAnim[3],
+                               darkEnoxAnim[6], darkEnoxAnim[7], darkEnoxAnim[4], darkEnoxAnim[5], 
+                                emptyAnimation(), emptyAnimation()); 
+        
+        boss3Sprite = darkEnoxSprite;
         chunguilloSprite = new Chunquillo(chunguilloAnim[0], 
                                           chunguilloAnim[1],
                                           chunguilloAnim[2], 
@@ -423,7 +497,9 @@ public class ResourceManager {
                                  emptyAnimation(), 
                                  emptyAnimation());
         
-        bossSprite = new Boss(boss1Anim[0], boss1Anim[1],
+        switch(currentMap){
+            case 1:
+                bossSprite = new Boss(boss1Anim[0], boss1Anim[1],
                               boss1Anim[2], boss1Anim[3],
                               emptyAnimation(), 
                               emptyAnimation(), 
@@ -431,7 +507,33 @@ public class ResourceManager {
                               emptyAnimation(),
                               emptyAnimation(), 
                               emptyAnimation());
-    }
+                break;
+            case 2: 
+                bossSprite = new Boss(boss2Anim[0], boss2Anim[1],
+                              boss2Anim[2], boss2Anim[3],
+                              emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(),
+                              emptyAnimation(), 
+                              emptyAnimation());
+                break;
+            case 3:
+                bossSprite = boss3Sprite;
+                break;
+            default:
+                bossSprite = new Boss(boss1Anim[0], boss1Anim[1],
+                              boss1Anim[2], boss1Anim[3],
+                              emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(),
+                              emptyAnimation(), 
+                              emptyAnimation());
+                break;
+        
+        }
+   }
 
 
     private Animation createAnim(Image player[], int m, int n)

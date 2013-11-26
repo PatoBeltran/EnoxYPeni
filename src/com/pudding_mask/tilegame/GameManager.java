@@ -244,10 +244,12 @@ public class GameManager extends GameCore {
                         player.changeAnimation(resourceManager.peniAnim[0], resourceManager.peniAnim[1], resourceManager.peniAnim[2], resourceManager.peniAnim[3], 
                                   resourceManager.peniAnim[6], resourceManager.peniAnim[7],resourceManager.peniAnim[4],resourceManager.peniAnim[5], resourceManager.emptyAnimation(), resourceManager.emptyAnimation());
                         resourceManager.isPeni = true;
+                        resourceManager.boss3Sprite = resourceManager.darkPeniSprite;
                         menu.goToGame();
                     }
                     if(inputManager.getMouseX()>= 170 && inputManager.getMouseX()<= 485
                         && inputManager.getMouseY()>=180 && inputManager.getMouseY() <= 656){
+                        resourceManager.boss3Sprite = resourceManager.darkEnoxSprite;
                         menu.goToGame();
                     }
                 }   
