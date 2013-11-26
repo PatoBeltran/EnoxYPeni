@@ -41,6 +41,8 @@ public abstract class Creature extends Sprite {
     public boolean isBoss=false;
     public boolean stepping =true;
     public boolean shooting = false;
+    public boolean awake = false;
+
 
     public int whoAmI;
     
@@ -142,8 +144,9 @@ public abstract class Creature extends Sprite {
         on screen. Normally, the creature starts moving left.
     */
     public void wakeUp() {
-        if (getState() == STATE_NORMAL && getVelocityX() == 0) {
+        if (getState() == STATE_NORMAL && !awake) {
             setVelocityX(-getMaxSpeed());
+            awake = true;
         }
     }
 
