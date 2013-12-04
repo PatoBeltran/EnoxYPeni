@@ -528,6 +528,12 @@ public class GameManager extends GameCore {
                 return otherSprite;
             }
         }
+        if(map.getBoss()!=null){
+            if (isCollision(sprite, map.getBoss())) {
+                    // collision found, return the Sprite
+                return map.getBoss();
+            }
+        }
         // no collision found
         return null;
     }
@@ -835,26 +841,26 @@ public class GameManager extends GameCore {
         if (collisionSprite instanceof PowerUp) {
             acquirePowerUp((PowerUp)collisionSprite);
         }
-        else if(collisionSprite == null||player.invul){}
+        else if(collisionSprite == null){}
         else if (collisionSprite.isEnBul) {
             if(player.invul==false){
                 player.invul = true;
                 player.invulTimer = 0;
-            }
-            map.removeEnBullet(collisionSprite);
-            if(player.getLife()==1){
+                map.removeEnBullet(collisionSprite);
+                if(player.getLife()==1){
                     // player dies!
                     player.decreaseLife();
                     player.setState(Creature.STATE_DYING);
-                    
+
                 }
                 else { 
                     player.decreaseLife();
                 }
+            }
         }
         else if (collisionSprite instanceof Creature) {
             Creature badguy = (Creature)collisionSprite;
-            if (canKill) {
+            if (canKill&&(player.getY()<badguy.getY() - player.getHeight()+5)) {
                 // kill the badguy and make player bounce
                 soundManager.play(boopSound);
                 if(badguy.getLife()<=3*player.getLevel()){
@@ -865,22 +871,23 @@ public class GameManager extends GameCore {
                 else {
                     badguy.decreaseLife(3*player.getLevel());
                 }
-                player.setY(badguy.getY() - player.getHeight());
-                player.jump(true);
+                if(player.getY()<(badguy.getY() - player.getHeight()+5)){
+                    player.jump(true);
+                }
             }
             else {
                 if(player.invul==false){
                     player.invul = true;
                     player.invulTimer = 0;
-                }
-                if(player.getLife()==1){
-                    // player dies!
-                    player.decreaseLife();
-                    player.setState(Creature.STATE_DYING);
-                    
-                }
-                else { 
-                    player.decreaseLife();
+                    if(player.getLife()==1){
+                        // player dies!
+                        player.decreaseLife();
+                        player.setState(Creature.STATE_DYING);
+
+                    }
+                    else { 
+                        player.decreaseLife();
+                    }
                 }
             }
         }
