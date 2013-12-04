@@ -557,8 +557,11 @@ public class GameManager extends GameCore {
             if (player.getState() == Creature.STATE_DEAD) {
                 boolean high = tryhigh(score);
                 score=0;
+                map.sprites.clear();
+                map.boss = null;
                 map = resourceManager.reloadMap();
                 resourceManager.loadBoss(resourceManager.currentMap, map);
+                ((Creature)map.boss).awake = false;
                 playr.restoreLife();
                 return;
             }
@@ -860,7 +863,7 @@ public class GameManager extends GameCore {
         }
         else if (collisionSprite instanceof Creature) {
             Creature badguy = (Creature)collisionSprite;
-            if (canKill&&(player.getY()<badguy.getY() - player.getHeight()+5)) {
+            if (canKill&&(player.getY()<badguy.getY() - player.getHeight()+20)&&!(badguy.isBoss)) {
                 // kill the badguy and make player bounce
                 soundManager.play(boopSound);
                 if(badguy.getLife()<=3*player.getLevel()){
@@ -871,11 +874,9 @@ public class GameManager extends GameCore {
                 else {
                     badguy.decreaseLife(3*player.getLevel());
                 }
-                if(player.getY()<(badguy.getY() - player.getHeight()+5)){
                     player.jump(true);
-                }
             }
-            else {
+            else if(!canKill&&(player.getY()>badguy.getY() - player.getHeight()+20)){
                 if(player.invul==false){
                     player.invul = true;
                     player.invulTimer = 0;

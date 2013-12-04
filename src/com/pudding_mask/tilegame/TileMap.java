@@ -15,10 +15,10 @@ import com.pudding_mask.graphics.Sprite;
 public class TileMap {
 
     private Image[][] tiles;
-    private LinkedList sprites;
+    public LinkedList sprites;
     private LinkedList bullets;
     private LinkedList enemyBullets;
-    private Sprite boss;
+    public Sprite boss;
     private Sprite player;
 
     /**
