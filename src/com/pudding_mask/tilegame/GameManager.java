@@ -21,8 +21,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
     GameManager manages all parts of the game.
@@ -393,8 +395,12 @@ public class GameManager extends GameCore {
             }
         }
         else if(menu.isChoosingChar()){
-          g.drawImage(loadImage("images/choosing_enox.png"),195,335, null);
-          g.drawImage(loadImage("images/choosing_peni.png"),590,335, null);
+          URL urlImg = ResourceManager.class.getResource("/images/choosing_enox.png");
+          Image enoxImg = new ImageIcon(urlImg).getImage();
+          g.drawImage(enoxImg,195,335, null);
+          urlImg = ResourceManager.class.getResource("/images/choosing_peni.png");
+          Image peniImg = new ImageIcon(urlImg).getImage();
+          g.drawImage(peniImg,590,335, null);
         }
     }
 

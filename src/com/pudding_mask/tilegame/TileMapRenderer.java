@@ -6,6 +6,7 @@ import java.util.Iterator;
 import com.pudding_mask.graphics.Sprite;
 import com.pudding_mask.tilegame.sprites.Creature;
 import com.pudding_mask.tilegame.sprites.Player;
+import java.net.URL;
 import javax.swing.ImageIcon;
 
 /**
@@ -92,8 +93,9 @@ public class TileMapRenderer {
         }
     }
      public Image loadImage(String name) {
-        String filename = "images/" + name;
-        return new ImageIcon(filename).getImage();
+        String filename = "/images/" + name;
+        URL urlImg = ResourceManager.class.getResource(filename);
+        return new ImageIcon(urlImg).getImage();
     }
 
 

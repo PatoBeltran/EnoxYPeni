@@ -8,11 +8,11 @@ package com.pudding_mask.tilegame;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.net.URL;
 import javax.swing.ImageIcon;
 
 /**
  *
- * @author PatoBeltran
  */
 
 /*
@@ -120,7 +120,7 @@ public class MenuManager {
     public void draw(Graphics2D g, TileMap map,
         int screenWidth, int screenHeight)
     {
-        String filename = "images/";
+        String filename = "/images/";
         
         if(main){
             filename += "menu.png";
@@ -141,18 +141,22 @@ public class MenuManager {
             filename += "pause.png";
         }
         
-        Image background = new ImageIcon(filename).getImage();
+        URL urlImg = ResourceManager.class.getResource(filename);
+        Image background = new ImageIcon(urlImg).getImage();
+        
         g.drawImage(background, 0, 0, null);
         if(!classicControl && configuration){
-            g.drawImage(new ImageIcon("images/configurar_wasd.png").getImage(), 0,0,null);
+            urlImg = ResourceManager.class.getResource("/images/configurar_wasd.png");
+            g.drawImage(new ImageIcon(urlImg).getImage(), 0,0,null);
         }
         if(!sound && configuration){
-            g.drawImage(new ImageIcon("images/configurar_no.png").getImage(), 0,0,null);
+            urlImg = ResourceManager.class.getResource("/images/configurar_no.png");
+            g.drawImage(new ImageIcon(urlImg).getImage(), 0,0,null);
         }
          if(!classicControl && instructions){
-            g.drawImage(new ImageIcon("images/instrucciones_wasd.png").getImage(), 0,0,null);
+            urlImg = ResourceManager.class.getResource("/images/instrucciones_wasd.png");
+            g.drawImage(new ImageIcon(urlImg).getImage(), 0,0,null);
         }
-        
     }
     
     //init

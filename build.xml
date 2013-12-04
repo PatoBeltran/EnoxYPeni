@@ -1,86 +1,74 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<!-- (If you delete it and reopen the project it will be recreated.) -->
+<!-- By default, only the Clean and Build commands use this build script. -->
+<!-- Commands such as Run, Debug, and Test only use this build script if -->
+<!-- the Compile on Save feature is turned off for the project. -->
+<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
+<!-- in the project's Project Properties dialog box.-->
+<project name="EnoxYPeni" default="default" basedir=".">
+    <description>Builds, tests, and runs the project EnoxYPeni.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <!--
 
-<!-- ===================================================================== -->
-<!-- Pudding Mask                                                          -->
-<!-- Enox y Peni                                                           -->
-<!-- Ant 1.5 build file                                                    -->
-<!-- ===================================================================== -->
+    There exist several targets which are by default empty and which can be 
+    used for execution of your tasks. These targets are usually executed 
+    before and after some main targets. They are: 
 
-<project name="Enox y Peni - Game from Pudding Mask" default="build" basedir=".">
+      -pre-init:                 called before initialization of project properties
+      -post-init:                called after initialization of project properties
+      -pre-compile:              called before javac compilation
+      -post-compile:             called after javac compilation
+      -pre-compile-single:       called before javac compilation of single file
+      -post-compile-single:      called after javac compilation of single file
+      -pre-compile-test:         called before javac compilation of JUnit tests
+      -post-compile-test:        called after javac compilation of JUnit tests
+      -pre-compile-test-single:  called before javac compilation of single JUnit test
+      -post-compile-test-single: called after javac compilation of single JUunit test
+      -pre-jar:                  called before JAR building
+      -post-jar:                 called after JAR building
+      -post-clean:               called after cleaning build products
 
-    <property name="srcdir" value="src"/>
-    <property name="destdir" value="build"/>
-    <property name="docdir" value="doc"/>
+    (Targets beginning with '-' are not intended to be called on their own.)
 
-    <!-- Allow user to override properties without editing this file -->
-    <property file="${user.home}/.ant.properties" />
+    Example of inserting an obfuscator after compilation could look like this:
 
+        <target name="-post-compile">
+            <obfuscate>
+                <fileset dir="${build.classes.dir}"/>
+            </obfuscate>
+        </target>
 
-    <!-- ================================================================= -->
-    <!-- Compile                                                           -->
-    <!-- ================================================================= -->
-    <target name="compile" description="Compiles the source code">
-
-        <mkdir dir="${destdir}"/>
-
-        <javac srcdir="${srcdir}"
-               destdir="${destdir}"
-               debug="on" >
-
-            <include name="**/*.java"/>
-        </javac>
-
-    </target>
-
-
-    <!-- ================================================================= -->
-    <!-- Clean                                                             -->
-    <!-- ================================================================= -->
-    <target name="clean" description="Deletes the build directory">
-        <delete dir="${destdir}" failonerror="false" />
-    </target>
-
-
-    <!-- =================================================================== -->
-    <!-- Build                                                               -->
-    <!-- =================================================================== -->
-    <target name="build" depends="clean, compile" description="Compiles and creates the Jar file">
-
-        <jar jarfile="${basedir}/tilegame.jar">
-            <manifest>
-                <attribute name="Main-Class"
-                    value="com.pudding_mask.tilegame.GameManager"/>
-            </manifest>
-
-            <fileset dir="${destdir}" includes="**/*.class"/>
-        </jar>
-
-    </target>
+    For list of available properties check the imported 
+    nbproject/build-impl.xml file. 
 
 
-    <!-- =================================================================== -->
-    <!-- Javadoc                                                             -->
-    <!-- =================================================================== -->
-    <target name="javadoc" description="Creates API documentation (JavaDocs)">
+    Another way to customize the build is by overriding existing main targets.
+    The targets of interest are: 
 
-        <delete dir="${docdir}" failonerror="false"/>
-        <mkdir dir="${docdir}"/>
+      -init-macrodef-javac:     defines macro for javac compilation
+      -init-macrodef-junit:     defines macro for junit execution
+      -init-macrodef-debug:     defines macro for class debugging
+      -init-macrodef-java:      defines macro for class execution
+      -do-jar-with-manifest:    JAR building (if you are using a manifest)
+      -do-jar-without-manifest: JAR building (if you are not using a manifest)
+      run:                      execution of project 
+      -javadoc-build:           Javadoc generation
+      test-report:              JUnit report generation
 
-        <javadoc
-            destdir="${docdir}"
-            access="private"
-            author="true"
-            version="true"
-            use="true">
+    An example of overriding the target for project execution could look like this:
 
-            <fileset dir="${srcdir}">
-                <include name="*.java"/>
-            </fileset>
+        <target name="run" depends="EnoxYPeni-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
 
-            <link href="http://java.sun.com/j2se/1.4.2/docs/api/"/>
+    Notice that the overridden target depends on the jar target and not only on 
+    the compile target as the regular run target does. Again, for a list of available 
+    properties which you can use, check the target you are overriding in the
+    nbproject/build-impl.xml file. 
 
-        </javadoc>
-
-    </target>
-
+    -->
 </project>

@@ -1,0 +1,48 @@
+# Map file for tile-based game
+# (Lines that start with '#' are comments)
+# The tiles are:
+#   (Space) Empty tile
+#   A Center Tile
+#   B Top Tile                            		G B F     _	 _	_	          _
+#   C Bottom Tile		                      	E A D	  _| J  |_ K	_ L  | | Q |_| R
+#   D Right Tile		                      	I C H
+#   E Left Tile
+#   F Right Top Corner Tile
+#   G Left Top Corner Tile
+#   H Right Bottom Corner Tile
+#   I Left Bottom Corner Tile
+#   J All But Left Tile
+#   K All But Right Tile
+#   L Top and Bottom Tile
+#   M Right Top Dot Tile
+#   N Left Top Dot Tile
+#   O Left Bottom Dot Tile
+#   P Right Bottom Dot Tile
+#   Q Both Sides Tiles
+#   R All Sides Tiles
+#   S Trap
+#   T Player Dies
+#   1 Chunguillo
+#   2 Bad Ass
+#   3 Boss
+#   ! Speed Power Up
+#   o Health Power Up
+#   * Pass to next Level
+                                                                                                   
+                                                                                                   
+                                                                                                   
+BF          o                                                                       o            GB
+AD         KLLLLLJ              KLLLLLLLLLLLLBLLLLLLLLLLLLLLLLLLLF                               EA
+AD                                           Q                   EBBBBBBBBBBBBBBF                EA
+AD                KLLLLJ                     Q                   EAAAAAAAAAAAAAAD      KLF       EA
+AD                                          KH             2 o   EAAAAAAAAAAAAAAMF       Q       EA
+AD                        2                               KLLLJ  EAAAAAAAAAAAAAAAMF    KLCLLLJ   EA
+AD          2           KLLLJ                                    EAAAAAAAAAAAAAAAAMF             EA
+AD         KLJ                          1    1  1                EAAAAAAAAAAAAAAAAAD             EA
+AD                   2        1      KLLLLLLLLLLLJ               EAAAAAAAAAAAAAAAAAMF          GSEA
+AD      1       GBBBBBBBBBBBBBBBF             !             2    EAAAAAAAAAAAAAAAAAAD       3  Q EA
+AMBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAMBBBBBBBBBF  GBBBBBBBBBBBBBBBBBBBNAAAAAAAAAAAAAAAAAAMBBBBBBBBBBD EA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD  EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD EA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTTEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD*EA
