@@ -12,6 +12,8 @@ public class Player extends Creature {
     public static final int LEVEL_ANIMATION = 2300;
     
     public boolean isPeni;
+    public boolean invul = false;
+    public int invulTimer = 0 ;
 
     private boolean onGround;
     

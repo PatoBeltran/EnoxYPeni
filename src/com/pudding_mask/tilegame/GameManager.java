@@ -727,6 +727,15 @@ public class GameManager extends GameCore {
             creature.collideHorizontal();
         }
         if (creature instanceof Player) {
+            if(((Player)creature).invul){
+                if (((Player)creature).invulTimer>1000){
+                    ((Player)creature).invulTimer = 0;
+                    ((Player)creature).invul = false;
+                }
+                else{
+                    ((Player)creature).invulTimer += elapsedTime;
+                }
+            }
             checkPlayerCollision((Player)creature, false);
         }
 
@@ -816,20 +825,22 @@ public class GameManager extends GameCore {
         canKill is true, collisions with Creatures will kill
         them.
     */
-    public void checkPlayerCollision(Player player,
-        boolean canKill)
-    {
+    public void checkPlayerCollision(Player player, boolean canKill)
+    {        
         if (!player.isAlive()) {
             return;
         }
-
         // check for player collision with other sprites
         Sprite collisionSprite = getSpriteCollision(player);
         if (collisionSprite instanceof PowerUp) {
             acquirePowerUp((PowerUp)collisionSprite);
         }
-        else if(collisionSprite == null){}
+        else if(collisionSprite == null||player.invul){}
         else if (collisionSprite.isEnBul) {
+            if(player.invul==false){
+                player.invul = true;
+                player.invulTimer = 0;
+            }
             map.removeEnBullet(collisionSprite);
             if(player.getLife()==1){
                     // player dies!
@@ -858,6 +869,10 @@ public class GameManager extends GameCore {
                 player.jump(true);
             }
             else {
+                if(player.invul==false){
+                    player.invul = true;
+                    player.invulTimer = 0;
+                }
                 if(player.getLife()==1){
                     // player dies!
                     player.decreaseLife();
