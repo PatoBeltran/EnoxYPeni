@@ -10,9 +10,10 @@ public class Chunquillo extends Creature {
     public Chunquillo(Animation left, Animation right,
         Animation deadLeft, Animation deadRight, Animation leftJump,
          Animation rightJump,  Animation leftStill,  Animation rightStill,
-          Animation leftFire,  Animation rightFire)
+          Animation leftFire,  Animation rightFire, Animation leftInv, Animation rightInv,
+          Animation leftJumpInv, Animation rightJumpInv, Animation leftStillInv, Animation rightStillInv)
     {
-        super(CHUNGUILLO, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, 12);
+        super(CHUNGUILLO, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, leftInv, rightInv, leftJumpInv, rightJumpInv, leftStillInv, rightStillInv, 12);
 
         exp = 1;
         chung = true;

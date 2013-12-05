@@ -11,9 +11,10 @@ public class Boss extends Creature {
     public Boss(Animation left, Animation right,
         Animation deadLeft, Animation deadRight, Animation leftJump,
          Animation rightJump,  Animation leftStill,  Animation rightStill,
-          Animation leftFire,  Animation rightFire)
+          Animation leftFire,  Animation rightFire, Animation leftInv, Animation rightInv,
+          Animation leftJumpInv, Animation rightJumpInv, Animation leftStillInv, Animation rightStillInv)
     {
-        super(BOSS, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, 24);
+        super(BOSS, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, leftInv, rightInv, leftJumpInv, rightJumpInv, leftStillInv, rightStillInv, 24);
 
         exp = 5;
         isBoss = true;

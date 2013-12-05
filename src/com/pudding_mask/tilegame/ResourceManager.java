@@ -41,7 +41,7 @@ public class ResourceManager {
     public Sprite bullet;
     public Sprite bulletB;
     public Sprite killerTile;
-    public Animation[] peniAnim = new Animation[8];
+    public Animation[] peniAnim = new Animation[14];
     public static Animation lvlUpAnim;
     public static Animation adquireAnim;
     public boolean isPeni;
@@ -399,7 +399,7 @@ public class ResourceManager {
         }
 
         // create creature animations
-        Animation[] playerAnim = new Animation[8];
+        Animation[] playerAnim = new Animation[14];
         Animation[] chunguilloAnim = new Animation[6];
         Animation[] badassAnim = new Animation[4];
         Animation[] boss1Anim = new Animation[4];
@@ -416,6 +416,12 @@ public class ResourceManager {
         playerAnim[3] = createAnim(images[1], 13,20); //Dead Left
         playerAnim[4] = createAnim(images[0], 9, 12); //Still Right
         playerAnim[5] = createAnim(images[1], 9, 12); //Still Left
+        playerAnim[8] = createInvulAnim(images[0], 0, 7); // Walking right Inv
+        playerAnim[9] = createInvulAnim(images[1], 0, 7); // Walking left inv
+        playerAnim[10] = createInvulAnim(images[0], 8, 8); // jump right Inv
+        playerAnim[11] = createInvulAnim(images[1], 8, 8); // jump left inv
+        playerAnim[12] = createInvulAnim(images[0], 9, 12); // still right Inv
+        playerAnim[13] = createInvulAnim(images[1], 9, 12); // still left inv
         
         peniAnim[0] = createAnim(images[0], 21, 28); //Walking Right
         peniAnim[1] = createAnim(images[1], 21, 28); //Walking Left
@@ -425,7 +431,13 @@ public class ResourceManager {
         peniAnim[3] = createAnim(images[1], 34 ,41); //Dead Left
         peniAnim[4] = createAnim(images[0], 30, 33); //Still Right
         peniAnim[5] = createAnim(images[1], 30, 33); //Still Left
-        
+        peniAnim[8] = createInvulAnim(images[0], 21, 28); // Walking right Inv
+        peniAnim[9] = createInvulAnim(images[1], 21, 28); // Walking left inv
+        peniAnim[10] = createInvulAnim(images[0], 29, 29); // jump right Inv
+        peniAnim[11] = createInvulAnim(images[1], 29, 29); // jump left inv
+        peniAnim[12] = createInvulAnim(images[0], 9, 12); // still right Inv
+        peniAnim[13] = createInvulAnim(images[1], 30, 33); // still left inv
+                 
         //Creature Animations
         chunguilloAnim[0] = createAnim(images[0], 52, 55); //Walking Right
         chunguilloAnim[1] = createAnim(images[1], 52, 55); //Walking Left
@@ -471,20 +483,29 @@ public class ResourceManager {
         // create creature sprites
         playerSprite = new Player(playerAnim[0], playerAnim[1], playerAnim[2], playerAnim[3], 
                                   playerAnim[6], playerAnim[7],playerAnim[4],playerAnim[5], 
-                                  emptyAnimation(), emptyAnimation());
+                                  emptyAnimation(), emptyAnimation(), playerAnim[8], 
+                                  playerAnim[9], playerAnim[10],playerAnim[11], playerAnim[12], 
+                                  playerAnim[13]);
         
         peniSprite = new Player(peniAnim[0], peniAnim[1], peniAnim[2], peniAnim[3], 
                                 peniAnim[6], peniAnim[7],peniAnim[4],peniAnim[5], 
-                                emptyAnimation(), emptyAnimation());
+                                emptyAnimation(), emptyAnimation(), peniAnim[8], 
+                                peniAnim[9], peniAnim[10],peniAnim[11], peniAnim[12], 
+                                peniAnim[13]);
         
         darkPeniSprite = new Boss(darkPeniAnim[0], darkPeniAnim[1], darkPeniAnim[2], darkPeniAnim[3], 
-                                darkPeniAnim[6], darkPeniAnim[7], darkPeniAnim[4], darkPeniAnim[5], 
-                                emptyAnimation(), emptyAnimation());
+                                  darkPeniAnim[6], darkPeniAnim[7], darkPeniAnim[4], darkPeniAnim[5], 
+                                  emptyAnimation(), emptyAnimation(), emptyAnimation(), emptyAnimation(),
+                                  emptyAnimation(), emptyAnimation(), emptyAnimation(), emptyAnimation());
         
         darkEnoxSprite = new Boss(darkEnoxAnim[0], darkEnoxAnim[1],
-                              darkEnoxAnim[2], darkEnoxAnim[3],
-                               darkEnoxAnim[6], darkEnoxAnim[7], darkEnoxAnim[4], darkEnoxAnim[5], 
-                                emptyAnimation(), emptyAnimation()); 
+                                  darkEnoxAnim[2], darkEnoxAnim[3],
+                                  darkEnoxAnim[6], darkEnoxAnim[7], 
+                                  darkEnoxAnim[4], darkEnoxAnim[5], 
+                                  emptyAnimation(), emptyAnimation(), 
+                                  emptyAnimation(), emptyAnimation(),
+                                  emptyAnimation(), emptyAnimation(), 
+                                  emptyAnimation(), emptyAnimation()); 
         
         boss3Sprite = darkEnoxSprite;
         chunguilloSprite = new Chunquillo(chunguilloAnim[0], 
@@ -496,7 +517,13 @@ public class ResourceManager {
                                           emptyAnimation(), 
                                           emptyAnimation(),
                                           chunguilloAnim[4],
-                                          chunguilloAnim[5]);
+                                          chunguilloAnim[5], 
+                                          emptyAnimation(),
+                                          emptyAnimation(), 
+                                          emptyAnimation(),
+                                          emptyAnimation(),
+                                          emptyAnimation(),
+                                          emptyAnimation());
         
         badassSprite = new Badas(badassAnim[0], badassAnim[1],
                                  badassAnim[2], badassAnim[3],
@@ -504,6 +531,12 @@ public class ResourceManager {
                                  emptyAnimation(), 
                                  emptyAnimation(), 
                                  emptyAnimation(),
+                                 emptyAnimation(), 
+                                 emptyAnimation(), 
+                                 emptyAnimation(), 
+                                 emptyAnimation(),
+                                 emptyAnimation(), 
+                                 emptyAnimation(), 
                                  emptyAnimation(), 
                                  emptyAnimation());
         
@@ -515,6 +548,12 @@ public class ResourceManager {
                               emptyAnimation(), 
                               emptyAnimation(),
                               emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(),
+                              emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(),
                               emptyAnimation());
 
                 boss2Sprite = new Boss(boss2Anim[0], boss2Anim[1],
@@ -524,6 +563,12 @@ public class ResourceManager {
                               emptyAnimation(), 
                               emptyAnimation(),
                               emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(),
+                              emptyAnimation(), 
+                              emptyAnimation(), 
+                              emptyAnimation(),
                               emptyAnimation());
 
 
@@ -542,24 +587,31 @@ public class ResourceManager {
                 break;
             default:
                 bossSprite = boss1Sprite;
-        
         }
+
         bossSprite.setX(bx);
                     bossSprite.setY(by);
                     newMap.addBoss(bossSprite);
     }
 
-    private Animation createAnim(Image player[], int m, int n)
-    {
+    private Animation createAnim(Image player[], int m, int n){
         Animation anim = new Animation();
         for(int i = m; i<=n; i++)
             anim.addFrame(player[i], 150);
 
         return anim;
     }
-    
-    private Animation createAnim(Image player)
-    {
+
+    private Animation createInvulAnim(Image player[], int m, int n){
+      Animation anim = new Animation();
+      for(int i = m; i<=n; i++)
+            anim.addFrame(player[i], 150);
+            anim.addFrame(loadImage(""), 150);
+
+        return anim;
+    }
+
+    private Animation createAnim(Image player){
         Animation anim = new Animation();
         anim.addFrame(player, 150);
 

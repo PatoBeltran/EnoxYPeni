@@ -12,8 +12,6 @@ public class Player extends Creature {
     public static final int LEVEL_ANIMATION = 2300;
     
     public boolean isPeni;
-    public boolean invul = false;
-    public int invulTimer = 0 ;
 
     private boolean onGround;
     
@@ -32,9 +30,10 @@ public class Player extends Creature {
     public Player(Animation left, Animation right,
         Animation deadLeft, Animation deadRight, Animation leftJump,
          Animation rightJump,  Animation leftStill,  Animation rightStill,
-          Animation leftFire,  Animation rightFire)
+          Animation leftFire,  Animation rightFire, Animation leftInv, Animation rightInv,
+          Animation leftJumpInv, Animation rightJumpInv, Animation leftStillInv, Animation rightStillInv)
     {
-        super(PLAYER, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, 5);
+        super(PLAYER, left, right, deadLeft, deadRight, leftJump, rightJump, leftStill, rightStill, leftFire, rightFire, leftInv, rightInv, leftJumpInv, rightJumpInv, leftStillInv, rightStillInv, 5);
         level = 1;
         isPeni = false;
         setDieTime(1100);

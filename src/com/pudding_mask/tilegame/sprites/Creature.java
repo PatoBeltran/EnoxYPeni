@@ -30,6 +30,15 @@ public abstract class Creature extends Sprite {
     private Animation rightStill;
     private Animation leftFire;
     private Animation rightFire;
+    private Animation leftInv;
+    private Animation rightInv;
+    private Animation leftJumpInv;
+    private Animation rightJumpInv;
+    private Animation leftStillInv;
+    private Animation rightStillInv;
+    
+    public boolean invul = false;
+    public int invulTimer = 0 ;
     
     private int state;
     private long stateTime;
@@ -57,7 +66,9 @@ public abstract class Creature extends Sprite {
     public Creature(int whoami, Animation left, Animation right,
         Animation deadLeft, Animation deadRight, Animation leftJump,
          Animation rightJump,  Animation leftStill,  Animation rightStill,
-          Animation leftFire,  Animation rightFire, int hp)
+          Animation leftFire,  Animation rightFire, Animation leftInv, Animation rightInv,
+          Animation leftJumpInv, Animation rightJumpInv, Animation leftStillInv, 
+          Animation rightStillInv, int hp)
     {
         super(right);
         whoAmI = whoami;
@@ -71,6 +82,12 @@ public abstract class Creature extends Sprite {
         this.rightStill = rightStill;
         this.leftFire = leftFire;
         this.rightFire = rightFire;
+        this.leftInv = leftInv;
+        this.rightInv = rightInv;
+        this.leftJumpInv = leftJumpInv;
+        this. rightJumpInv = rightJumpInv;
+        this.leftStillInv = leftStillInv;
+        this.rightStillInv = rightStillInv;
         state = STATE_NORMAL;
         this.hp = hp;
     }
@@ -240,11 +257,21 @@ public abstract class Creature extends Sprite {
         // select the correct Animation
         Animation newAnim = anim;
         if (getVelocityX() < 0) {
-            newAnim = left;
-            dir = false;
+            if(invul && whoAmI == PLAYER){
+                newAnim = leftInv;
+            }
+            else {
+                newAnim = left;
+            }
+             dir = false;
         }
         else if (getVelocityX() > 0) {
-            newAnim = right;
+            if(invul && whoAmI == PLAYER){
+                newAnim = rightInv;
+            }
+            else {
+                newAnim = right;
+            }
             dir = true;
         }
         if (state == STATE_DYING && (newAnim == left || newAnim == leftStill)) {
@@ -262,25 +289,55 @@ public abstract class Creature extends Sprite {
         switch(whoAmI){
             case PLAYER:
                 if(!stepping && newAnim == left){
-                    newAnim = leftJump;
-                }
-                else if (!stepping && newAnim == right){
-                    newAnim = rightJump;
-                }
-                if (getVelocityX()==0 && newAnim == left){
-                    if(stepping){
-                        newAnim = leftStill;
+                    if (invul){
+                        newAnim = leftJumpInv;
                     }
                     else {
                         newAnim = leftJump;
                     }
                 }
-                else if(getVelocityX()==0 && newAnim == right){
-                    if(stepping){
-                        newAnim = rightStill;
+                else if (!stepping && newAnim == right){
+                    if(invul){
+                        newAnim = rightJumpInv;
                     }
                     else {
                         newAnim = rightJump;
+                    }
+                }
+                if (getVelocityX()==0 && newAnim == left){
+                    if(stepping){
+                        if(invul){
+                            newAnim = leftStillInv;
+                        }
+                        else {
+                            newAnim = leftStill;
+                        }
+                    }
+                    else {
+                        if(invul){
+                            newAnim = leftJumpInv;
+                        }
+                        else {
+                            newAnim = leftJump;
+                        }
+                    }
+                }
+                else if(getVelocityX()==0 && newAnim == right){
+                    if(stepping){
+                        if(invul){
+                            newAnim = rightStillInv;
+                        }
+                        else{
+                            newAnim = rightStill;
+                        }
+                    }
+                    else {
+                        if(invul){
+                            newAnim = rightJumpInv;
+                        }
+                        else {
+                            newAnim = rightJump;
+                        }
                     }
                 }
                 break;
