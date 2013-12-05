@@ -604,9 +604,10 @@ public class ResourceManager {
 
     private Animation createInvulAnim(Image player[], int m, int n){
       Animation anim = new Animation();
-      for(int i = m; i<=n; i++)
-            anim.addFrame(player[i], 150);
-            anim.addFrame(loadImage("blank.png"), 150);
+      for(int i = m; i<=n; i++){
+            anim.addFrame(player[i], 100);
+            anim.addFrame(loadImage("blank.png"), 100);
+      }
 
         return anim;
     }

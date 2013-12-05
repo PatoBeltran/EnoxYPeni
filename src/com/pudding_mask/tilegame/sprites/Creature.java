@@ -140,7 +140,7 @@ public abstract class Creature extends Sprite {
                 (Animation)leftInv.clone(),
                 (Animation)rightInv.clone(),
                 (Animation)leftJumpInv.clone(),
-                (Animation) rightJumpInv.clone(),
+                (Animation)rightJumpInv.clone(),
                 (Animation)leftStillInv.clone(),
                 (Animation)rightStillInv.clone()
             });
@@ -302,52 +302,48 @@ public abstract class Creature extends Sprite {
         }
         switch(whoAmI){
             case PLAYER:
-                if(!stepping && newAnim == left){
-                    if (invul){
+                if (invul){
+                    if(!stepping && (newAnim == left || newAnim == leftInv || newAnim == leftJumpInv || newAnim == leftStillInv || newAnim == leftStill)){
                         newAnim = leftJumpInv;
                     }
-                    else {
-                        newAnim = leftJump;
-                    }
-                }
-                else if (!stepping && newAnim == right){
-                    if(invul){
+                    else if (!stepping && (newAnim == right || newAnim == rightInv || newAnim == rightJumpInv || newAnim == rightStillInv || newAnim == rightStill)){
                         newAnim = rightJumpInv;
                     }
-                    else {
-                        newAnim = rightJump;
-                    }
-                }
-                if (getVelocityX()==0 && newAnim == left){
-                    if(stepping){
-                        if(invul){
+                    if (getVelocityX()==0 && (newAnim == left || newAnim == leftInv || newAnim == leftJumpInv || newAnim == leftStillInv || newAnim == leftStill)){
+                        if(stepping){
                             newAnim = leftStillInv;
                         }
                         else {
-                            newAnim = leftStill;
+                            newAnim = leftJumpInv;
                         }
                     }
-                    else {
-                        if(invul){
-                            newAnim = leftJumpInv;
+                    else if(getVelocityX()==0 && (newAnim == right || newAnim == rightInv || newAnim == rightJumpInv || newAnim == rightStillInv || newAnim == rightStill)){
+                        if(stepping){
+                            newAnim = rightStillInv;  
+                        }
+                        else {
+                            newAnim = rightJumpInv;
+                        }
+                    }
+                }
+                else {
+                    if(!stepping && (newAnim == left || newAnim == leftInv || newAnim == leftJumpInv || newAnim == leftStillInv || newAnim == leftStill)){
+                        newAnim = leftJump;
+                    }
+                    else if (!stepping && (newAnim == right || newAnim == rightInv || newAnim == rightJumpInv || newAnim == rightStillInv || newAnim == rightStill)){
+                        newAnim = rightJump;
+                    }
+                    if (getVelocityX()==0 &&  (newAnim == left || newAnim == leftInv || newAnim == leftJumpInv || newAnim == leftStillInv || newAnim == leftStill)){
+                        if(stepping){
+                            newAnim = leftStill;
                         }
                         else {
                             newAnim = leftJump;
                         }
                     }
-                }
-                else if(getVelocityX()==0 && newAnim == right){
-                    if(stepping){
-                        if(invul){
-                            newAnim = rightStillInv;
-                        }
-                        else{
-                            newAnim = rightStill;
-                        }
-                    }
-                    else {
-                        if(invul){
-                            newAnim = rightJumpInv;
+                    else if(getVelocityX()==0 && (newAnim == right || newAnim == rightInv || newAnim == rightJumpInv || newAnim == rightStillInv || newAnim == rightStill)){
+                        if(stepping){
+                            newAnim = rightStill;  
                         }
                         else {
                             newAnim = rightJump;
