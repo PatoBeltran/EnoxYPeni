@@ -588,10 +588,12 @@ public class ResourceManager {
             default:
                 bossSprite = boss1Sprite;
         }
-
+        ((Boss)bossSprite).setHp(24);
+        ((Boss)bossSprite).setState(0);
+        ((Boss)bossSprite).awake = false;
         bossSprite.setX(bx);
-                    bossSprite.setY(by);
-                    newMap.addBoss(bossSprite);
+        bossSprite.setY(by);
+        newMap.addBoss(bossSprite);
     }
 
     private Animation createAnim(Image player[], int m, int n){

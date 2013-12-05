@@ -233,12 +233,15 @@ public class GameManager extends GameCore {
                         menu.goToCharChoose();
                     }
                     if(inputManager.getMouseY()>=400 && inputManager.getMouseY() <= 454){
+                        click.reset();
                         menu.goToConfiguration();
                     }
                     if(inputManager.getMouseY()>=488 && inputManager.getMouseY() <= 538){
+                        click.reset();
                         menu.goToHighscores();
                     }
                     if(inputManager.getMouseY()>=595 && inputManager.getMouseY() <= 647){
+                        click.reset();
                         menu.goToInstructions();
                     }
                 }
@@ -247,6 +250,7 @@ public class GameManager extends GameCore {
                 if(click.isPressed()){
                     if(inputManager.getMouseX()>= 790 && inputManager.getMouseX()<= 970
                         && inputManager.getMouseY()>=690 && inputManager.getMouseY() <= 740){
+                        click.reset();
                         menu.goToMainMenu();
                     }
                     if(inputManager.getMouseX()>= 570 && inputManager.getMouseX()<= 880
@@ -255,6 +259,7 @@ public class GameManager extends GameCore {
                         player.changeAnimation(resourceManager.peniAnim[0], resourceManager.peniAnim[1], resourceManager.peniAnim[2], resourceManager.peniAnim[3], 
                                   resourceManager.peniAnim[6], resourceManager.peniAnim[7],resourceManager.peniAnim[4],resourceManager.peniAnim[5], resourceManager.emptyAnimation(), resourceManager.emptyAnimation(),
                                   resourceManager.peniAnim[8],resourceManager.peniAnim[9],resourceManager.peniAnim[10],resourceManager.peniAnim[11],resourceManager.peniAnim[12],resourceManager.peniAnim[13] );
+                        click.reset();
                         resourceManager.isPeni = true;
                         map = resourceManager.reloadMap();
                         renderer.setBackground(
@@ -265,6 +270,7 @@ public class GameManager extends GameCore {
                     }
                     if(inputManager.getMouseX()>= 170 && inputManager.getMouseX()<= 485
                         && inputManager.getMouseY()>=180 && inputManager.getMouseY() <= 656){
+                        click.reset();
                         resourceManager.boss3Sprite = resourceManager.darkEnoxSprite;
                         resourceManager.isPeni = false;
                         map = resourceManager.reloadMap();
@@ -279,17 +285,18 @@ public class GameManager extends GameCore {
                 if(click.isPressed()){
                     if(inputManager.getMouseX()>= 810 && inputManager.getMouseX()<= 970
                         && inputManager.getMouseY()>=690 && inputManager.getMouseY() <= 750){
+                        click.reset();
                         menu.goToMainMenu();
                     }
                     if(inputManager.getMouseX()>= 450 && inputManager.getMouseX()<= 510
                         && inputManager.getMouseY()>=440 && inputManager.getMouseY() <= 530){
-                        switchControls();
                         click.reset();
+                        switchControls();
                     }
                     if(inputManager.getMouseX()>= 450 && inputManager.getMouseX()<= 510
                         && inputManager.getMouseY()>=270 && inputManager.getMouseY() <= 350){
-                        toggleSound();
                         click.reset();
+                        toggleSound();
                     }
                 }
             }
@@ -297,6 +304,7 @@ public class GameManager extends GameCore {
                 if(click.isPressed()){
                     if(inputManager.getMouseX()>= 840 && inputManager.getMouseX()<= 1000
                         && inputManager.getMouseY()>=685 && inputManager.getMouseY() <= 750){
+                        click.reset();
                         menu.goToMainMenu();
                     }
                 }
@@ -305,6 +313,7 @@ public class GameManager extends GameCore {
                 if(click.isPressed()){
                     if(inputManager.getMouseX()>= 810 && inputManager.getMouseX()<= 980
                         && inputManager.getMouseY()>=672 && inputManager.getMouseY() <= 737){
+                        click.reset();
                         menu.goToMainMenu();
                     }
                 }   
@@ -316,7 +325,8 @@ public class GameManager extends GameCore {
                     score = 0;
                     map.sprites.clear();
                     map.boss = null;
-                    map = resourceManager.reloadMap();
+                    resourceManager.currentMap = 1;
+                    map = resourceManager.reloadMap();                    
                     menu.goToMainMenu();
                 }
                 else{
@@ -585,10 +595,10 @@ public class GameManager extends GameCore {
                 boolean high = tryhigh(score);
                 score=0;
                 map.sprites.clear();
-                map.boss = null;
                 map = resourceManager.reloadMap();
-                resourceManager.loadBoss(resourceManager.currentMap, map);                
-                ((Creature)map.boss).awake = false;
+                resourceManager.loadBoss(resourceManager.currentMap, map);
+                boss = (Creature)map.getBoss();
+                //((Creature)map.boss).awake = false;
                 playr.restoreLife();
                 return;
             }

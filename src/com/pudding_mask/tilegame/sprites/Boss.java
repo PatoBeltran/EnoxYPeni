@@ -22,7 +22,7 @@ public class Boss extends Creature {
     }
 
     public float getMaxSpeed() {
-        return 0.05f;
+        return 0.03f;
     }
 }
 
