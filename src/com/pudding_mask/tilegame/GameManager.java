@@ -250,7 +250,8 @@ public class GameManager extends GameCore {
                         && inputManager.getMouseY()>=180 && inputManager.getMouseY() <= 656){
                         Player player = (Player)map.getPlayer();
                         player.changeAnimation(resourceManager.peniAnim[0], resourceManager.peniAnim[1], resourceManager.peniAnim[2], resourceManager.peniAnim[3], 
-                                  resourceManager.peniAnim[6], resourceManager.peniAnim[7],resourceManager.peniAnim[4],resourceManager.peniAnim[5], resourceManager.emptyAnimation(), resourceManager.emptyAnimation());
+                                  resourceManager.peniAnim[6], resourceManager.peniAnim[7],resourceManager.peniAnim[4],resourceManager.peniAnim[5], resourceManager.emptyAnimation(), resourceManager.emptyAnimation(),
+                                  resourceManager.peniAnim[8],resourceManager.peniAnim[9],resourceManager.peniAnim[10],resourceManager.peniAnim[11],resourceManager.peniAnim[12],resourceManager.peniAnim[13] );
                         resourceManager.isPeni = true;
                         resourceManager.boss3Sprite = resourceManager.darkPeniSprite;
                         menu.goToGame();

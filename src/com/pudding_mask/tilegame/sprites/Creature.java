@@ -97,7 +97,9 @@ public abstract class Creature extends Sprite {
     public void changeAnimation(Animation left, Animation right,
         Animation deadLeft, Animation deadRight, Animation leftJump,
          Animation rightJump,  Animation leftStill,  Animation rightStill,
-          Animation leftFire,  Animation rightFire){
+          Animation leftFire,  Animation rightFire, Animation leftInv, Animation rightInv,
+          Animation leftJumpInv, Animation rightJumpInv, Animation leftStillInv, 
+          Animation rightStillInv){
         changeSprite(right);
         this.left = left;
         this.right = right;
@@ -109,6 +111,12 @@ public abstract class Creature extends Sprite {
         this.rightStill = rightStill;
         this.leftFire = leftFire;
         this.rightFire = rightFire;
+        this.leftInv = leftInv;
+        this.rightInv = rightInv;
+        this.leftJumpInv = leftJumpInv;
+        this. rightJumpInv = rightJumpInv;
+        this.leftStillInv = leftStillInv;
+        this.rightStillInv = rightStillInv;
     }
 
     public void setHp(int hp) {
@@ -128,7 +136,13 @@ public abstract class Creature extends Sprite {
                 (Animation)leftStill.clone(),
                 (Animation)rightStill.clone(),
                 (Animation)leftFire.clone(),
-                (Animation)rightFire.clone()
+                (Animation)rightFire.clone(),
+                (Animation)leftInv.clone(),
+                (Animation)rightInv.clone(),
+                (Animation)leftJumpInv.clone(),
+                (Animation) rightJumpInv.clone(),
+                (Animation)leftStillInv.clone(),
+                (Animation)rightStillInv.clone()
             });
         }
         catch (Exception ex) {
