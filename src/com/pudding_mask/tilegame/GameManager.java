@@ -504,7 +504,7 @@ public class GameManager extends GameCore {
     public Sprite getSpriteCollision(Sprite sprite) {
 
         // run through the list of Sprites
-        Iterator i = map.getSprites();
+        Iterator i = map.getBullets();
         while (i.hasNext()) {
             Sprite otherSprite = (Sprite)i.next();
             if (isCollision(sprite, otherSprite)) {
@@ -512,7 +512,8 @@ public class GameManager extends GameCore {
                 return otherSprite;
             }
         }
-        i = map.getBullets();
+        
+        i = map.getSprites();
         while (i.hasNext()) {
             Sprite otherSprite = (Sprite)i.next();
             if (isCollision(sprite, otherSprite)) {
@@ -520,6 +521,7 @@ public class GameManager extends GameCore {
                 return otherSprite;
             }
         }
+        
         
         i = map.getEnBul();
         while (i.hasNext()) {
