@@ -591,7 +591,6 @@ public class ResourceManager {
         ((Boss)bossSprite).setHp(24);
         ((Boss)bossSprite).setState(0);
         ((Boss)bossSprite).awake = false;
-        //bossSprite.setVelocityX(-.03f);
         bossSprite.setX(bx);
         bossSprite.setY(by);
         newMap.addBoss(bossSprite);
