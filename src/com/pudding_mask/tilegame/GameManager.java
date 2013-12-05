@@ -325,7 +325,8 @@ public class GameManager extends GameCore {
                     score = 0;
                     map.sprites.clear();
                     map.boss = null;
-                    map = resourceManager.reloadMap();
+                    resourceManager.currentMap = 1;
+                    map = resourceManager.reloadMap();                    
                     menu.goToMainMenu();
                 }
                 else{
@@ -594,10 +595,10 @@ public class GameManager extends GameCore {
                 boolean high = tryhigh(score);
                 score=0;
                 map.sprites.clear();
-                map.boss = null;
                 map = resourceManager.reloadMap();
-                resourceManager.loadBoss(resourceManager.currentMap, map);                
-                ((Creature)map.boss).awake = false;
+                resourceManager.loadBoss(resourceManager.currentMap, map);
+                boss = (Creature)map.getBoss();
+                //((Creature)map.boss).awake = false;
                 playr.restoreLife();
                 return;
             }
