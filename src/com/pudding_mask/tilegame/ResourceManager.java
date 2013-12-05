@@ -606,7 +606,7 @@ public class ResourceManager {
       Animation anim = new Animation();
       for(int i = m; i<=n; i++)
             anim.addFrame(player[i], 150);
-            anim.addFrame(loadImage(""), 150);
+            anim.addFrame(loadImage("blank.png"), 150);
 
         return anim;
     }
