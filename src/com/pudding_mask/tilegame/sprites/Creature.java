@@ -288,10 +288,10 @@ public abstract class Creature extends Sprite {
             }
             dir = true;
         }
-        if (state == STATE_DYING && (newAnim == left || newAnim == leftStill)) {
+        if (state == STATE_DYING && (newAnim == left || newAnim == leftStill || newAnim == leftFire)) {
             newAnim = deadLeft;
         }
-        else if (state == STATE_DYING && (newAnim == right || newAnim == rightStill)) {
+        else if (state == STATE_DYING && (newAnim == right || newAnim == rightStill || newAnim == rightFire)) {
             newAnim = deadRight;
         }
         if(shooting && newAnim == left){
