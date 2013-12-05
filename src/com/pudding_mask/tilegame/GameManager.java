@@ -211,18 +211,21 @@ public class GameManager extends GameCore {
         fileOut.close();
     }
 
-    private void checkInput(long elapsedTime){
-        if (exit.isPressed()) {
-            try {
-                saveScores();
-            } catch (IOException ex) {
-                //cry
-            }
-            stop();
-        }
+    private void checkInput(long elapsedTime){        
         //update menus and check for input in them (buttons clicked)
         if(!menu.isPlaying()){
             pause.reset();
+            if (exit.isPressed()){
+                if(menu.isInMainMenu()){
+                    try {
+                        saveScores();
+                    } catch (IOException ex) {
+                        //cry
+                    }
+                    stop();
+                }
+                else menu.goToMainMenu();
+            }
             if (menu.isInMainMenu()){
                 if(click.isPressed() && inputManager.getMouseX()>= 126 && inputManager.getMouseX()<= 895){
                     if(inputManager.getMouseY()>=306 && inputManager.getMouseY() <= 360){
@@ -253,12 +256,21 @@ public class GameManager extends GameCore {
                                   resourceManager.peniAnim[6], resourceManager.peniAnim[7],resourceManager.peniAnim[4],resourceManager.peniAnim[5], resourceManager.emptyAnimation(), resourceManager.emptyAnimation(),
                                   resourceManager.peniAnim[8],resourceManager.peniAnim[9],resourceManager.peniAnim[10],resourceManager.peniAnim[11],resourceManager.peniAnim[12],resourceManager.peniAnim[13] );
                         resourceManager.isPeni = true;
+                        map = resourceManager.reloadMap();
+                        renderer.setBackground(
+                        resourceManager.currentMap);
+                        resourceManager.loadBoss(resourceManager.currentMap, map);
                         resourceManager.boss3Sprite = resourceManager.darkPeniSprite;
                         menu.goToGame();
                     }
                     if(inputManager.getMouseX()>= 170 && inputManager.getMouseX()<= 485
                         && inputManager.getMouseY()>=180 && inputManager.getMouseY() <= 656){
                         resourceManager.boss3Sprite = resourceManager.darkEnoxSprite;
+                        resourceManager.isPeni = false;
+                        map = resourceManager.reloadMap();
+                        renderer.setBackground(
+                        resourceManager.currentMap);
+                        resourceManager.loadBoss(resourceManager.currentMap, map);
                         menu.goToGame();
                     }
                 }   
@@ -299,13 +311,25 @@ public class GameManager extends GameCore {
             }
         }
         else if(menu.isPlaying()) {
-            if(pause.isPressed()){
+            if (exit.isPressed()) {
                 if(menu.isPaused()){
+                    score = 0;
+                    map.sprites.clear();
+                    map.boss = null;
+                    map = resourceManager.reloadMap();
+                    menu.goToMainMenu();
+                }
+                else{
+                    menu.changePauseStatus();
+                }
+            }
+            if(pause.isPressed()||exit.isPressed()){
+                if(menu.isPaused()){                    
                     fire.reset();
                     moveLeft.reset();
                     moveRight.reset();
-                    jump.reset();
-                }
+                    jump.reset();                    
+                }                
                 menu.changePauseStatus();
             }
             if(!menu.isPaused()){
@@ -337,7 +361,7 @@ public class GameManager extends GameCore {
                     }
                     player.setVelocityX(velocityX);
                 }
-            }
+            }            
         }
     }
 
@@ -563,7 +587,7 @@ public class GameManager extends GameCore {
                 map.sprites.clear();
                 map.boss = null;
                 map = resourceManager.reloadMap();
-                resourceManager.loadBoss(resourceManager.currentMap, map);
+                resourceManager.loadBoss(resourceManager.currentMap, map);                
                 ((Creature)map.boss).awake = false;
                 playr.restoreLife();
                 return;
